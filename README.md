@@ -59,9 +59,9 @@ The Real Estate Agent:
 	<ul><li>World owner can see world basic property such as gravity, weather.</li></ul>
 	<ul><li>Other player who enter the world will be effect by these settings.</li></ul>
 	<li>Reward System:</li>
-<ul><li>Player should able to obtain reward by contributing to other worlds./li></ul>
-<ul><li>Player are able to use this reward to request other player or designer to build a 3d model as player given requirement./li></ul>
+<ul><li>Player should able to obtain reward by contributing to other worlds.</li></ul>
+<ul><li>Player are able to use this reward to request other player or designer to build a 3d model as player given requirement.</li></ul>
 	<li>Animation:</li>
-<ul><li>The model owner should able to set a default animation for specific model./li></ul>
+<ul><li>The model owner should able to set a default animation for specific model.</li></ul>
 
 </html>
