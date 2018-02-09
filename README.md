@@ -1,4 +1,4 @@
-  another.world 
+ #another.world 
  a teamVR experience
 	
 Our Mission:
@@ -58,3 +58,5 @@ Player should able to obtain reward by contributing to other worlds.
 Player are able to use this reward to request other player or designer to build a 3d model as player given requirement.
 Animation:
 The model owner should able to set a default animation for specific model.
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CSE_442/TeamVR?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
