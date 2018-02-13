@@ -1,0 +1,28 @@
+Date: 02/13/2018
+Time: 1:00pm. to 2:00pm
+
+present:
+	Matt Carapella
+	Ira Chan
+	Amiya Debnath
+	Meng Chun Hsieh(Peter)
+	Xuanyu Dong (Shawn)
+
+absence: 
+	NULL
+
+Summary:
+	Unity environment setup
+	general sketch of prototype
+	discuss how to approach setup backend systems
+
+What each team member accomplished since last meeting:
+	NULL
+
+What each team member will accomplish before next meeting:
+	Matt and Amiya: keep working on how to set up back end server for our application with photon.
+	Ira Chan: first landing page, player model choice frame.
+	Peter: In game Menu frame. World creation menu.
+	Shawn: universe scene and world scene.
+
+
