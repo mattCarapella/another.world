@@ -1,5 +1,6 @@
 Date: 02/13/2018
 Time: 1:00pm. to 2:00pm
+Github issue: #1
 
 present:
 	Matt Carapella
@@ -21,8 +22,8 @@ What each team member accomplished since last meeting:
 
 What each team member will accomplish before next meeting:
 	Matt and Amiya: keep working on how to set up back end server for our application with photon.
-	Ira Chan: first landing page, player model choice frame.
-	Peter: In game Menu frame. World creation menu.
-	Shawn: universe scene and world scene.
+	Ira Chan: first landing page, player model choice frame. #1
+	Peter: In game Menu frame. World creation menu. #1
+	Shawn: universe scene and world scene. #1
 
 
