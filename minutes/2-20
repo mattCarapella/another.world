@@ -1,0 +1,33 @@
+Date: 02/20/2018
+Time: 1:00pm. to 2:00pm
+Github issue: #2
+
+present:
+	Matt Carapella
+	Ira Chan
+	Amiya Debnath
+	Meng Chun Hsieh(Peter)
+	Xuanyu Dong (Shawn)
+
+absence: 
+	NULL
+
+Summary:
+  Discussed removing elements from MVP
+  Discussed progress on prototype
+  Discussed feasibility of uploading models/animations/etc using playfab
+  Discussed progress of Photon and PlayFab configurations and then the limitations of our project using those services and how it 
+    will affect the overall project. All the code and prototype for backend system has now been scraped.
+  
+
+What each team member accomplished since last meeting:
+	Ira: barebones of first landing page and character select screen 
+  Matt and Amiya: Configured Photon and attempted PlayFab. Deceided PlayFab will not work for what we're attempting to do due to a lot of limitations.
+  Peter: In game Menu frame. World creation menu.
+	Shawn: universe scene and world scene. 
+
+What each team member will accomplish before next meeting
+	Matt and Amiya: Look into Amazon Web Services and other services as an alternative to PlayFab. Meet on Wednesday to discuss options and work on ideas.
+	Ira:  Add explanation text to every scene
+	Peter: Add functions to UI and help database
+	Shawn: Piece together prototype
