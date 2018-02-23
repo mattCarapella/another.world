@@ -9,7 +9,9 @@
 <h1>Prototype</h1>
 <h3>User Guide</h3>
 <b>For non-technical users: </b>
-This game will only work in Windows machine. You can download the game from the download button below and start playing: <a href="https://github.com/mattCarapella/AnotherWorld/raw/develop/Another.World/anotherWorld.exe">Download</a>
+This game will only work in Windows machine. You can download the game from the download button below and start playing:
+<br></br>
+<a href="https://github.com/mattCarapella/AnotherWorld/raw/develop/Another.World/anotherWorld.exe">Download</a>
 <br></br>
 <b>For technical users: </b>There are couple of requirements you need to meet before you download this project. You need: 
 <ul><li> A Windows Computer </li></ul>
@@ -17,10 +19,7 @@ This game will only work in Windows machine. You can download the game from the 
 <ul><li> Clone this repository </li></ul>
 
 Once everything is done, open Unity and open the project where it is downloaded in the directory. Once that is done, all game objects and scripts should be available to see.
-<br></br>
 <hr></hr>
-
-
 
 <b>Our Mission:</b>
 
