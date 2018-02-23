@@ -8,10 +8,12 @@
 
 <h1>Prototype</h1>
 <h3>User Guide</h3>
-<b>For non-technical users: </b>
-This game will only work in Windows machine. You can download the game from the download button below and start playing:
+Prototype Youtube Video: https://youtu.be/pb6fuqt0duc
 <br></br>
-<a href="https://github.com/mattCarapella/AnotherWorld/raw/develop/Another.World/anotherWorld.exe">Download</a>
+<b>For non-technical users: </b>
+This game will only work in Windows machine. You can download the game from the download button below, extract the files from the zip folder, click on Another.World folder and anotherWorld.exe file to play the game:
+<br></br>
+<a href="https://github.com/mattCarapella/AnotherWorld/releases/download/v0.1.0/Another.World.zip">Download</a>
 <br></br>
 <b>For technical users: </b>There are couple of requirements you need to meet before you download this project. You need: 
 <ul><li> A Windows Computer </li></ul>
