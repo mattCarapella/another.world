@@ -6,6 +6,22 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Team_VR/Lobby#?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+<h1>Prototype</h1>
+<h3>User Guide</h3>
+<b>For non-technical users: </b>
+This game will only work in Windows machine. You can download the game from the download button below and start playing: <a href="https://github.com/mattCarapella/AnotherWorld/raw/develop/Another.World/anotherWorld.exe">Download</a>
+<br></br>
+<b>For technical users: </b>There are couple of requirements you need to meet before you download this project. You need: 
+<ul><li> A Windows Computer </li></ul>
+<ul><li> Download the latest version of Unity </li></ul>
+<ul><li> Clone this repository </li></ul>
+
+Once everything is done, open Unity and open the project where it is downloaded in the directory. Once that is done, all game objects and scripts should be available to see.
+<br></br>
+<hr></hr>
+
+
+
 <b>Our Mission:</b>
 
 Our mission is to create a virtual reality social platform where developers and artists can collaborate, share models and ideas, and work together to build interactive 3D virtual worlds. It is our belief that this new method of content creation will allow for increased creative productivity, a more social means of buying, selling, and sharing in-game assets, and a fun, original way for people to work together to build virtual worlds in a fully immersive VR environment.
