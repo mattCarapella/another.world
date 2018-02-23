@@ -1,0 +1,13 @@
+ManifestFileVersion: 0
+CRC: 2539089894
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: lambodlc.dlc
+      Dependencies: {}
+    Info_1:
+      Name: primitive.dlc
+      Dependencies: {}
+    Info_2:
+      Name: rock.dlc
+      Dependencies: {}

@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 3543448127
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: eda9ea2e2ef5a99fccb3dbc8da07044a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+HashAppended: 0
+ClassTypes: []
+Assets:
+- Assets/AB Scene Project/Scenes/BoxScene.unity
+- Assets/AB Scene Project/Scenes/CylinderScene.unity
+Dependencies: []

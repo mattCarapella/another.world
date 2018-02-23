@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/AB Scene Project/Main.unity
+  isLoaded: 1
+  isActive: 1
