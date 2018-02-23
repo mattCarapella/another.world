@@ -8,7 +8,7 @@
 
 <h1>Prototype</h1>
 <h3>User Guide</h3>
-Prototype Youtube Video: https://youtu.be/pb6fuqt0duc
+Prototype Youtube Video: https://youtu.be/W5LZTsa_CM4 
 <br></br>
 <b>For non-technical users: </b>
 This game will only work in Windows machine. You can download the game from the download button below, extract the files from the zip folder, click on Another.World folder and anotherWorld.exe file to play the game:
