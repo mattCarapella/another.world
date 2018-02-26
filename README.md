@@ -59,11 +59,8 @@ The Real Estate Agent:
 
 <b>MVP (Minimum Feature Set)</b>
 <ul><li>Users can build a 3D virtual reality world including terrain, buildings, skyboxes, animations, and more, using in-app tools or their own assets.</li>
-<li>Users can upload their own custom designed assets including 3D models, skyboxes, textures, animations, sounds, and more.</li>
-<li>Users can share their custom assets with others and allow them to be downloaded and used within the app or saved for use in outside projects.</li>
 <li>Users can travel between worlds in the universe.</li>
 <li>Users can freely move around inside worlds, where they can view and interact with all objects.</li>
-<li>A user can give another user permission to build inside his or her world, allowing for collaboration.</li>
 <li>Users in the same world can see and interact with one another.</li></ul> 
 
 <b>Add-on Features</b>
@@ -80,5 +77,6 @@ The Real Estate Agent:
 <ul><li>Player are able to use this reward to request other player or designer to build a 3d model as player given requirement.</li></ul>
 	<li>Animation:</li>
 <ul><li>The model owner should able to set a default animation for specific model.</li></ul>
-
+<li>Users can upload their own custom designed assets including 3D models, skyboxes, textures, animations, sounds, and more.</li><li>Users can share their custom assets with others and allow them to be downloaded and used within the app or saved for use in outside projects.</li>
+<li>A user can give another user permission to build inside his or her world, allowing for collaboration.</li>
 </html>
