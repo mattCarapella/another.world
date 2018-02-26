@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scene/Universe.unity
     guid: 93979477de2c3df4dac8dbae24ca0598
+  - enabled: 1
+    path: Assets/scene/Registration Page.unity
+    guid: a89f39f357609bb4aae75d5807a4969f
