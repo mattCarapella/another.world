@@ -24,12 +24,12 @@ public class Registration : MonoBehaviour {
 		
 	}
 	
-    public void Register(string username, string email, string password, string confirm_password)
+    public void Register()
     {
         WWWForm form = new WWWForm();
-        form.AddField("usernamePost", username);
-        form.AddField("emailPost", email);
-        form.AddField("passwordPost", password);
+        form.AddField("usernamePost", Username);
+        form.AddField("emailPost", Email);
+        form.AddField("passwordPost", Password);
 
         WWW www = new WWW(CreateUserURL, form);
         Debug.Log(www.text);
@@ -59,7 +59,7 @@ public class Registration : MonoBehaviour {
         {
             if (Password == Confirm_Password)
             {
-                Register(Username, Email, Password, Confirm_Password);
+                Register();
             }
             else
             {
