@@ -1,0 +1,29 @@
+Date: 02/27/2018
+Time: 1:00pm. to 2:00pm
+Github issue: #7,8,9,10,11,12,13
+
+present:
+	Ira Chan
+	Amiya Debnath
+	Xuanyu Dong (Shawn)
+
+absence: 
+	Meng Chun Hsieh(Peter)  [unexcused]
+  Matt Carapella   [excused - in the hospital due to medical reasons]
+
+Summary:
+  Discussed registration page and login page
+  
+What each team member accomplished since last meeting:
+  Ira: Worked on registration & login page, worked on background for login page
+  Amiya: Worked on server PHP side 
+  Shawn: Working on camera implementation
+  
+What each team member will accomplish before next meeting
+  Ira: Work on landing login page -  #7
+        Design custom style for buttons and fram - #8
+  Amiya: Work on user verification for landing login  page - #13
+  Shawn: Write script for camera movement - #10
+          Character properties set up - #11
+  Peter: Work on 3D rotation menu - #9
+  Matt: Working on upload and download implementation - #12
