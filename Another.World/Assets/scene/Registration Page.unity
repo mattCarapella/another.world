@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -263,13 +263,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 150260356}
   m_TextComponent: {fileID: 160218140}
   m_Placeholder: {fileID: 991608531}
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -552,8 +552,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 257167834}
   m_TextComponent: {fileID: 1022377814}
   m_Placeholder: {fileID: 1554315636}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -760,13 +760,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 481959091}
   m_TextComponent: {fileID: 1930292798}
   m_Placeholder: {fileID: 405643585}
-  m_ContentType: 0
+  m_ContentType: 4
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 1
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 3
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -894,8 +894,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 645520302}
   m_TextComponent: {fileID: 1624924111}
   m_Placeholder: {fileID: 1567475231}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1719,6 +1719,7 @@ GameObject:
   - component: {fileID: 2020317531}
   - component: {fileID: 2020317530}
   - component: {fileID: 2020317529}
+  - component: {fileID: 2020317532}
   m_Layer: 5
   m_Name: Register
   m_TagString: Untagged
@@ -1819,3 +1820,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2020317527}
+--- !u!114 &2020317532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2020317527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31437b014af73242bb6de831adf2574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: {fileID: 481959088}
+  email: {fileID: 150260353}
+  password: {fileID: 645520299}
+  confirm_password: {fileID: 257167831}
