@@ -1,0 +1,31 @@
+Date: 03/06/2018
+Time: 1:00pm. to 2:00pm
+Github issue: #14 ,15
+
+present:
+	Matt Carapella
+	Ira Chan
+	Amiya Debnath
+	Meng Chun Hsieh(Peter)
+	Xuanyu Dong (Shawn)
+
+absence: 
+	NULL
+
+Summary:
+  Discuss what need to be done for alpha release.
+  User database and storage design.
+  world creation design.
+  
+What each team member accomplished since last meeting:
+	Matt: download feature. #13
+  Amiya: finished user auth.(escape sql injection).# 13
+	Ira Chan: part of button design finished. # 7
+	Peter: Player default model design. #7
+	Shawn: Player movemnet and camera movement. #10, #11
+  
+What each team member will accomplish before next meeting: (most of us can't spend too much time for next week.(exam!!!))
+	Matt and Amiya: set up the backend database and php script for world creation and user storage. #14.
+	Ira Chan: User storage render. #15
+	Peter: exit pop up menu, put ingame ui properly #15
+	Shawn: world generation render. #14
