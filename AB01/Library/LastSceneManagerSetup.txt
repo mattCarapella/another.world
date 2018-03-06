@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/AB Scene Project/Main.unity
+- path: Assets/StreamingAssets01.unity
   isLoaded: 1
   isActive: 1

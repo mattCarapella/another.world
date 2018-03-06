@@ -293,6 +293,8 @@
   <ItemGroup>
     <Compile Include="Assets\AB Scene Project\Script\AssetBundleScene.cs" />
     <Compile Include="Assets\AB Scene Project\Script\SceneButton.cs" />
+    <Compile Include="Assets\DownloadSystem\Scripts\DLC.cs" />
+    <Compile Include="Assets\DownloadSystem\Scripts\UnityDLC.cs" />
     <Compile Include="Assets\Scripts\BundleLoader.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
   </ItemGroup>

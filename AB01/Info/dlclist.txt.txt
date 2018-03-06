@@ -1,0 +1,4 @@
+Primitves<url>file:///C:/Users/matt/Documents/GitHub/AnotherWorld/AB01/AssetsBundle/primitive.dlc
+Lamborghini<url>file:///C:/Users/matt/Documents/GitHub/AnotherWorld/AB01/AssetsBundle/lamborghini.dlc
+Dumpster<url>file:///C:/Users/matt/Documents/GitHub/AnotherWorld/AB01/AssetsBundle/dumpster.dlc
+Rock<url>file:///C:/Users/matt/Documents/GitHub/AnotherWorld/AB01/AssetsBundle/rock.dlcs

@@ -1,13 +1,16 @@
 ManifestFileVersion: 0
-CRC: 2539089894
+CRC: 1745861859
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: lambodlc.dlc
-      Dependencies: {}
-    Info_1:
       Name: primitive.dlc
       Dependencies: {}
+    Info_1:
+      Name: lamborghini.dlc
+      Dependencies: {}
     Info_2:
+      Name: dumpster.dlc
+      Dependencies: {}
+    Info_3:
       Name: rock.dlc
       Dependencies: {}

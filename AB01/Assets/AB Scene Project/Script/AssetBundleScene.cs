@@ -53,16 +53,6 @@ public class AssetBundleScene : MonoBehaviour
                 i += 1;
             }
         }
-
-        foreach (string sceneName in sceneNames)
-        {
-            Debug.Log(Path.GetFileNameWithoutExtension(sceneName));
-            labelText.text = Path.GetFileNameWithoutExtension(sceneName);
-            var clone = Instantiate(prefab.gameObject) as GameObject;
-            clone.GetComponent<Button>().AddEventListener(sceneName, LoadAssetBundleScene);
-            clone.SetActive(true);
-            clone.transform.SetParent(rootContainer);
-        }
     }
 
     public void LoadAssetBundleScene(string sceneName)

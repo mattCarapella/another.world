@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/StreamingAssets01.unity
+    guid: c977bebdce367e747b6e487cce0e8b67
+  - enabled: 1
+    path: Assets/Main.unity
+    guid: abf154031f87f7946a5e8e0da657a098

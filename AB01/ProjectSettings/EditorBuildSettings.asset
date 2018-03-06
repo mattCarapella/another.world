@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/AB Scene Project/Main.unity
+    guid: 01c68998f6d1445439526effc48653f8
+  - enabled: 1
+    path: Assets/StreamingAssets01.unity
+    guid: bcc62699b5e921b45919c7e9232514b9

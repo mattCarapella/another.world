@@ -1,0 +1,14 @@
+ManifestFileVersion: 0
+CRC: 2745157072
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 99891245514e990ab0da9e20e37af324
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+HashAppended: 0
+ClassTypes: []
+Assets:
+- Assets/AB Scene Project/Scenes/Dumpster_001.unity
+Dependencies: []

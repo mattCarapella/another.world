@@ -1,7 +1,6 @@
 WindowsStandalone
 SceneListBegin?
-Assets/AB Scene Project/Scenes/BoxScene.unity
-Assets/AB Scene Project/Scenes/CylinderScene.unity
+Assets/AB Scene Project/Scenes/Rock_001.unity
 SceneListEnd?
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
 0b0399c4b7b49c440fa718ace4ac585a UnityEngine.UI.dll:UnityEngine.UI.CanvasScaler
