@@ -1,0 +1,26 @@
+Date: 03/13/2018
+Time: 1:00pm. to 2:00pm
+Github issue: 14,15, 16, 17
+
+present:
+	Ira Chan
+	Xuanyu Dong (Shawn)
+  
+absence: 
+	Matt Carapella [unexcused]
+	Amiya Debnath   [excused - doctor's appointment]
+	Meng Chun Hsieh(Peter)  [unexcused]
+  
+Summary:
+  Demonstrated current in-game menu
+  Discussed how to approach rendering
+  
+What each team member accomplished since last meeting:
+  Ira: part of button design finished. # 7
+  Shawn: Set up property for world and game controller
+
+What each team member will accomplish before next meeting: 
+  Ira:finding default assets and writing script for exporting models #17
+  Shawn: Make list view of world in universe #16
+  Matt and Amiya: set up the backend database and php script for world creation and user storage. #14.
+  Peter: exit pop up menu, put ingame ui properly #15
