@@ -5,6 +5,11 @@ using UnityEngine;
 public class planet : MonoBehaviour {
     private bool MouseOver = false;
     public GameObject description;
+    private int _id;
+    private string _des;
+    private string _owner;
+
+
     // Use this for initialization
     void Start () {
 		
@@ -30,5 +35,29 @@ public class planet : MonoBehaviour {
     {
         //this.GetComponent<Renderer>().material.color = Color.yellow;
         description.SetActive(true);
+    }
+    public int getId()
+    {
+        return _id;
+    }
+    public string getDes()
+    {
+        return _des;
+    }
+    public string getOwner()
+    {
+        return _owner;
+    }
+    public void setId(int id)
+    {
+        _id = id;
+    }
+    public void setDes(string des)
+    {
+        _des = des;
+    }
+    public void setOwner(string owner)
+    {
+        _owner = owner;
     }
 }

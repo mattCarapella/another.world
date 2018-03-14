@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MouseSen: 4
   OrbitDampening: 10
-  CameraDisable: 0
+  _game: {fileID: 1189901813686520, guid: a4257e7d4db703f48b7d6131fac01170, type: 2}
 --- !u!114 &114609297293050620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
+  _game: {fileID: 1189901813686520, guid: a4257e7d4db703f48b7d6131fac01170, type: 2}
 --- !u!114 &114760094753569440
 MonoBehaviour:
   m_ObjectHideFlags: 1

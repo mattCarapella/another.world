@@ -9,8 +9,7 @@ public class PlayerCam : MonoBehaviour {
     protected Vector3 _rotation;
     public float MouseSen = 4f;
     public float OrbitDampening = 10f;
-
-    public bool CameraDisable = false;
+    public GameObject _game;
 
     // Use this for initialization
     void Start () {
@@ -20,10 +19,8 @@ public class PlayerCam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            CameraDisable = !CameraDisable;
-        }
-        if (!CameraDisable)
+        
+        if (!_game.GetComponent<gameController>().CameraDisable)
         {
             if (Input.GetAxis("Mouse X")!=0 || Input.GetAxis("Mouse Y")!=0)
             {

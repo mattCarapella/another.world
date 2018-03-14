@@ -9,7 +9,15 @@ public class Player : MonoBehaviour {
 
     void loadPlayer()
     {
+        this.gameObject.AddComponent<MeshFilter>();
+        this.gameObject.AddComponent<MeshRenderer>();
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        Mesh mesh = sphere.GetComponent<MeshFilter>().sharedMesh;
+        Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
 
+        this.GetComponent<MeshFilter>().mesh = mesh;
+        this.GetComponent<Renderer>().material = material; 
+        GameObject.Destroy(sphere);
     }
     void loadItems()
     {

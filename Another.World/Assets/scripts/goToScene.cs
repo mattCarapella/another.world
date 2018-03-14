@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class goToScene : MonoBehaviour
 {
-
+    public Text text;
+    
     // Use this for initialization
     void Start()
     {
@@ -20,5 +22,11 @@ public class goToScene : MonoBehaviour
     public void switchScene(int i)
     {
         SceneManager.LoadScene(i);
+    }
+    public void popUp(GameObject obj)
+    {
+        obj.SetActive(true);
+        text.text = "login sucess";
+        
     }
 }
