@@ -6,8 +6,9 @@ public class PlayerController : MonoBehaviour {
     public float _speed;
     protected Rigidbody _rb;
     public GameObject _game;
+    public GameObject _lastHit;
     // Use this for initialization
-	void Start () {
+    void Start () {
         _speed = 20000f;
 		
 	}
@@ -20,6 +21,21 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
         if (!_game.GetComponent<gameController>().CameraDisable)
         {
+            RaycastHit hit;
+            Ray dectRay = new Ray(transform.position, this.transform.forward);
+            Debug.DrawRay(transform.position, this.transform.forward * 500);
+            if (Physics.Raycast(dectRay,out hit, 500))
+            {
+                _lastHit = hit.collider.gameObject;
+                hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, 105f);
+                hit.collider.gameObject.GetComponent<planet>().setRay(true);
+                
+            }
+            else if(_lastHit)
+            {
+                _lastHit.GetComponent<Renderer>().material.color = Color.white;
+                _lastHit.GetComponent<planet>().setRay(false);
+            }
             var x = Input.GetAxis("Horizontal");
             var z = Input.GetAxis("Vertical");
             Debug.Log(x);

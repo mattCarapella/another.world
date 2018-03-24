@@ -35,7 +35,17 @@ public class gameController:MonoBehaviour{
             CameraDisable = !CameraDisable;
             MouseVisiable = !MouseVisiable;
 
-}
-    }
+        }
 
+    }
+    public void ui_up()
+    {
+        CameraDisable = true;
+        MouseVisiable = true;
+    }
+    public void ui_down()
+    {
+        CameraDisable = false;
+        MouseVisiable = false;
+    }
 }
