@@ -5,18 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     protected string _name;
-    
+    public GameObject inhand;
 
     void loadPlayer()
     {
-        this.gameObject.AddComponent<MeshFilter>();
-        this.gameObject.AddComponent<MeshRenderer>();
+
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         Mesh mesh = sphere.GetComponent<MeshFilter>().sharedMesh;
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
-
-        this.GetComponent<MeshFilter>().mesh = mesh;
-        this.GetComponent<Renderer>().material = material; 
+        inhand.GetComponent<MeshFilter>().mesh = mesh;
+        inhand.GetComponent<Renderer>().material = material;
+        inhand.transform.position = this.transform.forward * 10;
         GameObject.Destroy(sphere);
     }
     void loadItems()

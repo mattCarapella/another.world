@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     protected Rigidbody _rb;
     public GameObject _game;
     public GameObject _lastHit;
+    public GameObject inhand;
     // Use this for initialization
     void Start () {
         _speed = 20000f;
@@ -45,11 +46,12 @@ public class PlayerController : MonoBehaviour {
             Vector3 movement = new Vector3(x * Time.deltaTime * _speed, 0, z * Time.deltaTime * _speed);
             movement = transform.TransformDirection(movement);
             _rb.velocity = (movement);
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                sphere.transform.position = this.transform.position;
-                Instantiate(sphere);
+                GameObject temp = Instantiate(inhand);
+                temp.transform.position = inhand.transform.position;
+                temp.transform.rotation = inhand.transform.rotation;
             }
         }
         
