@@ -15,6 +15,8 @@ public class gameController:MonoBehaviour{
     public GameObject processObj;
     public GameObject worldModelSample;
     public GameObject _description;
+    public GameObject listItem;
+    public GameObject listView;
     public Text owner;
     public Text descriptionText;
     public Text worldName;
@@ -118,6 +120,7 @@ public class gameController:MonoBehaviour{
             sample.setId(worldId);
             sample.setOwner(userId.ToString());
             sample.setName(title);
+            addEntryToList(title, x,y,z);
 
 
 
@@ -160,6 +163,17 @@ public class gameController:MonoBehaviour{
             temp.transform.position = inhand.transform.position;
             temp.transform.rotation = inhand.transform.rotation;
         }
+    }
+    public void addEntryToList(string name, float x, float y, float z)
+    {
+        GameObject temp = Instantiate(listItem);
+        temp.transform.parent = listView.transform;
+        temp.transform.GetChild(0).GetComponent<Text>().text = name;
+        temp.transform.GetChild(1).GetComponent<Text>().text = "x: " + x;
+        temp.transform.GetChild(2).GetComponent<Text>().text = "y: " + y;
+        temp.transform.GetChild(3).GetComponent<Text>().text = "z: " + z;
+        temp.transform.localScale = new Vector3(1, 1, 1);
+
 
     }
 }
