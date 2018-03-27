@@ -2,9 +2,3 @@ sceneSetups:
 - path: Assets/scene/Universe.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/scene/InGameUI.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/scene/Start scene.unity
-  isLoaded: 0
-  isActive: 0
