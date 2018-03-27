@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1128905462
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: dumpster.ab
+      Dependencies: {}
+    Info_1:
+      Name: lambo.ab
+      Dependencies: {}
+    Info_2:
+      Name: cube
+      Dependencies: {}
+    Info_3:
+      Name: dumpster_model.ab
+      Dependencies: {}
+    Info_4:
+      Name: assetbundle1
+      Dependencies:
+        Dependency_0: dumpster_model.ab
