@@ -23,10 +23,4 @@ public class goToScene : MonoBehaviour
     {
         SceneManager.LoadScene(i);
     }
-    public void popUp(GameObject obj)
-    {
-        obj.SetActive(true);
-        text.text = "login sucess";
-        
-    }
 }

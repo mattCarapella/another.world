@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/obj/Debug/Assembly-CSharp.dll
+=======
+/Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/obj/Debug/Assembly-CSharp.dll
+/Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/obj/Debug/Assembly-CSharp.dll.mdb
+>>>>>>> 103e1810d97917aa0fa49dd23c25a99188dfc43a
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/UnityEngine.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/UnityEditor.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/UnityEngine.UIAutomation.dll
@@ -47,6 +54,7 @@
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+<<<<<<< HEAD
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld4/Another.World/obj/Debug/Assembly-CSharp.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld4/Another.World/Temp/bin/Debug/UnityEngine.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld4/Another.World/Temp/bin/Debug/UnityEditor.dll
@@ -102,3 +110,5 @@
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/obj/Debug/Assembly-CSharp.dll.mdb
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Assembly-CSharp.dll.mdb
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Assembly-CSharp.dll
+=======
+>>>>>>> 103e1810d97917aa0fa49dd23c25a99188dfc43a

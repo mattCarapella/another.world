@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
-public class Registration : MonoBehaviour {
+public class Registration : MonoBehaviour
+{
 
     public GameObject username;
     public GameObject email;
@@ -16,27 +18,29 @@ public class Registration : MonoBehaviour {
     private string Email;
     private string Password;
     private string Confirm_Password;
-    
-    string CreateUserURL = "http://anotherworld.atwebpages.com/Register.php";
 
+    string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-    public void Register()
+    void Start()
+    {
+
+    }
+
+    IEnumerator Register()
     {
         WWWForm form = new WWWForm();
         form.AddField("usernamePost", Username);
         form.AddField("emailPost", Email);
         form.AddField("passwordPost", Password);
 
-        WWW www = new WWW(CreateUserURL, form);
+        WWW www = new WWW(URL, form);
+        yield return www;
         Debug.Log(www.text);
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (username.GetComponent<InputField>().isFocused)
@@ -55,22 +59,31 @@ public class Registration : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)) // || Input.GetMouseButtonDown(0)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (Password == Confirm_Password)
+            if (username.Equals("") || Username == "")
             {
-                Register();
+                print("Username field cannot be empty");
             }
-            else
+            else if (!Email.Contains("@"))
             {
-                print("Password does not match");
+                print("Email field cannot be empty");
+            }
+            else if (Password != Confirm_Password)
+            {
+                print("Passwords don't match");
             }
         }
 
-        Username = username.GetComponent<InputField>().text;
-        Email = email.GetComponent<InputField>().text;
+        Username = username.GetComponent<InputField>().text.ToLower();
+        Email = email.GetComponent<InputField>().text.ToLower();
         Password = password.GetComponent<InputField>().text;
         Confirm_Password = confirm_password.GetComponent<InputField>().text;
 
+    }
+
+    public void RegisterButton()
+    {
+        StartCoroutine(Register());
     }
 }

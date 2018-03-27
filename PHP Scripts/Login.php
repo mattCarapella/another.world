@@ -1,24 +1,46 @@
 <?php
+include ("inc/Credentials.inc");
+error_reporting(0);
 
-  include ("Credentials.php"); // Will not provide this php file due to security reasons
+$user_email = $_POST[htmlentities("emailPost")];
+$user_password = hash('sha256', $_POST[htmlentities("passwordPost")]);
 
-  $user_email = $_POST["emailPost"];
-  $user_password = $_POST["passwordPost"];
-
-  $sql = "SELECT password FROM users WHERE email = '".$user_email."' ";
-  $result = mysqli_query($conn, $sql);
-
-
-  if(mysqli_num_rows($result) > 0){
-    while ($row = mysqli_fetch_assoc($result)){
-      if($row['password'] == $user_password){
-        echo "Login success";
-      } else {
-        echo "Password Incorrect";
-      }
+if ($user_email != "" && $user_password != "") {
+    
+    $sql = "SELECT id, username, password FROM users WHERE email = ?";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $user_email); // bind parameters for markers
+    $stmt->execute(); // execute query
+    $stmt->bind_result($id, $username, $db_password); // bind result variable
+    $stmt->store_result(); // fetch value
+    
+    if ($stmt->num_rows == 1) {
+        if ($stmt->fetch()) {
+            if (decrypt($db_password) == $user_password) {
+                echo "IN;".$id.";".$username.";".$user_email;
+            } else {
+                echo "Wrong Password";
+            }
+        }
+    } else {
+        echo "User does not exist";
     }
-  } else {
-    echo "User Not Found";
-  }
+    $stmt->close();
+} else {
+    echo "Email and/or Password cannot be empty";
+}
+$conn->close();
 
+function decrypt($password)
+{
+    include ("inc/Credentials.inc");
+    $encrypt_method = "AES-256-CBC";
+    $key = hash("sha256", $secret_key);
+    $iv = substr(hash("sha256", $secret_iv), 0, 16);
+    
+    $d = openssl_decrypt(base64_decode($password), $encrypt_method, $key, 0, $iv);
+    
+    return $d;
+}
 ?>
