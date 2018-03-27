@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949377617}
+      - m_Target: {fileID: 0}
         m_MethodName: switchScene
         m_Mode: 3
         m_Arguments:
@@ -3401,7 +3401,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1949377618}
-  - component: {fileID: 1949377617}
+  - component: {fileID: 1949377619}
   m_Layer: 0
   m_Name: nextScene
   m_TagString: Untagged
@@ -3409,18 +3409,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1949377617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1949377616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76bddd51d6b34bfdbd64229c9d8ecf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 989077560}
 --- !u!4 &1949377618
 Transform:
   m_ObjectHideFlags: 0
@@ -3434,6 +3422,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949377619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949377616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf534297b818c0c44a65f6e3f95c9468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  email: {fileID: 389155462}
+  password: {fileID: 157136449}
+  message: {fileID: 989077560}
+  popUp: {fileID: 452045746}
 --- !u!1 &1949915022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,12 +3588,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949377617}
-        m_MethodName: popUp
-        m_Mode: 2
+      - m_Target: {fileID: 1949377619}
+        m_MethodName: LoginButton
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 452045746}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: Advance()
@@ -3644,6 +3647,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   email: {fileID: 389155462}
   password: {fileID: 157136449}
+  message: {fileID: 0}
+  popUp: {fileID: 0}
 --- !u!1 &1971681857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4065,6 +4070,7 @@ GameObject:
   - component: {fileID: 2091754232}
   - component: {fileID: 2091754231}
   - component: {fileID: 2091754230}
+  - component: {fileID: 2091754233}
   m_Layer: 5
   m_Name: Ok
   m_TagString: Untagged
@@ -4130,9 +4136,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949377617}
-        m_MethodName: switchScene
-        m_Mode: 3
+      - m_Target: {fileID: 1949377619}
+        m_MethodName: messagebutton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4176,3 +4182,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091754228}
+--- !u!114 &2091754233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2091754228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf534297b818c0c44a65f6e3f95c9468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  email: {fileID: 389155462}
+  password: {fileID: 157136449}
+  message: {fileID: 989077560}
+  popUp: {fileID: 452045746}

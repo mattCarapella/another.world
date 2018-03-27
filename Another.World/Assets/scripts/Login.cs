@@ -4,24 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
-public class Login : MonoBehaviour {
+public class Login : MonoBehaviour
+{
 
     public GameObject email;
     public GameObject password;
-
+    public Text message;
+    public GameObject popUp;
     private string Email;
     private string Password;
 
-    string LoginURL = "http://anotherworld.atwebpages.com/Login.php";
+    public static int send_id = 0;
+    public static string send_username = null;
+    public static string send_email = null;
 
+    string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Login.php";
     // Use this for initialization
-    void Start () {
-        
+    void Start()
+    {
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (email.GetComponent<InputField>().isFocused)
@@ -30,20 +38,64 @@ public class Login : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)) StartCoroutine (LoginToDB(Email, Password));
+        if (Input.GetKeyDown(KeyCode.Return)) LoginButton();
 
         Email = email.GetComponent<InputField>().text;
         Password = password.GetComponent<InputField>().text;
     }
 
-    IEnumerator LoginToDB(string username, string password)
+    public void LoginButton()
+    {
+        if (Email != "" && Password != "")
+        {
+            StartCoroutine(LoginToDB());
+        }
+        else
+        {
+            popUp.SetActive(true);
+            message.text = "Fields cannot be empty";
+        }
+    }
+
+    IEnumerator LoginToDB()
     {
         WWWForm form = new WWWForm();
         form.AddField("emailPost", Email);
         form.AddField("passwordPost", Password);
 
-        WWW www = new WWW(LoginURL, form);
+        WWW www = new WWW(URL, form);
         yield return www;
-        Debug.Log(www.text);
+
+        string getinfo;
+        getinfo = www.text;
+        string[] infoparts = getinfo.Split(';');
+
+        string logc = infoparts[0];
+
+        if (logc == "IN")
+        {
+            send_id = int.Parse(infoparts[1]);
+            send_username = infoparts[2];
+            send_email = infoparts[3];
+
+            switchScene(1);
+        }
+        else
+        {
+            popUp.SetActive(true);
+            //message.text = "Incorrect Login Info";
+            message.text = www.text;
+        }
+
+    }
+
+    public void switchScene(int i)
+    {
+        SceneManager.LoadScene(i);
+    }
+
+    public void messagebutton()
+    {
+        popUp.SetActive(false);
     }
 }
