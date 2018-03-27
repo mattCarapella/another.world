@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class planet : MonoBehaviour {
-    private bool MouseOver = false;
+    private bool _ray = false;
     public GameObject description;
+    public GameObject _game;
     private int _id;
     private string _des;
     private string _owner;
@@ -17,25 +18,14 @@ public class planet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (MouseOver) {
-            this.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green,105f);
+        if (_ray && Input.GetKeyDown(KeyCode.F))
+        {
+            description.SetActive(true);
+            _game.GetComponent<gameController>().ui_up();
         }
+        
 	}
-    void OnMouseEnter()
-    {
-        MouseOver = true;
-    }
-    void OnMouseExit()
-    {
-        MouseOver = false;
-        this.GetComponent<Renderer>().material.color = Color.white;
-    }
-    void OnMouseDown()
-    {
-        //this.GetComponent<Renderer>().material.color = Color.yellow;
-        description.SetActive(true);
-    }
+    
     public int getId()
     {
         return _id;
@@ -59,5 +49,13 @@ public class planet : MonoBehaviour {
     public void setOwner(string owner)
     {
         _owner = owner;
+    }
+    public bool getRay()
+    {
+        return _ray;
+    }
+    public void setRay(bool ray)
+    {
+        _ray = ray;
     }
 }

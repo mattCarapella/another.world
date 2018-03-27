@@ -29,6 +29,7 @@ public class PlayerCam : MonoBehaviour {
 
                 _rotation.y = Mathf.Clamp(_rotation.y,-90f,90f);
             }
+
         }
         Quaternion Qt = Quaternion.Euler(_rotation.y, _rotation.x, 0);
         this._current_parent_pos.rotation = Quaternion.Lerp(this._current_parent_pos.rotation, Qt, Time.deltaTime * OrbitDampening);
