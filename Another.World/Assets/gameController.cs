@@ -21,6 +21,9 @@ public class gameController:MonoBehaviour{
     public GameObject listView;
     public GameObject inhand;
     public GameObject Player;
+    public Text ObjectName;
+    public Text ObjectDes;
+    public Text ObjectPrice;
     public bool ui;
     public Text owner;
     public Text descriptionText;
@@ -37,13 +40,7 @@ public class gameController:MonoBehaviour{
             keymap[i] = 0;
         }
         ui = false;
-        if (env==0) {
-            StartCoroutine(generateWorld());
-        }
-        else
-        {
-            StartCoroutine(generateInGame());
-        }
+        reloadWorld();
     }
     void Update()
     {
@@ -111,10 +108,13 @@ public class gameController:MonoBehaviour{
         string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
         WWW www = new WWW(URL);
         yield return www;
+
     }
     IEnumerator generateWorld() {
-        string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
-        WWW www = new WWW(URL);
+        string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetUniverseInfo.php";
+        WWWForm form = new WWWForm();
+        form.AddField("idPost",Login.send_id);
+        WWW www = new WWW(URL,form);
         Debug.Log(URL);
         yield return www;
         string response = www.text;
@@ -135,7 +135,7 @@ public class gameController:MonoBehaviour{
                 string description = cols[3];
                 float x = float.Parse(cols[4]);
                 float y = float.Parse(cols[5]);
-                float z = float.Parse(cols[6].Split('<')[0]);
+                float z = float.Parse(cols[6]);
 
                 Debug.Log(x);
                 GameObject temp = Instantiate(worldModelSample);
@@ -192,6 +192,11 @@ public class gameController:MonoBehaviour{
             GameObject temp = Instantiate(inhand);
             temp.transform.position = inhand.transform.position;
             temp.transform.rotation = inhand.transform.rotation;
+            temp.GetComponent<object_property>().setDescription(ObjectDes.text);
+            temp.GetComponent<object_property>().setName(ObjectName.text);
+            temp.GetComponent<object_property>().setPrice(ObjectPrice.text);
+            temp.AddComponent<BoxCollider>();
+
         }
     }
     public void addEntryToList(string name, float x, float y, float z)
@@ -207,9 +212,9 @@ public class gameController:MonoBehaviour{
 
 
     }
-    public void ui_off()
+    public void ui_off(GameObject UI)
     {
-        backUI.SetActive(false);
+        UI.SetActive(false);
         ui = false;
         if (ui)
         {
@@ -222,6 +227,11 @@ public class gameController:MonoBehaviour{
         }
 
     }
+    public void menu_off()
+    {
+
+        MenuState = false;
+    }
     public void loadScene(int idx)
     {
         SceneManager.LoadScene(idx);
@@ -233,5 +243,16 @@ public class gameController:MonoBehaviour{
     public void exit()
     {
         Application.Quit();
+    }
+    public void reloadWorld()
+    {
+        if (env == 0)
+        {
+            StartCoroutine(generateWorld());
+        }
+        else
+        {
+            StartCoroutine(generateInGame());
+        }
     }
 }
