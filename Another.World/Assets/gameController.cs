@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class gameController:MonoBehaviour{
@@ -14,25 +15,35 @@ public class gameController:MonoBehaviour{
     public Button confirm;
     public GameObject processObj;
     public GameObject worldModelSample;
+    public GameObject backUI;
     public GameObject _description;
     public GameObject listItem;
     public GameObject listView;
+    public GameObject inhand;
+    public GameObject Player;
+    public bool ui;
     public Text owner;
     public Text descriptionText;
     public Text worldName;
     private IDictionary<int, int> keymap;
-    
-    
+    public int env;
     
     void Start()
     {
         place_status = false;
         keymap = new Dictionary<int, int>();
-        for (int i=97;i<123;i++)
+        for (int i = 97; i < 123; i++)
         {
             keymap[i] = 0;
         }
-        StartCoroutine(generateWorld());
+        ui = false;
+        if (env==0) {
+            StartCoroutine(generateWorld());
+        }
+        else
+        {
+            StartCoroutine(generateInGame());
+        }
     }
     void Update()
     {
@@ -48,12 +59,21 @@ public class gameController:MonoBehaviour{
         {
             Cursor.visible = true;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !processObj)
         {
             MenuState = !MenuState;
             Menu.SetActive(MenuState);
             CameraDisable = !CameraDisable;
             MouseVisiable = !MouseVisiable;
+            ui = !ui;
+            if (ui)
+            {
+                inhand.SetActive(false);
+             
+            }else
+            {
+                inhand.SetActive(true);
+            }
 
         }
         if (processObj)
@@ -86,6 +106,12 @@ public class gameController:MonoBehaviour{
         }
 
     }
+    IEnumerator generateInGame()
+    {
+        string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
+        WWW www = new WWW(URL);
+        yield return www;
+    }
     IEnumerator generateWorld() {
         string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
         WWW www = new WWW(URL);
@@ -97,32 +123,36 @@ public class gameController:MonoBehaviour{
 
         foreach (string row in rows)
         {
-            Debug.Log(row);
-            string[] cols = row.Split(';');
-            int worldId = int.Parse(cols[0]);
-            int userId = int.Parse(cols[1]);
-            string title = cols[2];
-            string description = cols[3];
-            float x = float.Parse(cols[4]);
-            float y = float.Parse(cols[5]);
-            float z = float.Parse(cols[6].Split(' ')[0]);
+            if (row != "")
+            {
+                Debug.Log(row);
+                string[] cols = row.Split(';');
+                Debug.Log(cols[0]);
+                int worldId = int.Parse(cols[0]);
+                Debug.Log(worldId);
+                int userId = int.Parse(cols[1]);
+                string title = cols[2];
+                string description = cols[3];
+                float x = float.Parse(cols[4]);
+                float y = float.Parse(cols[5]);
+                float z = float.Parse(cols[6].Split('<')[0]);
 
-            Debug.Log(x);
-            GameObject temp = Instantiate(worldModelSample);
-            temp.GetComponent<planet>()._game = this.gameObject;
-            temp.GetComponent<planet>().description = _description;
-            temp.transform.position= new Vector3(x,y,z);
-            planet sample = temp.GetComponent<planet>();
-            sample.owner = owner;
-            sample.descriptionText = descriptionText;
-            sample.worldName = worldName;
-            sample.setDes(description);
-            sample.setId(worldId);
-            sample.setOwner(userId.ToString());
-            sample.setName(title);
-            addEntryToList(title, x,y,z);
+                Debug.Log(x);
+                GameObject temp = Instantiate(worldModelSample);
+                temp.GetComponent<planet>()._game = this.gameObject;
+                temp.GetComponent<planet>().description = _description;
+                temp.transform.position = new Vector3(x, y, z);
+                planet sample = temp.GetComponent<planet>();
+                sample.owner = owner;
+                sample.descriptionText = descriptionText;
+                sample.worldName = worldName;
+                sample.setDes(description);
+                sample.setId(worldId);
+                sample.setOwner(userId.ToString());
+                sample.setName(title);
+                addEntryToList(title, x, y, z);
 
-
+            }
 
 
         }
@@ -173,7 +203,35 @@ public class gameController:MonoBehaviour{
         temp.transform.GetChild(2).GetComponent<Text>().text = "y: " + y;
         temp.transform.GetChild(3).GetComponent<Text>().text = "z: " + z;
         temp.transform.localScale = new Vector3(1, 1, 1);
+        temp.transform.rotation.Set(0,0,0,0);
 
 
+    }
+    public void ui_off()
+    {
+        backUI.SetActive(false);
+        ui = false;
+        if (ui)
+        {
+            inhand.SetActive(false);
+        }
+        else
+        {
+            inhand.SetActive(true);
+            ui_down();
+        }
+
+    }
+    public void loadScene(int idx)
+    {
+        SceneManager.LoadScene(idx);
+        ui_down();
+        _description.SetActive(false);
+        this.env = 1;
+        Player.GetComponent<PlayerController>().reset();
+    }
+    public void exit()
+    {
+        Application.Quit();
     }
 }

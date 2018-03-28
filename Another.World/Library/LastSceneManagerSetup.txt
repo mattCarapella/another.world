@@ -1,4 +1,14 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/scene/CreateWorld.unity
+=======
+- path: Assets/scene/Universe.unity
+>>>>>>> 8672fb13e8846ef18a32777e3f83aea87c711146
   isLoaded: 1
   isActive: 1
+- path: Assets/scene/InGameUI.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/scene/model select.unity
+  isLoaded: 0
+  isActive: 0
