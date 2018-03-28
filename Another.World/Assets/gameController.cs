@@ -255,4 +255,5 @@ public class gameController:MonoBehaviour{
             StartCoroutine(generateInGame());
         }
     }
+    
 }

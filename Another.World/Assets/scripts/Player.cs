@@ -36,7 +36,7 @@ public class Player : MonoBehaviour {
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
         inhand.GetComponent<MeshFilter>().mesh = mesh;
         inhand.GetComponent<Renderer>().material = material;
-        inhand.transform.position = this.transform.forward * 5;
+        inhand.transform.position = this.transform.forward * 5+this.transform.position;
         GameObject.Destroy(sphere);
     }
     void loadItems()
