@@ -1,10 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class planet : MonoBehaviour {
-    private bool MouseOver = false;
+    private bool _ray = false;
     public GameObject description;
+    public GameObject _game;
+    private int _id;
+    private string _des;
+    private string _owner;
+    private string _name;
+    public Text owner;
+    public Text descriptionText;
+    public Text worldName;
+    
+
+
     // Use this for initialization
     void Start () {
 		
@@ -12,23 +23,58 @@ public class planet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (MouseOver) {
-            this.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green,105f);
+        if (_ray && Input.GetKeyDown(KeyCode.F))
+        {
+            this.attachToUI(); 
+            description.SetActive(true);
+            _game.GetComponent<gameController>().ui_up();
         }
+        
 	}
-    void OnMouseEnter()
+    public string getName()
     {
-        MouseOver = true;
+        return _name;
     }
-    void OnMouseExit()
+    public void setName(string name)
     {
-        MouseOver = false;
-        this.GetComponent<Renderer>().material.color = Color.white;
+        _name = name;
     }
-    void OnMouseDown()
+    public int getId()
     {
-        //this.GetComponent<Renderer>().material.color = Color.yellow;
-        description.SetActive(true);
+        return _id;
+    }
+    public string getDes()
+    {
+        return _des;
+    }
+    public string getOwner()
+    {
+        return _owner;
+    }
+    public void setId(int id)
+    {
+        _id = id;
+    }
+    public void setDes(string des)
+    {
+        _des = des;
+    }
+    public void setOwner(string owner)
+    {
+        _owner = owner;
+    }
+    public bool getRay()
+    {
+        return _ray;
+    }
+    public void setRay(bool ray)
+    {
+        _ray = ray;
+    }
+    public void attachToUI()
+    {
+        owner.text = this._owner;
+        descriptionText.text = this._des;
+        worldName.text = this._name;
     }
 }
