@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scene/CreateWorld.unity
+- path: Assets/scene/InGameUI.unity
   isLoaded: 1
   isActive: 1
