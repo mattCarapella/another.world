@@ -9,7 +9,24 @@ public class Player : MonoBehaviour {
     public Text x_pos;
     public Text y_pos;
     public Text z_pos;
+    public GameObject game;
+    private gameController _controller;
+    private static bool created = false;
+    private GameObject _player;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        if (!created)
+        {
+            created = true;
+        }else
+        {
+            Destroy(this.gameObject);
+        }
+        
+
+    }
 
     void loadPlayer()
     {
@@ -30,11 +47,14 @@ public class Player : MonoBehaviour {
 	void Start () {
         loadPlayer();
         loadItems();
-	}
+        _controller = game.GetComponent<gameController>();
+    }
 	// Update is called once per frame
 	void Update () {
-        x_pos.text = "X: " + inhand.transform.position.x;
-        y_pos.text = "Y: " + inhand.transform.position.y;
-        z_pos.text = "Z: " + inhand.transform.position.z;
+        if (_controller.env==0) {
+            x_pos.text = "X: " + inhand.transform.position.x;
+            y_pos.text = "Y: " + inhand.transform.position.y;
+            z_pos.text = "Z: " + inhand.transform.position.z;
+        }
     }
 }

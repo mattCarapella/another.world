@@ -2,6 +2,7 @@ WindowsStandalone
 SceneListBegin?
 Assets/scene/Start scene.unity
 Assets/scene/model select.unity
+Assets/scene/InGameUI.unity
 Assets/scene/Universe.unity
 Assets/scene/Registration Page.unity
 SceneListEnd?
@@ -244,6 +245,7 @@ ee651a9f50410253bac70ec792034db8 Assembly-CSharp.dll:VRTK.GrabAttachMechanics.VR
 824e1c195c578cac37690f407f9edfcb Assembly-CSharp.dll:.setSkybox
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VRTK.SecondaryControllerGrabActions.VRTK_SwapControllerGrabAction
 7c93e75581f0da91dbcdf180bf94eed4 Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_InteractControllerAppearance_UnityEvents
+4c939e0eb1909e4e209d210dd16b014b Assembly-CSharp.dll:.setGround
 ca2e5d42a15277b26d075abd9e906ff6 Assembly-CSharp.dll:VRTK.Examples.RealGun
 8c27de279afaeb39b6ba4b07889e4ee9 Assembly-CSharp.dll:VRTK.VRTK_DestinationPoint
 3efcc9d2540fe43b20a17d4c6c430798 Assembly-CSharp.dll:VRTK.VRTK_BezierPointer
@@ -296,6 +298,7 @@ a34eb1ec5ba768176a0ba56de7db3022 Assembly-CSharp.dll:VRTK.VRTK_PolicyList
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VRTK.Examples.Remote_Beam
 d0545ca3b072ebd63f43177ac2329049 Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_ControllerActions_UnityEvents
 1eec1aa7b94dae2d570a29ae983d525b Assembly-CSharp.dll:VRTK.Examples.Menu_Object_Spawner
+51ae4c6316fd7fc0d8b63e8b8a12ee0d Assembly-CSharp.dll:.SetWorldInfo
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
@@ -317,7 +320,7 @@ d0f5d7c09608f97d1a121224b19735c1 Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_
 abdbfd4cd4b34feeb1669200a186d571 Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_PlayerClimb_UnityEvents
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 57c5ec87bdccd1b356bca2db2b2e4159 Assembly-CSharp.dll:VRTK.VRTK_ObjectTooltip
-a45bb48a57f3f29f0b448874121eb810 Assembly-CSharp.dll:.gameController
+54ffe5e8746e6c38a99e71cb0beb1649 Assembly-CSharp.dll:.gameController
 0f414e4fe0a7150cc9b3102840973dc2 Assembly-CSharp.dll:VRTK.VRTK_UIDraggableItem
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VRTK.Examples.Archery.ArrowNotch
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VRTK.Examples.VRTK_RoomExtender_ControllerExample
@@ -335,7 +338,7 @@ a7fb925992eaa6c7ad4ddffedadd1fb5 Assembly-CSharp.dll:VRTK.Examples.Menu_Containe
 fd93c5d0bb95f99e632f4a74c7bd1570 Assembly-CSharp.dll:VRTK.VRTK_BezierPointerRenderer
 9fa7a9ab8069e0638c83e46317c17d33 Assembly-CSharp.dll:VRTK.VRTK_SDKSetupSwitcher
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-f6bb3e19621dd7e7a07ec08ccfb8c661 Assembly-CSharp.dll:.Player
+2f53b61dbe36458bcb84adeebfe95d44 Assembly-CSharp.dll:.Player
 28bfa24bdd70c5bf6fb2eaa1e1caded2 Assembly-CSharp.dll:VRTK.VRTK_RadialMenu
 c935f8f6b6daf6b6546c77d6dc27423c Assembly-CSharp.dll:VRTK.VRTK_RigidbodyFollow
 995a49f05340fad7540e35836ef32ed7 Assembly-CSharp.dll:VRTK.Examples.Remote_Beam_Controller

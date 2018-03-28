@@ -9,21 +9,23 @@ public class PlayerController : MonoBehaviour {
     private gameController _controller;
     public GameObject _lastHit;
     public GameObject inhand;
-    public int env;
+   
     private int _detectRange;
     // Use this for initialization
     void Start () {
-        if (env==0) {
+        
+        _controller = _game.GetComponent<gameController>();
+        if (_controller.env == 0)
+        {
             _speed = 20000f;
             _detectRange = 500;
-        }else if (env==1)
-        {
-            _speed = 50f;
-            _detectRange = 5;
         }
-        _controller = _game.GetComponent<gameController>();
-		
-	}
+        else if (_controller.env == 1)
+        {
+            _speed = 5000f;
+            _detectRange = 50;
+        }
+    }
 
     void Awake() {
         _rb = GetComponent<Rigidbody>();
@@ -34,19 +36,37 @@ public class PlayerController : MonoBehaviour {
         if (!_controller.CameraDisable)
         {
             RaycastHit hit;
-            Ray dectRay = new Ray(transform.position, this.transform.forward);
-            Debug.DrawRay(transform.position, this.transform.forward * 500);
+            Ray dectRay = new Ray(this.transform.position, this.transform.forward);
+            Debug.DrawRay(this.transform.position, this.transform.forward * 50);
             if (Physics.Raycast(dectRay,out hit, _detectRange))
             {
-                _lastHit = hit.collider.gameObject;
-                hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, 105f);
-                hit.collider.gameObject.GetComponent<planet>().setRay(true);
-                
+                if (hit.collider.gameObject.tag == "World")
+                {
+                    _lastHit = hit.collider.gameObject;
+                    hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, 105f);
+                    hit.collider.gameObject.GetComponent<planet>().setRay(true);
+                }else if (hit.collider.gameObject.tag == "Asset" && hit.collider.gameObject!=inhand)
+                {
+                    _lastHit = hit.transform.gameObject;
+                    Debug.Log(_lastHit);
+                    hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.yellow, Color.red, 105f);
+                    Debug.Log("hit");
+                    
+                }
             }
             else if(_lastHit)
             {
-                _lastHit.GetComponent<Renderer>().material.color = Color.white;
-                _lastHit.GetComponent<planet>().setRay(false);
+                if (_lastHit.tag == "World") {
+                    _lastHit.GetComponent<Renderer>().material.color = Color.white;
+                    _lastHit.GetComponent<planet>().setRay(false);
+                    _lastHit = null;
+                }
+                else if (_lastHit.tag =="Asset")
+                {
+                    _lastHit.GetComponent<Renderer>().material.color = Color.white;
+                    Debug.Log("hit out");
+                    _lastHit = null;
+                }
             }
             var x = Input.GetAxis("Horizontal");
             var z = Input.GetAxis("Vertical");
@@ -66,6 +86,21 @@ public class PlayerController : MonoBehaviour {
         }
         
         
+    }
+    public void reset()
+    {
+        if (_controller.env == 0)
+        {
+            _speed = 20000f;
+            _detectRange = 500;
+        }
+        else if (_controller.env == 1)
+        {
+            _speed = 500f;
+            _detectRange = 150;
+            inhand.AddComponent<BoxCollider>();
+            _lastHit = null;
+        }
     }
     void OnTriggerEnter(Collider c)
     {
