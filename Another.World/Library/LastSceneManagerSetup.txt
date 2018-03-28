@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/scene/CreateWorld.unity
-=======
-- path: Assets/scene/Universe.unity
->>>>>>> 103e1810d97917aa0fa49dd23c25a99188dfc43a
   isLoaded: 1
   isActive: 1
