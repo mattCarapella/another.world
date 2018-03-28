@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+
+
+
     public float _speed;
     protected Rigidbody _rb;
     public GameObject _game;
@@ -12,6 +15,7 @@ public class PlayerController : MonoBehaviour {
    
     private int _detectRange;
     // Use this for initialization
+
     void Start () {
         
         _controller = _game.GetComponent<gameController>();
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour {
     }
 	// Update is called once per frame
 	void FixedUpdate () {
+
         if (!_controller.CameraDisable)
         {
             RaycastHit hit;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SetWorldInfo : MonoBehaviour {
-
+	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
 	public InputField world_Name;
 	public InputField world_Info;
 
