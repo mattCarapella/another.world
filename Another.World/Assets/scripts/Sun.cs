@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sun : MonoBehaviour {
+	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
 	public float speed = 10f;
 
 	// Use this for initialization
@@ -19,4 +20,5 @@ public class Sun : MonoBehaviour {
 	public void AdjustSpeed(float newSpeed){
 		speed = newSpeed;
 	}
+	//TODO: SAVE SUN SETTING TO DATABASE
 }

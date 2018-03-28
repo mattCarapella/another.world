@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class setSkybox : MonoBehaviour {
-
+	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
 	public static Material sky0;
 	public Material sky1;
 	public Material sky2;
@@ -20,6 +20,9 @@ public class setSkybox : MonoBehaviour {
 	public Material sky13;
 	public Material sky14;
 	public Material sky15;
+
+
+	//TODO: SAVE SKYBOX SETTING TO DATABASE
 
 	// Use this for initialization
 	void Start () {

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+
+
+
     public float _speed;
     protected Rigidbody _rb;
     public GameObject _game;
     // Use this for initialization
 	void Start () {
+//		Vector3 pos = transform.position;
         _speed = 20000f;
 		
 	}
@@ -18,6 +22,10 @@ public class PlayerController : MonoBehaviour {
     }
 	// Update is called once per frame
 	void FixedUpdate () {
+//		Debug.Log ("x: " + transform.position.x);
+//		Debug.Log ("y: " + transform.position.y);
+//		Debug.Log ("z: " + transform.position.z);
+
         if (!_game.GetComponent<gameController>().CameraDisable)
         {
             var x = Input.GetAxis("Horizontal");
