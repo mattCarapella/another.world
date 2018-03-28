@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1949377617}
         m_MethodName: switchScene
         m_Mode: 3
         m_Arguments:
@@ -3402,6 +3402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949377618}
   - component: {fileID: 1949377619}
+  - component: {fileID: 1949377617}
   m_Layer: 0
   m_Name: nextScene
   m_TagString: Untagged
@@ -3409,6 +3410,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1949377617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949377616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76bddd51d6b34bfdbd64229c9d8ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!4 &1949377618
 Transform:
   m_ObjectHideFlags: 0

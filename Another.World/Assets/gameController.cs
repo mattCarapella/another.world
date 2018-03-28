@@ -17,6 +17,8 @@ public class gameController:MonoBehaviour{
     public GameObject _description;
     public GameObject listItem;
     public GameObject listView;
+    public GameObject inhand;
+    public bool ui;
     public Text owner;
     public Text descriptionText;
     public Text worldName;
@@ -32,6 +34,7 @@ public class gameController:MonoBehaviour{
         {
             keymap[i] = 0;
         }
+        ui = false;
         StartCoroutine(generateWorld());
     }
     void Update()
@@ -54,6 +57,15 @@ public class gameController:MonoBehaviour{
             Menu.SetActive(MenuState);
             CameraDisable = !CameraDisable;
             MouseVisiable = !MouseVisiable;
+            ui = !ui;
+            if (ui)
+            {
+                inhand.SetActive(false);
+             
+            }else
+            {
+                inhand.SetActive(true);
+            }
 
         }
         if (processObj)
@@ -175,5 +187,9 @@ public class gameController:MonoBehaviour{
         temp.transform.localScale = new Vector3(1, 1, 1);
 
 
+    }
+    public void exit()
+    {
+        Application.Quit();
     }
 }
