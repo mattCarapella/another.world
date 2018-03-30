@@ -6,6 +6,26 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Team_VR/Lobby#?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+<h1>Alpha Release</h1>
+
+<b>Youtube Video:</b> https://youtu.be/RByZBqYu0YE
+
+<b>Download the app:</b> <a href = "https://github.com/mattCarapella/AnotherWorld/releases/download/v0.2.0/anotherWorld_v0.2.0.zip">Download</a>
+
+<b>How to use the application:</b>
+<ol>
+	<li> Create an account </li>
+	<li> Then Log in </li>
+	<li> Select your Model </li>
+	<li> Then you are in the universe 
+		<ol><li> Press Escape Key to open the Menu </li>
+		<li> When the world is highlighted, press F to see the World information and the option to enter the world or go back to the universe </li>
+		<li> Press Space to place the current object to the world </li></ol>
+	</li>
+	<li> User are allowed to create their own world through the menu </li>
+	</ol>
+<hr></hr>
+
 <h1>Prototype</h1>
 <h3>User Guide</h3>
 Prototype Youtube Video: https://youtu.be/W5LZTsa_CM4 
