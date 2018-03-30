@@ -1,0 +1,33 @@
+Date: 03/27/2018
+Time: 1:00pm. to 2:00pm
+Github issue: #16 #14 #10 #32
+
+present:
+
+	Xuanyu Dong (Shawn)
+	Ira Chan
+	Matt Carapella 
+	Amiya Debnath   
+	Meng Chun Hsieh (Peter) 
+  
+absence: 
+  
+Summary:
+
+  Putting together Alpha release
+  
+What each team member accomplished since last meeting:
+
+Shawn: World ListView, world model render from server, user interact with asset and world. #16 #14 #10
+Ira: inventory screen, basic models, temporary item placement
+Matt: 
+Amiya: Implemented Security Features for Login and Registration to prevent XSS and SQLi. Also encrypting user passwords using OpenSSL
+Peter: Create World, World Setting, Script to save data.
+
+What each team member will accomplish before next meeting: 
+
+Shawn: multiplayer player set. #32
+Ira: place items from asset bundle rather than hard coded objects, update model select scene #34
+Matt: 
+Amiya: implement upload feature in the application and fix server security issues
+Peter: asset data base, update world data to data base. fix update data to data base issie.
