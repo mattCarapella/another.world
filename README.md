@@ -6,6 +6,43 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Team_VR/Lobby#?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+<h1>Alpha Release</h1>
+
+<b>Youtube Video:</b> https://youtu.be/RByZBqYu0YE
+
+<b>Download the app:</b> <a href = "https://github.com/mattCarapella/AnotherWorld/releases/download/v0.2.0/anotherWorld_v0.2.0.zip">Download</a>
+
+<b>How to use the application:</b>
+<ol>
+	<li> Create an account </li>
+	<li> Then Log in </li>
+	<li> Select your Model </li>
+	<li> Then you are in the universe 
+		<ol><li> Press Escape Key to open the Menu </li>
+		<li> When the world is highlighted, press F to see the World information and the option to enter the world or go back to the universe </li>
+		<li> Press Space to place the current object to the world </li></ol>
+	</li>
+	<li> User are allowed to create their own world through the menu </li>
+	</ol>
+<hr></hr>
+
+<h1>Prototype</h1>
+<h3>User Guide</h3>
+Prototype Youtube Video: https://youtu.be/W5LZTsa_CM4 
+<br></br>
+<b>For non-technical users: </b>
+This game will only work in Windows machine. You can download the game from the download button below, extract the files from the zip folder, click on Another.World folder and anotherWorld.exe file to play the game:
+<br></br>
+<a href="https://github.com/mattCarapella/AnotherWorld/releases/download/v0.1.0/Another.World.zip">Download</a>
+<br></br>
+<b>For technical users: </b>There are couple of requirements you need to meet before you download this project. You need: 
+<ul><li> A Windows Computer </li></ul>
+<ul><li> Download the latest version of Unity </li></ul>
+<ul><li> Clone this repository </li></ul>
+
+Once everything is done, open Unity and open the project where it is downloaded in the directory. Once that is done, all game objects and scripts should be available to see.
+<hr></hr>
+
 <b>Our Mission:</b>
 
 Our mission is to create a virtual reality social platform where developers and artists can collaborate, share models and ideas, and work together to build interactive 3D virtual worlds. It is our belief that this new method of content creation will allow for increased creative productivity, a more social means of buying, selling, and sharing in-game assets, and a fun, original way for people to work together to build virtual worlds in a fully immersive VR environment.
@@ -42,11 +79,8 @@ The Real Estate Agent:
 
 <b>MVP (Minimum Feature Set)</b>
 <ul><li>Users can build a 3D virtual reality world including terrain, buildings, skyboxes, animations, and more, using in-app tools or their own assets.</li>
-<li>Users can upload their own custom designed assets including 3D models, skyboxes, textures, animations, sounds, and more.</li>
-<li>Users can share their custom assets with others and allow them to be downloaded and used within the app or saved for use in outside projects.</li>
 <li>Users can travel between worlds in the universe.</li>
 <li>Users can freely move around inside worlds, where they can view and interact with all objects.</li>
-<li>A user can give another user permission to build inside his or her world, allowing for collaboration.</li>
 <li>Users in the same world can see and interact with one another.</li></ul> 
 
 <b>Add-on Features</b>
@@ -63,5 +97,6 @@ The Real Estate Agent:
 <ul><li>Player are able to use this reward to request other player or designer to build a 3d model as player given requirement.</li></ul>
 	<li>Animation:</li>
 <ul><li>The model owner should able to set a default animation for specific model.</li></ul>
-
+<li>Users can upload their own custom designed assets including 3D models, skyboxes, textures, animations, sounds, and more.</li><li>Users can share their custom assets with others and allow them to be downloaded and used within the app or saved for use in outside projects.</li>
+<li>A user can give another user permission to build inside his or her world, allowing for collaboration.</li>
 </html>
