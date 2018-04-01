@@ -25,6 +25,7 @@ public class gameController:MonoBehaviour{
     public Text ObjectDes;
     public Text ObjectPrice;
     public bool ui;
+    public bool interact = false;
     public Text owner;
     public Text descriptionText;
     public Text worldName;
@@ -40,7 +41,7 @@ public class gameController:MonoBehaviour{
             keymap[i] = 0;
         }
         ui = false;
-        reloadWorld();
+        reloadWorld(0);
     }
     void Update()
     {
@@ -56,7 +57,7 @@ public class gameController:MonoBehaviour{
         {
             Cursor.visible = true;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !processObj)
+        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact)
         {
             MenuState = !MenuState;
             Menu.SetActive(MenuState);
@@ -178,6 +179,7 @@ public class gameController:MonoBehaviour{
             placement.SetActive(true);
             this.ui_up();
             place_status = true;
+            interact = false;
         }
     }
     public void place_request(GameObject inhand)
@@ -188,6 +190,7 @@ public class gameController:MonoBehaviour{
             placement.SetActive(false);
 
             this.ui_down();
+
             place_status = false;
             GameObject temp = Instantiate(inhand);
             temp.transform.position = inhand.transform.position;
@@ -202,7 +205,7 @@ public class gameController:MonoBehaviour{
     public void addEntryToList(string name, float x, float y, float z)
     {
         GameObject temp = Instantiate(listItem);
-        temp.transform.parent = listView.transform;
+        temp.transform.SetParent(listView.transform);
         temp.transform.GetChild(0).GetComponent<Text>().text = name;
         temp.transform.GetChild(1).GetComponent<Text>().text = "x: " + x;
         temp.transform.GetChild(2).GetComponent<Text>().text = "y: " + y;
@@ -244,16 +247,22 @@ public class gameController:MonoBehaviour{
     {
         Application.Quit();
     }
-    public void reloadWorld()
+    public void reloadWorld(int value)
     {
+        env = value;
         if (env == 0)
         {
             StartCoroutine(generateWorld());
+            
         }
-        else
+        /*else
         {
             StartCoroutine(generateInGame());
-        }
+        }*/
+        Player.GetComponent<PlayerController>().reset();
     }
-    
+    public void interact_off()
+    {
+        interact = false;
+    }
 }
