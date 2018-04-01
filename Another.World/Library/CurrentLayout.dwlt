@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 492}
   m_MaxSize: {x: 16012, y: 14042}
   vertical: 0
-  controlID: 9
+  controlID: 26
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 492}
   m_MaxSize: {x: 12010, y: 14042}
   vertical: 1
-  controlID: 10
+  controlID: 27
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 221}
   m_MaxSize: {x: 12010, y: 4021}
   vertical: 0
-  controlID: 11
+  controlID: 28
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 371
     height: 434
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -279,8 +279,8 @@ MonoBehaviour:
     y: 0
     width: 277
     height: 715
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -392,9 +392,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 24d5ffff
-    m_LastClickedID: -10972
-    m_ExpandedIDs: 1ad5ffff1ed5ffff20d5ffff22d5ffff24d5ffff26d5ffff000000004a4c00004c4e0000
+    m_SelectedIDs: b4faffff
+    m_LastClickedID: -1356
+    m_ExpandedIDs: aefaffffb2faffffb4faffffb6faffffbafaffff000000003a3600003c380000ba3c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -414,7 +414,6 @@ MonoBehaviour:
     m_SearchString: 
   m_ExpandedScenes:
   - InGameUI
-  - Universe
   - CreateWorld
   - Start scene
   - Registration Page
@@ -574,9 +573,9 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 33}
-    m_SelectedIDs: 144b0000
-    m_LastClickedID: 19220
-    m_ExpandedIDs: 000000008c410000ae490000184a0000844a0000024b00002c4b00008e4b00006050000000ca9a3bffffff7f
+    m_SelectedIDs: 26340000
+    m_LastClickedID: 13350
+    m_ExpandedIDs: 00000000bc300000ba3100005032000082320000f63300006c34000036350000123c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -604,7 +603,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c410000ae490000184a0000844a0000024b00002c4b00008e4b000060500000
+    m_ExpandedIDs: 00000000bc300000ba3100005032000082320000f63300006c34000036350000123c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
