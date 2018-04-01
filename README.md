@@ -10,7 +10,7 @@
 
 <b>Youtube Video:</b> https://youtu.be/RByZBqYu0YE
 
-<b>Download the app:</b> <a href = "https://github.com/mattCarapella/AnotherWorld/releases/download/v0.2.0/anotherWorld_v0.2.0.zip">Download</a>
+<b>Download the app:</b> <a href = "https://github.com/mattCarapella/AnotherWorld/releases/download/v0.2.1/anotherWorld_v0.2.1.zip">Download</a>
 
 <b>How to use the application:</b>
 <ol>
