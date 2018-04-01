@@ -40,7 +40,7 @@ public class gameController:MonoBehaviour{
             keymap[i] = 0;
         }
         ui = false;
-        reloadWorld();
+        reloadWorld(0);
     }
     void Update()
     {
@@ -244,16 +244,19 @@ public class gameController:MonoBehaviour{
     {
         Application.Quit();
     }
-    public void reloadWorld()
+    public void reloadWorld(int value)
     {
+        env = value;
         if (env == 0)
         {
             StartCoroutine(generateWorld());
+            
         }
-        else
+        /*else
         {
             StartCoroutine(generateInGame());
-        }
+        }*/
+        Player.GetComponent<PlayerController>().reset();
     }
     
 }
