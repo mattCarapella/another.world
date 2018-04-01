@@ -205,7 +205,7 @@ public class gameController:MonoBehaviour{
     public void addEntryToList(string name, float x, float y, float z)
     {
         GameObject temp = Instantiate(listItem);
-        temp.transform.parent = listView.transform;
+        temp.transform.SetParent(listView.transform);
         temp.transform.GetChild(0).GetComponent<Text>().text = name;
         temp.transform.GetChild(1).GetComponent<Text>().text = "x: " + x;
         temp.transform.GetChild(2).GetComponent<Text>().text = "y: " + y;
