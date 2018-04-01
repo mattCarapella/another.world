@@ -23,11 +23,13 @@ public class planet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (_ray && Input.GetKeyDown(KeyCode.F))
+        if (_ray && Input.GetKeyDown(KeyCode.F)&& !_game.GetComponent<gameController>().MenuState && !_game.GetComponent<gameController>().interact && !_game.GetComponent<gameController>().processObj)
         {
             this.attachToUI(); 
             description.SetActive(true);
             _game.GetComponent<gameController>().ui_up();
+            _game.GetComponent<gameController>().interact = true;
+
         }
         
 	}

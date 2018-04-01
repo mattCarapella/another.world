@@ -25,6 +25,7 @@ public class gameController:MonoBehaviour{
     public Text ObjectDes;
     public Text ObjectPrice;
     public bool ui;
+    public bool interact = false;
     public Text owner;
     public Text descriptionText;
     public Text worldName;
@@ -56,7 +57,7 @@ public class gameController:MonoBehaviour{
         {
             Cursor.visible = true;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !processObj)
+        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact)
         {
             MenuState = !MenuState;
             Menu.SetActive(MenuState);
@@ -178,6 +179,7 @@ public class gameController:MonoBehaviour{
             placement.SetActive(true);
             this.ui_up();
             place_status = true;
+            interact = false;
         }
     }
     public void place_request(GameObject inhand)
@@ -188,6 +190,7 @@ public class gameController:MonoBehaviour{
             placement.SetActive(false);
 
             this.ui_down();
+
             place_status = false;
             GameObject temp = Instantiate(inhand);
             temp.transform.position = inhand.transform.position;
@@ -258,5 +261,8 @@ public class gameController:MonoBehaviour{
         }*/
         Player.GetComponent<PlayerController>().reset();
     }
-    
+    public void interact_off()
+    {
+        interact = false;
+    }
 }
