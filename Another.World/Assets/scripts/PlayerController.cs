@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour {
     }
     public void reset()
     {
+        
         if (_controller.env == 0)
         {
             _speed = 20000f;

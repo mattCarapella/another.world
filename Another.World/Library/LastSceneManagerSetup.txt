@@ -8,3 +8,9 @@ sceneSetups:
 - path: Assets/scene/CreateWorld.unity
   isLoaded: 0
   isActive: 0
+- path: Assets/scene/Start scene.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/scene/Registration Page.unity
+  isLoaded: 0
+  isActive: 0

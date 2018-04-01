@@ -9,7 +9,7 @@ public class object_property : MonoBehaviour {
     private string _name;
     private string _price;
     private string _description;
-    public GameObject game;
+    public GameObject _game;
     private gameController _controller;
     public GameObject description;
     public Button Back;
@@ -19,7 +19,7 @@ public class object_property : MonoBehaviour {
 
     private bool _ray =false;
     void Start () {
-        _controller = game.GetComponent<gameController>();
+        _controller = _game.GetComponent<gameController>();
 	}
 	
     public void setName(string name)
@@ -39,7 +39,7 @@ public class object_property : MonoBehaviour {
         _ray = ray;
         if (!_ray)
         {
-            game.GetComponent<gameController>().processObj = null;
+            _game.GetComponent<gameController>().processObj = null;
         }
     }
     public bool getRay()
@@ -70,11 +70,12 @@ public class object_property : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        if (_ray && Input.GetKeyDown(KeyCode.F))
+        if (_ray && Input.GetKeyDown(KeyCode.F) && !_game.GetComponent<gameController>().MenuState && !_game.GetComponent<gameController>().interact && !_game.GetComponent<gameController>().processObj)
         {
             this.attachUI();
             description.SetActive(true);
-            game.GetComponent<gameController>().ui_up();
+            _game.GetComponent<gameController>().ui_up();
+            _game.GetComponent<gameController>().interact = true;
             Back.interactable = true;
             
         }
