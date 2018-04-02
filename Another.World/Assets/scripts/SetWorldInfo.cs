@@ -4,13 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SetWorldInfo : MonoBehaviour {
-	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
-	public InputField world_Name;
-	public InputField world_Info;
+	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/CreateWorld.php";
 
+	public Text worldname;
+	public Text worldinfo;
 
-	public void setGet () {
-		Debug.Log (world_Name.text);
-		Debug.Log (world_Info.text);
+	public static string Worldname;
+	public static string Worldinfo;
+
+	void Update(){
+		Worldname = worldname.GetComponent<Text>().text;
+		Worldinfo = worldinfo.GetComponent<Text>().text;
 	}
+		
 }
+
+

@@ -21,63 +21,79 @@ public class setSkybox : MonoBehaviour {
 	public Material sky14;
 	public Material sky15;
 
-
-	//TODO: SAVE SKYBOX SETTING TO DATABASE
+	public static int skyToStore;
 
 	// Use this for initialization
 	void Start () {
 		RenderSettings.skybox = sky1;
 	}
+		
 
 	// Update is called once per frame
 	void Update () {
-
+//		Debug.Log (skyToStore);
 	}
+		
 
 	public void b1c() {
 		RenderSettings.skybox = sky1;
+		skyToStore = 1;
 	}
 	public void b2c() {
 		RenderSettings.skybox = sky2;
+		skyToStore = 2;
 	}
 	public void b3c() {
 		RenderSettings.skybox = sky3;
+		skyToStore = 3;
 	}
 	public void b4c() {
 		RenderSettings.skybox = sky4;
+		skyToStore = 4;
 	}
 	public void b5c() {
 		RenderSettings.skybox = sky5;
+		skyToStore = 5;
 	}
 	public void b6c() {
 		RenderSettings.skybox = sky6;
+		skyToStore = 6;
 	}
 	public void b7c() {
 		RenderSettings.skybox = sky7;
+		skyToStore = 7;
 	}
 	public void b8c() {
 		RenderSettings.skybox = sky8;
+		skyToStore = 8;
 	}
 	public void b9c() {
 		RenderSettings.skybox = sky9;
+		skyToStore = 9;
 	}
 	public void b10c() {
 		RenderSettings.skybox = sky10;
+		skyToStore = 10;
 	}
 	public void b11c() {
 		RenderSettings.skybox = sky11;
+		skyToStore = 11;
 	}
 	public void b12c() {
 		RenderSettings.skybox = sky12;
+		skyToStore = 12;
 	}
 	public void b13c() {
 		RenderSettings.skybox = sky13;
+		skyToStore = 13;
 	}
 	public void b14c() {
 		RenderSettings.skybox = sky14;
+		skyToStore = 14;
 	}
 	public void b15c() {
 		RenderSettings.skybox = sky15;
+		skyToStore = 15;
 	}
 
 }
