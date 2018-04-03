@@ -1,22 +1,7 @@
 sceneSetups:
-- path: Assets/scene/Start scene.unity
-  isLoaded: 1
-  isActive: 1
-- path: Assets/scene/InGameUI.unity
-  isLoaded: 0
-  isActive: 0
 - path: Assets/scene/Universe.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/scene/CreateWorld.unity
-<<<<<<< HEAD
-=======
-  isLoaded: 0
-  isActive: 0
-- path: Assets/scene/Start scene.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/scene/Registration Page.unity
->>>>>>> b8adf772f06eeb50155157104f19d0f0e89d6fc9
+- path: Assets/scene/CreateWorld.unity
   isLoaded: 0
   isActive: 0

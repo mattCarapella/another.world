@@ -100,18 +100,19 @@ public class PlayerController : MonoBehaviour {
     }
     public void reset()
     {
+        Debug.Log(_controller);
+            if (_controller.env == 0)
+            {
+                _speed = 20000f;
+                _detectRange = 500;
+            }
+            else if (_controller.env == 1)
+            {
+                _speed = 500f;
+                _detectRange = 150;
+                _lastHit = null;
+            }
         
-        if (_controller.env == 0)
-        {
-            _speed = 20000f;
-            _detectRange = 500;
-        }
-        else if (_controller.env == 1)
-        {
-            _speed = 500f;
-            _detectRange = 150;
-            _lastHit = null;
-        }
     }
     void OnTriggerEnter(Collider c)
     {

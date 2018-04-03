@@ -20,12 +20,14 @@ public class setSkybox : MonoBehaviour {
 	public Material sky13;
 	public Material sky14;
 	public Material sky15;
+    public Terrain t;
 
 	public static int skyToStore;
 
 	// Use this for initialization
 	void Start () {
 		RenderSettings.skybox = sky1;
+        
 	}
 		
 
@@ -37,6 +39,7 @@ public class setSkybox : MonoBehaviour {
 
 	public void b1c() {
 		RenderSettings.skybox = sky1;
+        
 		skyToStore = 1;
 	}
 	public void b2c() {
