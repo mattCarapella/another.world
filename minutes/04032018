@@ -22,7 +22,7 @@ Shawn:
 Ira: worked on model select and loadPlayer()
 Matt: 
 Amiya: 
-Peter: 
+Peter: asset data base, update world data to data base.
 
 What each team member will accomplish before next meeting: 
 
@@ -30,4 +30,4 @@ Shawn:
 Ira: work on model select screen #34 and work with Matt on Asset bundle 
 Matt: 
 Amiya: 
-Peter: 
+Peter: Fix bug #29, update ground to terran.
