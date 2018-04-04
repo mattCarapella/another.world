@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PhotonNetworkManager : MonoBehaviour {
+public class PhotonNetworkManager : Photon.MonoBehaviour {
 
 	[SerializeField] private Text connectionTest;
 	[SerializeField] private GameObject player;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class gameController:Photon.MonoBehaviour{
+public class gameController : Photon.MonoBehaviour{
 
     public GameObject Menu;
     public bool CameraDisable =false;
@@ -34,6 +34,7 @@ public class gameController:Photon.MonoBehaviour{
     
     void Start()
     {
+		PhotonView photonView = GetComponent<PhotonView>();
         place_status = false;
         keymap = new Dictionary<int, int>();
         for (int i = 97; i < 123; i++)
@@ -45,7 +46,7 @@ public class gameController:Photon.MonoBehaviour{
     }
     void Update()
     {
-		if (photonView.isMine) {
+		//if (photonView.isMine) {
 
 			if (Input.GetKeyDown (KeyCode.LeftShift)) {
 				CameraDisable = !CameraDisable;
@@ -89,7 +90,7 @@ public class gameController:Photon.MonoBehaviour{
 					processObj.transform.Rotate (Vector3.down, Time.deltaTime * 50f);
 				}
 			}
-		}
+		//}
 
     }
     IEnumerator generateInGame()

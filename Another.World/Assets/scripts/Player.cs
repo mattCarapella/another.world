@@ -39,14 +39,47 @@ public class Player : MonoBehaviour {
         inhand.transform.position = this.transform.forward * 5+this.transform.position;
         GameObject.Destroy(sphere);
     }
-    void loadItems()
-    {
+    
+	IEnumerator loadItems()
+	{
+		Debug.Log ("********* NOW IN LOADITEMS() *********");
+		string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_1";
+		//WWW www = new WWW(url);
+		WWW www = WWW.LoadFromCacheOrDownload(url, 1);
 
-    }
+		int itemct = 0;
+
+		while (!www.isDone)
+		{
+			Debug.Log ("******** DOWNLOADING ASSETBUNDLE ******");
+
+			if (www.assetBundle != null)
+			{
+				Debug.Log("********* LOADING ASSET " + itemct + " **********");
+
+				AssetBundle bundle = www.assetBundle;
+//				string[] assetList = bundle.GetAllAssetNames();
+
+				Object[] assets = bundle.LoadAllAssets();
+			
+		
+				foreach (GameObject asset in assets) {
+					
+					Debug.Log ("******** " + asset.name);
+					Instantiate (asset, transform.position, transform.rotation);
+				}
+
+				itemct++;
+			}
+		}
+		yield return www;
+	}
+
+
 	// Use this for initialization
 	void Start () {
         loadPlayer();
-        loadItems();
+		StartCoroutine("loadItems");
         _controller = game.GetComponent<gameController>();
     }
 	// Update is called once per frame
