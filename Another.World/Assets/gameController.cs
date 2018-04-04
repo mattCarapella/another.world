@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class gameController:MonoBehaviour{
+public class gameController:Photon.MonoBehaviour{
 
     public GameObject Menu;
     public bool CameraDisable =false;
@@ -45,63 +45,51 @@ public class gameController:MonoBehaviour{
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            CameraDisable = !CameraDisable;
-        }
-        if (!MouseVisiable)
-        {
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact)
-        {
-            MenuState = !MenuState;
-            Menu.SetActive(MenuState);
-            CameraDisable = !CameraDisable;
-            MouseVisiable = !MouseVisiable;
-            ui = !ui;
-            if (ui)
-            {
-                inhand.SetActive(false);
-             
-            }else
-            {
-                inhand.SetActive(true);
-            }
+		if (photonView.isMine) {
 
-        }
-        if (processObj)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                keymap[(int)KeyCode.Q] = 1;
-            }
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                keymap[(int)KeyCode.Q] = 0;
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                keymap[(int)KeyCode.E] = 1;
-            }
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                keymap[(int)KeyCode.E] = 0;
-            }
-            if (keymap[(int)KeyCode.Q]==1)
-            {
-                processObj.transform.Rotate(Vector3.up, Time.deltaTime*50f);
-                Debug.Log(processObj.transform.rotation);
-            }
-            else if (keymap[(int)KeyCode.E] == 1)
-            {
-                processObj.transform.Rotate(Vector3.down, Time.deltaTime*50f);
-            }
-        }
+			if (Input.GetKeyDown (KeyCode.LeftShift)) {
+				CameraDisable = !CameraDisable;
+			}
+			if (!MouseVisiable) {
+				Cursor.visible = false;
+			} else {
+				Cursor.visible = true;
+			}
+			if (Input.GetKeyDown (KeyCode.Escape) && !processObj && !interact) {
+				MenuState = !MenuState;
+				Menu.SetActive (MenuState);
+				CameraDisable = !CameraDisable;
+				MouseVisiable = !MouseVisiable;
+				ui = !ui;
+				if (ui) {
+					inhand.SetActive (false);
+	             
+				} else {
+					inhand.SetActive (true);
+				}
+
+			}
+			if (processObj) {
+				if (Input.GetKeyDown (KeyCode.Q)) {
+					keymap [(int)KeyCode.Q] = 1;
+				}
+				if (Input.GetKeyUp (KeyCode.Q)) {
+					keymap [(int)KeyCode.Q] = 0;
+				}
+				if (Input.GetKeyDown (KeyCode.E)) {
+					keymap [(int)KeyCode.E] = 1;
+				}
+				if (Input.GetKeyUp (KeyCode.E)) {
+					keymap [(int)KeyCode.E] = 0;
+				}
+				if (keymap [(int)KeyCode.Q] == 1) {
+					processObj.transform.Rotate (Vector3.up, Time.deltaTime * 50f);
+					Debug.Log (processObj.transform.rotation);
+				} else if (keymap [(int)KeyCode.E] == 1) {
+					processObj.transform.Rotate (Vector3.down, Time.deltaTime * 50f);
+				}
+			}
+		}
 
     }
     IEnumerator generateInGame()
