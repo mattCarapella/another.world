@@ -24,13 +24,10 @@ public class Player : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-        
-
     }
 
     void loadPlayer()
-    {
-
+	{
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Mesh mesh = sphere.GetComponent<MeshFilter>().sharedMesh;
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
@@ -44,9 +41,7 @@ public class Player : MonoBehaviour {
 	{
 		Debug.Log ("********* NOW IN LOADITEMS() *********");
 		string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_1";
-		//WWW www = new WWW(url);
 		WWW www = WWW.LoadFromCacheOrDownload(url, 1);
-
 		int itemct = 0;
 
 		while (!www.isDone)
@@ -55,7 +50,7 @@ public class Player : MonoBehaviour {
 
 			if (www.assetBundle != null)
 			{
-				Debug.Log("********* LOADING ASSET " + itemct + " **********");
+				Debug.Log("********* LOADING ASSETS ");
 
 				AssetBundle bundle = www.assetBundle;
 //				string[] assetList = bundle.GetAllAssetNames();
@@ -63,7 +58,7 @@ public class Player : MonoBehaviour {
 				Object[] assets = bundle.LoadAllAssets();
 			
 		
-				foreach (GameObject asset in assets) {
+				foreach (Object asset in assets) {
 					
 					Debug.Log ("******** " + asset.name);
 					Instantiate (asset, transform.position, transform.rotation);
