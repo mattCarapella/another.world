@@ -79,6 +79,9 @@
 -r:'/Applications/Unity/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll'
 -r:'/Applications/Unity/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll'
 -r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll'
+-r:'Assets/Network/Plugins/Photon3Unity3D.dll'
+-r:'Assets/Network/Plugins/WebSocket/websocket-sharp.dll'
+-r:'Assets/Network/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll'
 -r:'/Users/matt/Library/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll'
 -r:'/Users/matt/Library/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll'
 -r:'/Users/matt/Library/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll'
@@ -86,9 +89,6 @@
 -r:'/Users/matt/Library/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll'
 -r:'/Users/matt/Library/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll'
 -r:'/Users/matt/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll'
--r:'Assets/Network/Plugins/Photon3Unity3D.dll'
--r:'Assets/Network/Plugins/WebSocket/websocket-sharp.dll'
--r:'Assets/Network/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll'
 -define:UNITY_5_3_OR_NEWER
 -define:UNITY_5_4_OR_NEWER
 -define:UNITY_5_5_OR_NEWER

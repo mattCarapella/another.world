@@ -42,6 +42,7 @@ public class Player : MonoBehaviour {
 		Debug.Log ("********* NOW IN LOADITEMS() *********");
 		string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_1";
 		WWW www = WWW.LoadFromCacheOrDownload(url, 1);
+
 		int itemct = 0;
 
 		while (!www.isDone)
@@ -59,7 +60,6 @@ public class Player : MonoBehaviour {
 			
 		
 				foreach (Object asset in assets) {
-					
 					Debug.Log ("******** " + asset.name);
 					Instantiate (asset, transform.position, transform.rotation);
 				}
