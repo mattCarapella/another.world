@@ -32,6 +32,10 @@ public class gameController:MonoBehaviour{
     private IDictionary<int, int> keymap;
     public int env;
     
+    /*-------------------InWorld Properties Setting---------------------------*/
+    private int worldId = 0;  // world which player locate
+    
+    /*------------------------------------------------------------------------*/
     void Start()
     {
         place_status = false;
@@ -187,20 +191,38 @@ public class gameController:MonoBehaviour{
         Debug.Log(place_status);
         if (place_status==true)
         {
+            
             placement.SetActive(false);
 
             this.ui_down();
 
             place_status = false;
+
             GameObject temp = Instantiate(inhand);
             temp.transform.position = inhand.transform.position;
             temp.transform.rotation = inhand.transform.rotation;
             temp.GetComponent<object_property>().setDescription(ObjectDes.text);
             temp.GetComponent<object_property>().setName(ObjectName.text);
             temp.GetComponent<object_property>().setPrice(ObjectPrice.text);
+            StartCoroutine(addObjToDB(inhand));
             temp.AddComponent<BoxCollider>();
 
         }
+    }
+    IEnumerator addObjToDB(GameObject inhand)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("worldidPost",worldId);
+        form.AddField("modelxPost", inhand.transform.position.x.ToString());
+        form.AddField("modelyPost", inhand.transform.position.y.ToString());
+        form.AddField("modelzPost", inhand.transform.position.z.ToString());
+        form.AddField("rotationxPost", inhand.transform.rotation.x.ToString());
+        form.AddField("rotationyPost", inhand.transform.rotation.y.ToString());
+        form.AddField("rotationzPost", inhand.transform.rotation.z.ToString());
+        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/test.php";
+        WWW www = new WWW(url, form);
+        yield return www;
+        Debug.Log(www.text);
     }
     public void addEntryToList(string name, float x, float y, float z)
     {
