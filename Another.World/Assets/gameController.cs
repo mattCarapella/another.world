@@ -45,6 +45,7 @@ public class gameController:MonoBehaviour{
             keymap[i] = 0;
         }
         ui = false;
+        Cursor.visible = false;
         reloadWorld(0);
     }
     void Update()
@@ -53,20 +54,13 @@ public class gameController:MonoBehaviour{
         {
             CameraDisable = !CameraDisable;
         }
-        if (!MouseVisiable)
-        {
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
+        
         if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact)
         {
             MenuState = !MenuState;
             Menu.SetActive(MenuState);
             CameraDisable = !CameraDisable;
-            MouseVisiable = !MouseVisiable;
+            Cursor.visible = !Cursor.visible;
             ui = !ui;
             if (ui)
             {
@@ -165,13 +159,13 @@ public class gameController:MonoBehaviour{
     public void ui_up()
     {
         CameraDisable = true;
-        MouseVisiable = true;
+        Cursor.visible = true;
     }
 
     public void ui_down()
     {
         CameraDisable = false;
-        MouseVisiable = false;
+        Cursor.visible = false;
     }
 
     public void place()

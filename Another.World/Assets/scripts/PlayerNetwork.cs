@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerNetwork : MonoBehaviour {
+
+    [SerializeField]
+    private Transform playerCam;
+    [SerializeField]
+    private MonoBehaviour[] playerControler;
+
+    private PhotonView photonView;
+
+    void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+        initialize();
+    }
+    private void initialize()
+    {
+        if (photonView.isMine)
+        {
+
+        }else
+        {
+            playerCam.gameObject.SetActive(false);
+            foreach (MonoBehaviour m in playerControler)
+            {
+                m.enabled = false;
+            }
+        }
+    }
+}

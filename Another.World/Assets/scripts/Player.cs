@@ -16,14 +16,7 @@ public class Player : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-        if (!created)
-        {
-            created = true;
-        }else
-        {
-            Destroy(this.gameObject);
-        }
+        
         
 
     }
@@ -51,7 +44,7 @@ public class Player : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (_controller.env==0) {
+        if (_controller.env==0 && inhand) {
             x_pos.text = "X: " + inhand.transform.position.x;
             y_pos.text = "Y: " + inhand.transform.position.y;
             z_pos.text = "Z: " + inhand.transform.position.z;
