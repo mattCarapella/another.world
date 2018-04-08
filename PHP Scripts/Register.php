@@ -27,7 +27,7 @@ if ($user_username != "" && $user_email != "" && $user_password != "") {
         echo ("Email address is already being used with a different username");
         $username_stmt->close();
         $email_stmt->close();
-    } else {    
+    } else {
         $username_stmt->close();
         $email_stmt->close();
         
@@ -35,9 +35,17 @@ if ($user_username != "" && $user_email != "" && $user_password != "") {
         
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bind_param('sss', $user_username, $user_email, encrypt($user_password));
-            $stmt->execute();
-            $stmt->close();
-            echo "Registration Successful";
+            if (preg_match("/^[a-z0-9]+$/", $user_username)) {
+                if (filter_var($user_email, FILTER_VALIDATE_EMAIL) && preg_match('(@buffalo.edu|@gmail.com|@yahoo.com|@hotmail.com|@outlook.com|@msn.com|@aol.com)', $user_email)) {
+                    $stmt->execute();
+                    $stmt->close();
+                    echo "Registration Successful";
+                } else {
+                    echo "Email is not valid";
+                }
+            } else {
+                echo "Username can only contain all lowercase letters and numbers";
+            }
         } else {
             echo "Something went wrong";
         }
