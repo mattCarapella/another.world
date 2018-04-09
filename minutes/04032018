@@ -13,7 +13,7 @@ present:
 absence: 
   
 Summary:
-
+Planned out what each member needs to do before the beta release before the next meeting.
   
   
 What each team member accomplished since last meeting:
@@ -21,7 +21,7 @@ What each team member accomplished since last meeting:
 Shawn: 
 Ira: worked on model select and loadPlayer()
 Matt: 
-Amiya: 
+Amiya: Got upload working somewhat. Some glitches occur that needs to be fixed
 Peter: asset data base, update world data to data base.
 
 What each team member will accomplish before next meeting: 
@@ -29,5 +29,5 @@ What each team member will accomplish before next meeting:
 Shawn: 
 Ira: work on model select screen #34 and work with Matt on Asset bundle 
 Matt: 
-Amiya: 
+Amiya: Try to get both upload and download working 
 Peter: Fix bug #29, update ground to terran.
