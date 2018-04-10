@@ -1,6 +1,6 @@
 Date: 04/03/2018
 Time: 1:00pm. to 2:00pm
-Github issue: #34
+Github issue: #34 #32
 
 present:
 
@@ -20,7 +20,7 @@ What each team member accomplished since last meeting:
 
 Shawn: completed multiplayer, each player could see each other
 Ira: worked on model select and loadPlayer()
-Matt: 
+Matt: got assetbuddle working with current code.
 Amiya: Got upload working somewhat. Some glitches occur that needs to be fixed
 Peter: asset data base, update world data to data base.
 
@@ -28,6 +28,6 @@ What each team member will accomplish before next meeting:
 
 Shawn: working on multiplayer feature + render any object through network #32
 Ira: work on model select screen #34 and work with Matt on Asset bundle 
-Matt: 
+Matt: looking for more asset as our default asset for user
 Amiya: Try to get both upload and download working 
 Peter: Fix bug #29, update ground to terran.
