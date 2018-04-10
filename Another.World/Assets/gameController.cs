@@ -9,7 +9,7 @@ public class gameController:MonoBehaviour{
     public GameObject Menu; // menu
 
     public bool CameraDisable =false;
-    public bool MouseVisiable = false;
+    [SerializeField] private bool MouseVisiable = false;
     public bool MenuState = false;
     
     
@@ -17,7 +17,7 @@ public class gameController:MonoBehaviour{
     
     public GameObject listItem;
     public GameObject listView;
-
+    
     public GameObject inhand;
     public GameObject Player;
 
@@ -88,7 +88,16 @@ public class gameController:MonoBehaviour{
             MenuState = !MenuState;
             Menu.SetActive(MenuState);
             CameraDisable = !CameraDisable;
-            Cursor.visible = !Cursor.visible;
+
+            MouseVisiable = !MouseVisiable;
+            if (MouseVisiable)
+            {
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.visible = false;
+            }
             ui = !ui;
             if (ui)
             {
@@ -184,12 +193,15 @@ public class gameController:MonoBehaviour{
     public void ui_up()
     {
         CameraDisable = true;
+        MouseVisiable = true;
         Cursor.visible = true;
+        
     }
 
     public void ui_down()
     {
         CameraDisable = false;
+        MouseVisiable = false;
         Cursor.visible = false;
     }
 
