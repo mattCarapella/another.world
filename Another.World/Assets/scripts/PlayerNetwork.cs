@@ -6,8 +6,11 @@ public class PlayerNetwork : MonoBehaviour {
 
     [SerializeField]
     private Transform playerCam;
+    [SerializeField] private gameController _controller;
     [SerializeField]
     private MonoBehaviour[] playerControler;
+    [SerializeField]
+    
 
     private PhotonView photonView;
 

@@ -6,35 +6,63 @@ using UnityEngine.UI;
 
 public class gameController:MonoBehaviour{
 
-    public GameObject Menu;
+    public GameObject Menu; // menu
+
     public bool CameraDisable =false;
     public bool MouseVisiable = false;
     public bool MenuState = false;
-    public GameObject placement;
-    public bool place_status;
-    public Button confirm;
-    public GameObject processObj;
+    
+    
     public GameObject worldModelSample;
-    public GameObject backUI;
-    public GameObject _description;
+    
     public GameObject listItem;
     public GameObject listView;
+
     public GameObject inhand;
     public GameObject Player;
+
+    /*------------------Placement UI------------------------------*/
+
+    public GameObject placement;
+    public GameObject processObj; // placement object
+    public bool place_status;
+    public Button confirm;
     public Text ObjectName;
     public Text ObjectDes;
     public Text ObjectPrice;
-    public bool ui;
-    public bool interact = false;
+
+    /*------------------------------------------------------------*/
+
+    public bool ui; // A boolean variable to check if UI is up or not => display inhand object or not
+
+    public bool interact = false; // A boolean variable to check if current user is interacting with any obj or world
+
+    /*------------------World Description UI------------------------------*/
+    public GameObject _description; // world description pannel
     public Text owner;
     public Text descriptionText;
     public Text worldName;
-    private IDictionary<int, int> keymap;
-    public int env;
+    /*--------------------------------------------------------*/
+
+
+    private IDictionary<int, int> keymap; // a distionary to keep track
+
+    public int env; // 0 if in Universe, 1 in world
+
     
     /*-------------------InWorld Properties Setting---------------------------*/
     private int worldId = 0;  // world which player locate
-    
+
+    /*------------------------------------------------------------------------*/
+
+    /*--------------------Object Description UI-------------------------------*/
+
+    public GameObject obj_description;
+    public Button Back;
+    public Text objName, X_pos, Y_pos, Z_pos;
+    public Text objDes;
+    public Text objPrice;
+
     /*------------------------------------------------------------------------*/
     void Start()
     {
@@ -139,12 +167,9 @@ public class gameController:MonoBehaviour{
                 Debug.Log(x);
                 GameObject temp = Instantiate(worldModelSample);
                 temp.GetComponent<planet>()._game = this.gameObject;
-                temp.GetComponent<planet>().description = _description;
                 temp.transform.position = new Vector3(x, y, z);
                 planet sample = temp.GetComponent<planet>();
-                sample.owner = owner;
-                sample.descriptionText = descriptionText;
-                sample.worldName = worldName;
+              
                 sample.setDes(description);
                 sample.setId(worldId);
                 sample.setOwner(userId.ToString());
@@ -180,7 +205,7 @@ public class gameController:MonoBehaviour{
             interact = false;
         }
     }
-    public void place_request(GameObject inhand)
+    public void place_request()
     {
         Debug.Log(place_status);
         if (place_status==true)
@@ -191,18 +216,25 @@ public class gameController:MonoBehaviour{
             this.ui_down();
 
             place_status = false;
-
-            GameObject temp = Instantiate(inhand);
+            Player.GetComponent<PlayerController>().SpawnObject();
+            /*GameObject temp = Instantiate(inhand);
+            temp.transform.SetParent(_assetHolder.transform);
             temp.transform.position = inhand.transform.position;
             temp.transform.rotation = inhand.transform.rotation;
-            temp.GetComponent<object_property>().setDescription(ObjectDes.text);
-            temp.GetComponent<object_property>().setName(ObjectName.text);
-            temp.GetComponent<object_property>().setPrice(ObjectPrice.text);
-            StartCoroutine(addObjToDB(inhand));
-            temp.AddComponent<BoxCollider>();
-
+            */
+            
         }
     }
+    public void attachObjAttr(GameObject obj)
+    {
+        obj.GetComponent<object_property>().setDescription(ObjectDes.text);
+        obj.GetComponent<object_property>().setName(ObjectName.text);
+        obj.GetComponent<object_property>().setPrice(ObjectPrice.text);
+        StartCoroutine(addObjToDB(inhand));
+        obj.AddComponent<BoxCollider>();
+    }
+    
+
     IEnumerator addObjToDB(GameObject inhand)
     {
         WWWForm form = new WWWForm();

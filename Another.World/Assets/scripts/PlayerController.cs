@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
         
-        _controller = _game.GetComponent<gameController>();
+        
         if (_controller.env == 0)
         {
             _speed = 20000f;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Awake() {
+        _controller = _game.GetComponent<gameController>();
         _rb = GetComponent<Rigidbody>();
 
     }
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     _lastHit.GetComponent<Renderer>().material.color = Color.white;
                     _lastHit.GetComponent<planet>().setRay(false);
+                    
                     _lastHit = null;
                 }
                 else if (_lastHit.tag == "Asset")
@@ -67,12 +69,16 @@ public class PlayerController : MonoBehaviour {
                     _lastHit = hit.collider.gameObject;
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, 105f);
                     hit.collider.gameObject.GetComponent<planet>().setRay(true);
-                }else if (hit.collider.gameObject.tag == "Asset" && hit.collider.gameObject!=inhand)
+                    hit.collider.gameObject.GetComponent<planet>()._game = this._game;
+                }
+                else if (hit.collider.gameObject.tag == "Asset" && hit.collider.gameObject!=inhand)
                 {
                     _lastHit = hit.transform.gameObject;
                     
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.yellow, Color.red, 105f);
                     hit.collider.gameObject.GetComponent<object_property>().setRay(true);
+
+                    hit.collider.gameObject.GetComponent<object_property>()._game = this._game;
                     Debug.Log("hit");
                     
                 }
@@ -113,6 +119,30 @@ public class PlayerController : MonoBehaviour {
                 _lastHit = null;
             }
         
+    }
+    public void SpawnObject()
+    {
+        // You must be in a Room already
+
+        // Manually allocate PhotonViewID
+        int id1 = PhotonNetwork.AllocateViewID();
+
+        PhotonView photonView = this.GetComponent<PhotonView>();
+        photonView.RPC("SpawnOnNetwork", PhotonTargets.AllBuffered, inhand.transform.position, inhand.transform.rotation, id1);
+    }
+
+    
+    [PunRPC]
+    void SpawnOnNetwork(Vector3 pos, Quaternion rot, int id1)
+    {
+        GameObject Obj = Instantiate(inhand, pos, rot) as GameObject;
+
+        // Set player's PhotonView
+        _controller.attachObjAttr(Obj);
+        
+        PhotonView v = Obj.AddComponent<PhotonView>();
+        v.viewID = id1;
+        Debug.Log(Obj.GetComponent<MeshFilter>());
     }
     void OnTriggerEnter(Collider c)
     {
