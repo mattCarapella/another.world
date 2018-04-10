@@ -1,0 +1,33 @@
+Date: 04/10/2018
+Time: 1:00pm. to 2:00pm
+Github issue: #34 #32
+
+present:
+
+	Xuanyu Dong (Shawn)
+	Ira Chan
+	Matt Carapella 
+	Amiya Debnath   
+	Meng Chun Hsieh (Peter) 
+  
+absence: 
+  
+Summary:
+Planned out what each member needs to do before the beta release.
+  
+  
+What each team member accomplished since last meeting:
+
+Shawn: completed multiplayer, each player could see each other
+Ira: worked on model select, item select, as well as instruction scene for new users
+Matt: got assetbuddle working with current code.
+Amiya: Got upload working somewhat. Some glitches occur that needs to be fixed
+Peter: asset data base, update world data to data base.
+
+What each team member will accomplish before next meeting: 
+
+Shawn: working on multiplayer feature + render any object through network #32
+Ira: work on model select screen #34 and making item names properly show up in item bar
+Matt: looking for more asset as our default asset for user
+Amiya: Try to get both upload and download working 
+Peter: Fix bug #29, update ground to terran.
