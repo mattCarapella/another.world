@@ -80,7 +80,7 @@ public class object_property : Photon.MonoBehaviour {
             
         }
     }
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+    /*void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.isWriting) {
             stream.SendNext(_name);
             stream.SendNext(_description);
@@ -92,6 +92,6 @@ public class object_property : Photon.MonoBehaviour {
             _price = (string)stream.ReceiveNext();
 
         }
-    }
+    }*/
 
 }

@@ -128,21 +128,29 @@ public class PlayerController : MonoBehaviour {
         int id1 = PhotonNetwork.AllocateViewID();
 
         PhotonView photonView = this.GetComponent<PhotonView>();
-        photonView.RPC("SpawnOnNetwork", PhotonTargets.AllBuffered, inhand.transform.position, inhand.transform.rotation, id1);
+        int objCode = 0;
+        photonView.RPC("SpawnOnNetwork", PhotonTargets.AllBuffered, objCode, inhand.transform.position, inhand.transform.rotation, id1, _controller.ObjectDes.text, _controller.ObjectName.text, _controller.ObjectPrice.text);
     }
 
     
     [PunRPC]
-    void SpawnOnNetwork(Vector3 pos, Quaternion rot, int id1)
+    void SpawnOnNetwork(int objCode, Vector3 pos, Quaternion rot, int id1, string ObjectDes, string ObjectName,string ObjectPrice)
     {
         GameObject Obj = Instantiate(inhand, pos, rot) as GameObject;
-
+        if (objCode == 0) {
+            GameObject temp = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Mesh mesh = temp.GetComponent<MeshFilter>().sharedMesh;
+            Obj.GetComponent<MeshFilter>().sharedMesh = mesh;
+            Destroy(temp.gameObject);
+        }
         // Set player's PhotonView
-        _controller.attachObjAttr(Obj);
-        
+        Obj.GetComponent<object_property>().setDescription(ObjectDes);
+        Obj.GetComponent<object_property>().setName(ObjectName);
+        Obj.GetComponent<object_property>().setPrice(ObjectPrice);
+        Obj.AddComponent<BoxCollider>();
         PhotonView v = Obj.AddComponent<PhotonView>();
         v.viewID = id1;
-        Debug.Log(Obj.GetComponent<MeshFilter>());
+        
     }
     void OnTriggerEnter(Collider c)
     {

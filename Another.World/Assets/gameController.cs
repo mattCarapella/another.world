@@ -74,7 +74,9 @@ public class gameController:MonoBehaviour{
         }
         ui = false;
         Cursor.visible = false;
-        reloadWorld(0);
+        if (Player.GetComponent<PhotonView>().isMine) {
+            reloadWorld(0);
+        }
     }
     void Update()
     {
