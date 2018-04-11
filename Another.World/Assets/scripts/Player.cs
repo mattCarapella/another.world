@@ -49,5 +49,13 @@ public class Player : MonoBehaviour {
             y_pos.text = "Y: " + inhand.transform.position.y;
             z_pos.text = "Z: " + inhand.transform.position.z;
         }
+        if (GetComponent<PhotonVoiceRecorder>().IsTransmitting)
+        {
+            Debug.Log("sent");
+        }
+        if (GetComponent<PhotonVoiceSpeaker>().IsPlaying)
+        {
+            Debug.Log("read");
+        }
     }
 }

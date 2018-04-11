@@ -23,7 +23,7 @@ public class PlayerNetwork : MonoBehaviour {
     {
         if (photonView.isMine)
         {
-
+            GetComponent<PhotonVoiceRecorder>().enabled = true;
         }else
         {
             playerCam.gameObject.SetActive(false);

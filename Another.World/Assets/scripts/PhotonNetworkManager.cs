@@ -19,7 +19,8 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	private void Start () 
 	{
-		PhotonNetwork.ConnectUsingSettings (version);	
+		PhotonNetwork.ConnectUsingSettings (version);
+        UnityVoiceFrontend temp = PhotonVoiceNetwork.Client;	
 	}
 
 	public virtual void OnJoinedLobby()
