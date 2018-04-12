@@ -30,9 +30,9 @@ public class Player : MonoBehaviour {
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Mesh mesh = sphere.GetComponent<MeshFilter>().sharedMesh;
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
-        inhand.GetComponent<MeshFilter>().mesh = mesh;
-        inhand.GetComponent<Renderer>().material = material;
-        inhand.transform.position = this.transform.forward * 5+this.transform.position;
+        //inhand.GetComponent<MeshFilter>().mesh = mesh;
+        //inhand.GetComponent<Renderer>().material = material;
+        //inhand.transform.position = this.transform.forward * 5+this.transform.position;
         GameObject.Destroy(sphere);
     }
     public void chosenOne()
