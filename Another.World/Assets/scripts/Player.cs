@@ -6,9 +6,9 @@ public class Player : MonoBehaviour {
 
     protected string _name;
     public GameObject inhand;
-    public Text x_pos;
-    public Text y_pos;
-    public Text z_pos;
+	public static Text x_pos;
+	public static Text y_pos;
+	public static Text z_pos;
     public GameObject game;
     private gameController _controller;
     private static bool created = false;
