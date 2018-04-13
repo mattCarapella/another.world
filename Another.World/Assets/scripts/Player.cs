@@ -26,7 +26,16 @@ public class Player : MonoBehaviour {
 
     void loadPlayer()
     {
+        if(chosen == 0)
+        {
+            // GameObject.Destroy(GameObject.Find("AWPlayer"));
+            // GameObject.Instantiate("MPlayer");
+            
+        }
+        else if(chosen == 1)
+        {
 
+        }
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Mesh mesh = sphere.GetComponent<MeshFilter>().sharedMesh;
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
@@ -42,7 +51,7 @@ public class Player : MonoBehaviour {
     IEnumerator loadItems()
     {
         Debug.Log("********* NOW IN LOADITEMS() *********");
-        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_1";
+        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_2";
         WWW www = WWW.LoadFromCacheOrDownload(url, 1);
 
         //int itemct = 0;
@@ -90,6 +99,10 @@ public class Player : MonoBehaviour {
     }
     public void loadfromInventory(int assetNum)
     {
+        if (inhand != null)
+        {
+                
+        }
         GameObject temp = (GameObject)loadedAssets[assetNum];
         temp.transform.localScale = new Vector3(1, 1, 1);
         Instantiate(loadedAssets[assetNum], inhand.transform.position, inhand.transform.rotation, inhand.transform);
@@ -124,6 +137,7 @@ public class Player : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
+        
         if (_controller.env==0 && inhand) {
             x_pos.text = "X: " + inhand.transform.position.x;
             y_pos.text = "Y: " + inhand.transform.position.y;

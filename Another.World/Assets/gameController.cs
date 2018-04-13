@@ -66,6 +66,7 @@ public class gameController:MonoBehaviour{
 
     public GameObject Inventory;
     public bool CheckInventory = false;
+    int chosen = 0;
     /*------------------------------------------------------------------------*/
     void Start()
     {
@@ -87,32 +88,34 @@ public class gameController:MonoBehaviour{
         {
             CameraDisable = !CameraDisable;
         }
-        
-        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact &&!CheckInventory)
+         if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact &&!CheckInventory)
         {
-            MenuState = !MenuState;
+            
+            
+                MenuState = !MenuState;
             Menu.SetActive(MenuState);
             CameraDisable = !CameraDisable;
+            
+                MouseVisiable = !MouseVisiable;
+                if (MouseVisiable)
+                {
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    Cursor.visible = false;
+                }
+                ui = !ui;
+                if (ui)
+                {
+                    inhand.SetActive(false);
 
-            MouseVisiable = !MouseVisiable;
-            if (MouseVisiable)
-            {
-                Cursor.visible = true;
+                }
+                else
+                {
+                    inhand.SetActive(true);
+                
             }
-            else
-            {
-                Cursor.visible = false;
-            }
-            ui = !ui;
-            if (ui)
-            {
-                inhand.SetActive(false);
-             
-            }else
-            {
-                inhand.SetActive(true);
-            }
-
         }
         if (Input.GetKeyDown(KeyCode.I) && !processObj && !interact && !MenuState)
         {
@@ -127,6 +130,14 @@ public class gameController:MonoBehaviour{
             else
             {
                 Cursor.visible = false;
+            }
+            if (CheckInventory)
+            {
+                CameraDisable = true;
+            }
+            else
+            {
+                CameraDisable = false;
             }
         }
         if (processObj)
@@ -158,6 +169,10 @@ public class gameController:MonoBehaviour{
             }
         }
 
+    }
+    public void chosenOne()
+    {
+        chosen = 1;
     }
     IEnumerator generateInGame()
     {
@@ -314,6 +329,10 @@ public class gameController:MonoBehaviour{
     {
 
         MenuState = false;
+    }
+    public void inv_off()
+    {
+        CheckInventory = false;
     }
     public void loadScene(int idx)
     {
