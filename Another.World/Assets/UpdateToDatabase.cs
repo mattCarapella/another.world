@@ -12,11 +12,6 @@ public class UpdateToDatabase : MonoBehaviour {
 	private int groundToStore;
 	private int skyToStore;
 
-	private int x_pos;
-	private int y_pos;
-	private int z_pos;
-
-
 	// Use this for initialization
 	void Start () {
 
@@ -29,9 +24,6 @@ public class UpdateToDatabase : MonoBehaviour {
 		worldInfo = SetWorldInfo.Worldinfo;
 		groundToStore = setGround.groundToStore;
 		skyToStore = setSkybox.skyToStore;
-		x_pos = Player.x_pos;
-		y_pos = Player.y_pos;
-		z_pos = Player.z_pos;
 	}
 
 	public void updateDatabase () {
@@ -47,20 +39,12 @@ public class UpdateToDatabase : MonoBehaviour {
 		Debug.Log ("worldInfoPost:" + worldInfo); //String
 		Debug.Log ("worldSkyPost:" + skyToStore); //Int
 		Debug.Log ("worldGroundPost:" + groundToStore);//Int
-		Debug.Log ("xPos:" + x_pos);//Int
-		Debug.Log ("yPos:" + y_pos);//Int
-		Debug.Log ("zPos:" + z_pos);//Int
-
 
 		form.AddField ("idPost", userID);
 		form.AddField ("worldNamePost", worldName);
 		form.AddField ("worldInfoPost", worldInfo);
 		form.AddField ("worldSkyPost", skyToStore);
 		form.AddField ("worldGroundPost", groundToStore);
-		form.AddField ("xPos", x_pos);
-		form.AddField ("yPos", y_pos);
-		form.AddField ("zPos", z_pos);
-
 		WWW www = new WWW(URL, form);
 
 		yield return www;
