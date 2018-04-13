@@ -8,11 +8,11 @@
 
 <h1>Beta Release Release</h1>
 Landing Page: <a href = "http://ec2-18-232-184-23.compute-1.amazonaws.com/landingpage/">Click here</a><br>
-Youtube Video: https://youtu.be/RByZBqYu0YE
+Youtube Video: https://youtu.be/39cX0Y33IsA 
 
 <h1>Alpha Release</h1>
 
-<b>Youtube Video:</b> 
+<b>Youtube Video:</b> https://youtu.be/RByZBqYu0YE
 
 <b>Download the app:</b> <a href = "https://github.com/mattCarapella/AnotherWorld/releases/download/v0.2.1/anotherWorld_v0.2.1.zip">Download</a>
 
