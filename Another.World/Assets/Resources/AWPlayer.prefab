@@ -7611,11 +7611,15 @@ MonoBehaviour:
   y_pos: {fileID: 114256573407504054}
   z_pos: {fileID: 114351193879566160}
   game: {fileID: 1470940609754240}
+  selected: 0
   loadedAssets:
-  - {fileID: -9026811543297555519, guid: 00000000000000000000000000000000, type: 0}
-  - {fileID: 3473763434778168414, guid: 00000000000000000000000000000000, type: 0}
-  - {fileID: -5953629179171561601, guid: 00000000000000000000000000000000, type: 0}
-  - {fileID: -6169006296634274878, guid: 00000000000000000000000000000000, type: 0}
+  - {fileID: 1401675682188056}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemList: {fileID: 1985759341474960}
+  itemListItem: {fileID: 1638759345703606, guid: 203866ecb085c454796f0109974a4bc8,
+    type: 2}
 --- !u!114 &114331082618038164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12990,10 +12994,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 1
+  ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
-  prefixBackup: 0
+  prefixBackup: -1
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -13001,10 +13005,10 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114927514311769418}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1001
-  instantiationId: 1001
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: 12
-  isRuntimeInstantiated: 1
+  isRuntimeInstantiated: 0
 --- !u!114 &114857922691749304
 MonoBehaviour:
   m_ObjectHideFlags: 1

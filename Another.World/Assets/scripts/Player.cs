@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     protected string _name;
     public GameObject inhand;
@@ -13,26 +14,34 @@ public class Player : MonoBehaviour {
     private gameController _controller;
     private static bool created = false;
     private GameObject _player;
+    [SerializeField]
+    private int selected = 0;
     public Object[] loadedAssets;
-    bool dd =false;
+    bool dd = false;
     int chosen = 0;
+
+    /*---------------Item list genereate---------------------*/
+    public GameObject itemList;
+    public GameObject itemListItem;
+
+    /*----------------------------------------*/
 
     void Awake()
     {
-        
-        
+
+
 
     }
 
     void loadPlayer()
     {
-        if(chosen == 0)
+        if (chosen == 0)
         {
             // GameObject.Destroy(GameObject.Find("AWPlayer"));
             // GameObject.Instantiate("MPlayer");
-            
+
         }
-        else if(chosen == 1)
+        else if (chosen == 1)
         {
 
         }
@@ -41,7 +50,7 @@ public class Player : MonoBehaviour {
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
         //inhand.GetComponent<MeshFilter>().mesh = mesh;
         //inhand.GetComponent<Renderer>().material = material;
-        inhand.transform.position = this.transform.forward * 5 +this.transform.position;
+        inhand.transform.position = this.transform.forward * 5 + this.transform.position;
         GameObject.Destroy(sphere);
     }
     public void chosenOne()
@@ -80,14 +89,21 @@ public class Player : MonoBehaviour {
         //}
         yield return www;
         Debug.Log("current asset bundle " + www.assetBundle);
+
         if (www.assetBundle != null)
         {
             AssetBundle bundle = www.assetBundle;
             Object[] assets = bundle.LoadAllAssets();
             loadedAssets = assets;
+            int idx = 0;
             foreach (Object asset in assets)
             {
                 Debug.Log("******** " + asset.name);
+                GameObject temp = Instantiate(itemListItem, itemList.transform);
+                temp.GetComponentInChildren<Text>().text = asset.name;
+                int ridx = idx;
+                temp.GetComponent<Button>().onClick.AddListener(delegate { loadfromInventory(ridx); });
+                idx += 1;
                 //Instantiate(asset, transform.position, transform.rotation);
             }
         }
@@ -99,11 +115,14 @@ public class Player : MonoBehaviour {
     }
     public void loadfromInventory(int assetNum)
     {
-        if (inhand != null)
+
+        if (inhand.transform.childCount>0)
         {
-                
+            Destroy(inhand.transform.GetChild(0).gameObject);
         }
+
         GameObject temp = (GameObject)loadedAssets[assetNum];
+        selected = assetNum;
         temp.transform.localScale = new Vector3(1, 1, 1);
         Instantiate(loadedAssets[assetNum], inhand.transform.position, inhand.transform.rotation, inhand.transform);
         //inhand = (GameObject)loadedAssets[assetNum];
@@ -126,30 +145,37 @@ public class Player : MonoBehaviour {
         GameObject.Find("Item 3").GetComponentInChildren<Text>().text = loadedAssets[3].name;
     }
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         if (GetComponent<PhotonView>().isMine)
         {
             loadPlayer();
-            StartCoroutine("loadItems");
+            StartCoroutine(loadItems());
         }
-        
+
         _controller = game.GetComponent<gameController>();
     }
-	// Update is called once per frame
-	void Update () {
-        
-        if (_controller.env==0 && inhand) {
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (_controller.env == 0 && inhand)
+        {
             x_pos.text = "X: " + inhand.transform.position.x;
             y_pos.text = "Y: " + inhand.transform.position.y;
             z_pos.text = "Z: " + inhand.transform.position.z;
         }
         if (GetComponent<PhotonVoiceRecorder>().IsTransmitting)
         {
-            Debug.Log("sent");
+            //Debug.Log("sent");
         }
         if (GetComponent<PhotonVoiceSpeaker>().IsPlaying)
         {
-            Debug.Log("read");
+            //Debug.Log("read");
         }
+    }
+    public int getSeleted()
+    {
+        return selected;
     }
 }

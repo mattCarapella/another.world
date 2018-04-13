@@ -264,6 +264,8 @@ public class gameController:MonoBehaviour{
 
             place_status = false;
             Player.GetComponent<PlayerController>().SpawnObject();
+
+            processObj = null;
             /*GameObject temp = Instantiate(inhand);
             temp.transform.SetParent(_assetHolder.transform);
             temp.transform.position = inhand.transform.position;
@@ -280,12 +282,16 @@ public class gameController:MonoBehaviour{
         StartCoroutine(addObjToDB(inhand));
         obj.AddComponent<BoxCollider>();
     }
-    
+    public void post()
+    {
+        StartCoroutine(addObjToDB(inhand));
+    }
 
     IEnumerator addObjToDB(GameObject inhand)
     {
         WWWForm form = new WWWForm();
         form.AddField("worldidPost",worldId);
+        form.AddField("modelidPost", Player.GetComponent<Player>().getSeleted());
         form.AddField("modelxPost", inhand.transform.position.x.ToString());
         form.AddField("modelyPost", inhand.transform.position.y.ToString());
         form.AddField("modelzPost", inhand.transform.position.z.ToString());

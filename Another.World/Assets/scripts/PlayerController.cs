@@ -128,7 +128,8 @@ public class PlayerController : MonoBehaviour {
         int id1 = PhotonNetwork.AllocateViewID();
 
         PhotonView photonView = this.GetComponent<PhotonView>();
-        int objCode = 0;
+        int objCode = GetComponent<Player>().getSeleted();
+        _game.GetComponent<gameController>().post();
         photonView.RPC("SpawnOnNetwork", PhotonTargets.AllBuffered, objCode, inhand.transform.position, inhand.transform.rotation, id1, _controller.ObjectDes.text, _controller.ObjectName.text, _controller.ObjectPrice.text);
     }
 
@@ -137,12 +138,8 @@ public class PlayerController : MonoBehaviour {
     void SpawnOnNetwork(int objCode, Vector3 pos, Quaternion rot, int id1, string ObjectDes, string ObjectName,string ObjectPrice)
     {
         GameObject Obj = Instantiate(inhand, pos, rot) as GameObject;
-        if (objCode == 0) {
-            GameObject temp = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            Mesh mesh = temp.GetComponent<MeshFilter>().sharedMesh;
-            Obj.GetComponent<MeshFilter>().sharedMesh = mesh;
-            Destroy(temp.gameObject);
-        }
+        GameObject actual = Instantiate(_game.GetComponent<gameController>().Player.GetComponent<Player>().loadedAssets[objCode]) as GameObject;
+        actual.transform.SetParent(Obj.transform);
         // Set player's PhotonView
         Obj.GetComponent<object_property>().setDescription(ObjectDes);
         Obj.GetComponent<object_property>().setName(ObjectName);
