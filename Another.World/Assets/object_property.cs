@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class object_property : MonoBehaviour {
+
+[RequireComponent(typeof(PhotonView))]
+public class object_property : Photon.MonoBehaviour {
 
 	// Use this for initialization
-    private string _name;
+    [SerializeField] private string _name;
+    [SerializeField]
     private string _price;
+    [SerializeField]
     private string _description;
     public GameObject _game;
     private gameController _controller;
-    public GameObject description;
-    public Button Back;
-    public Text ObjectName, X_pos,Y_pos,Z_pos;
-    public Text ObjectDes;
-    public Text ObjectPrice;
+    
 
     private bool _ray =false;
     void Start () {
@@ -60,12 +60,12 @@ public class object_property : MonoBehaviour {
     }
     public void attachUI()
     {
-        ObjectDes.text = this._description;
-        ObjectName.text = this._name;
-        ObjectPrice.text = this._price;
-        X_pos.text = "X: "+this.transform.position.x;
-        Y_pos.text = "Y: " + this.transform.position.y;
-        Z_pos.text = "Z: " + this.transform.position.z;
+        _game.GetComponent<gameController>().objDes.text = this._description;
+        _game.GetComponent<gameController>().objName.text = this._name;
+        _game.GetComponent<gameController>().objPrice.text = this._price;
+        _game.GetComponent<gameController>().X_pos.text = "X: "+this.transform.position.x;
+        _game.GetComponent<gameController>().Y_pos.text = "Y: " + this.transform.position.y;
+        _game.GetComponent<gameController>().Z_pos.text = "Z: " + this.transform.position.z;
 
     }
     // Update is called once per frame
@@ -73,12 +73,25 @@ public class object_property : MonoBehaviour {
         if (_ray && Input.GetKeyDown(KeyCode.F) && !_game.GetComponent<gameController>().MenuState && !_game.GetComponent<gameController>().interact && !_game.GetComponent<gameController>().processObj)
         {
             this.attachUI();
-            description.SetActive(true);
+            _game.GetComponent<gameController>().obj_description.SetActive(true);
             _game.GetComponent<gameController>().ui_up();
             _game.GetComponent<gameController>().interact = true;
-            Back.interactable = true;
+            _game.GetComponent<gameController>().Back.interactable = true;
             
         }
     }
+    /*void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.isWriting) {
+            stream.SendNext(_name);
+            stream.SendNext(_description);
+            stream.SendNext(_price);
+        }
+        else {
+            _name = (string)stream.ReceiveNext();
+            _description = (string)stream.ReceiveNext();
+            _price = (string)stream.ReceiveNext();
+
+        }
+    }*/
 
 }

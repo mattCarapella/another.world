@@ -4,15 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class planet : MonoBehaviour {
     private bool _ray = false;
-    public GameObject description;
+    
     public GameObject _game;
     private int _id;
     private string _des;
     private string _owner;
     private string _name;
-    public Text owner;
-    public Text descriptionText;
-    public Text worldName;
     
 
 
@@ -25,8 +22,8 @@ public class planet : MonoBehaviour {
 	void Update () {
         if (_ray && Input.GetKeyDown(KeyCode.F)&& !_game.GetComponent<gameController>().MenuState && !_game.GetComponent<gameController>().interact && !_game.GetComponent<gameController>().processObj)
         {
-            this.attachToUI(); 
-            description.SetActive(true);
+            this.attachToUI();
+            _game.GetComponent<gameController>()._description.SetActive(true);
             _game.GetComponent<gameController>().ui_up();
             _game.GetComponent<gameController>().interact = true;
 
@@ -75,8 +72,8 @@ public class planet : MonoBehaviour {
     }
     public void attachToUI()
     {
-        owner.text = this._owner;
-        descriptionText.text = this._des;
-        worldName.text = this._name;
+        _game.GetComponent<gameController>().owner.text = this._owner;
+        _game.GetComponent<gameController>().descriptionText.text = this._des;
+        _game.GetComponent<gameController>().worldName.text = this._name;
     }
 }

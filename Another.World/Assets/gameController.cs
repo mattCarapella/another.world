@@ -6,32 +6,68 @@ using UnityEngine.UI;
 
 public class gameController:MonoBehaviour{
 
-    public GameObject Menu;
+    public GameObject Menu; // menu
+
     public bool CameraDisable =false;
-    public bool MouseVisiable = false;
+    [SerializeField] private bool MouseVisiable = false;
     public bool MenuState = false;
-    public GameObject placement;
-    public bool place_status;
-    public Button confirm;
-    public GameObject processObj;
+    
+    
     public GameObject worldModelSample;
-    public GameObject backUI;
-    public GameObject _description;
+    
     public GameObject listItem;
     public GameObject listView;
+    
     public GameObject inhand;
     public GameObject Player;
+
+    /*------------------Placement UI------------------------------*/
+
+    public GameObject placement;
+    public GameObject processObj; // placement object
+    public bool place_status;
+    public Button confirm;
     public Text ObjectName;
     public Text ObjectDes;
     public Text ObjectPrice;
-    public bool ui;
-    public bool interact = false;
+
+    /*------------------------------------------------------------*/
+
+    public bool ui; // A boolean variable to check if UI is up or not => display inhand object or not
+
+    public bool interact = false; // A boolean variable to check if current user is interacting with any obj or world
+
+    /*------------------World Description UI------------------------------*/
+    public GameObject _description; // world description pannel
     public Text owner;
     public Text descriptionText;
     public Text worldName;
-    private IDictionary<int, int> keymap;
-    public int env;
+    /*--------------------------------------------------------*/
+
+
+    private IDictionary<int, int> keymap; // a distionary to keep track
+
+    public int env; // 0 if in Universe, 1 in world
+
     
+    /*-------------------InWorld Properties Setting---------------------------*/
+    private int worldId = 0;  // world which player locate
+
+    /*------------------------------------------------------------------------*/
+
+    /*--------------------Object Description UI-------------------------------*/
+
+    public GameObject obj_description;
+    public Button Back;
+    public Text objName, X_pos, Y_pos, Z_pos;
+    public Text objDes;
+    public Text objPrice;
+
+
+    public GameObject Inventory;
+    public bool CheckInventory = false;
+    int chosen = 0;
+    /*------------------------------------------------------------------------*/
     void Start()
     {
         place_status = false;
@@ -41,7 +77,10 @@ public class gameController:MonoBehaviour{
             keymap[i] = 0;
         }
         ui = false;
-        reloadWorld(0);
+        Cursor.visible = false;
+        if (Player.GetComponent<PhotonView>().isMine) {
+            reloadWorld(0);
+        }
     }
     void Update()
     {
@@ -49,30 +88,57 @@ public class gameController:MonoBehaviour{
         {
             CameraDisable = !CameraDisable;
         }
-        if (!MouseVisiable)
+         if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact &&!CheckInventory)
         {
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact)
-        {
-            MenuState = !MenuState;
+            
+            
+                MenuState = !MenuState;
             Menu.SetActive(MenuState);
             CameraDisable = !CameraDisable;
-            MouseVisiable = !MouseVisiable;
-            ui = !ui;
-            if (ui)
-            {
-                inhand.SetActive(false);
-             
-            }else
-            {
-                inhand.SetActive(true);
-            }
+            
+                MouseVisiable = !MouseVisiable;
+                if (MouseVisiable)
+                {
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    Cursor.visible = false;
+                }
+                ui = !ui;
+                if (ui)
+                {
+                    inhand.SetActive(false);
 
+                }
+                else
+                {
+                    inhand.SetActive(true);
+                
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.I) && !processObj && !interact && !MenuState)
+        {
+            CheckInventory = !CheckInventory;
+            Inventory.SetActive(CheckInventory);
+            CameraDisable = !CameraDisable;
+            MouseVisiable = !MouseVisiable;
+            if (MouseVisiable)
+            {
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.visible = false;
+            }
+            if (CheckInventory)
+            {
+                CameraDisable = true;
+            }
+            else
+            {
+                CameraDisable = false;
+            }
         }
         if (processObj)
         {
@@ -103,6 +169,10 @@ public class gameController:MonoBehaviour{
             }
         }
 
+    }
+    public void chosenOne()
+    {
+        chosen = 1;
     }
     IEnumerator generateInGame()
     {
@@ -141,12 +211,9 @@ public class gameController:MonoBehaviour{
                 Debug.Log(x);
                 GameObject temp = Instantiate(worldModelSample);
                 temp.GetComponent<planet>()._game = this.gameObject;
-                temp.GetComponent<planet>().description = _description;
                 temp.transform.position = new Vector3(x, y, z);
                 planet sample = temp.GetComponent<planet>();
-                sample.owner = owner;
-                sample.descriptionText = descriptionText;
-                sample.worldName = worldName;
+              
                 sample.setDes(description);
                 sample.setId(worldId);
                 sample.setOwner(userId.ToString());
@@ -162,12 +229,15 @@ public class gameController:MonoBehaviour{
     {
         CameraDisable = true;
         MouseVisiable = true;
+        Cursor.visible = true;
+        
     }
 
     public void ui_down()
     {
         CameraDisable = false;
         MouseVisiable = false;
+        Cursor.visible = false;
     }
 
     public void place()
@@ -182,25 +252,56 @@ public class gameController:MonoBehaviour{
             interact = false;
         }
     }
-    public void place_request(GameObject inhand)
+    public void place_request()
     {
         Debug.Log(place_status);
         if (place_status==true)
         {
+            
             placement.SetActive(false);
 
             this.ui_down();
 
             place_status = false;
-            GameObject temp = Instantiate(inhand);
+            Player.GetComponent<PlayerController>().SpawnObject();
+
+            processObj = null;
+            /*GameObject temp = Instantiate(inhand);
+            temp.transform.SetParent(_assetHolder.transform);
             temp.transform.position = inhand.transform.position;
             temp.transform.rotation = inhand.transform.rotation;
-            temp.GetComponent<object_property>().setDescription(ObjectDes.text);
-            temp.GetComponent<object_property>().setName(ObjectName.text);
-            temp.GetComponent<object_property>().setPrice(ObjectPrice.text);
-            temp.AddComponent<BoxCollider>();
-
+            */
+            
         }
+    }
+    public void attachObjAttr(GameObject obj)
+    {
+        obj.GetComponent<object_property>().setDescription(ObjectDes.text);
+        obj.GetComponent<object_property>().setName(ObjectName.text);
+        obj.GetComponent<object_property>().setPrice(ObjectPrice.text);
+        StartCoroutine(addObjToDB(inhand));
+        obj.AddComponent<BoxCollider>();
+    }
+    public void post()
+    {
+        StartCoroutine(addObjToDB(inhand));
+    }
+
+    IEnumerator addObjToDB(GameObject inhand)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("worldidPost",worldId);
+        form.AddField("modelidPost", Player.GetComponent<Player>().getSeleted());
+        form.AddField("modelxPost", inhand.transform.position.x.ToString());
+        form.AddField("modelyPost", inhand.transform.position.y.ToString());
+        form.AddField("modelzPost", inhand.transform.position.z.ToString());
+        form.AddField("rotationxPost", inhand.transform.rotation.x.ToString());
+        form.AddField("rotationyPost", inhand.transform.rotation.y.ToString());
+        form.AddField("rotationzPost", inhand.transform.rotation.z.ToString());
+        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/test.php";
+        WWW www = new WWW(url, form);
+        yield return www;
+        Debug.Log(www.text);
     }
     public void addEntryToList(string name, float x, float y, float z)
     {
@@ -234,6 +335,10 @@ public class gameController:MonoBehaviour{
     {
 
         MenuState = false;
+    }
+    public void inv_off()
+    {
+        CheckInventory = false;
     }
     public void loadScene(int idx)
     {

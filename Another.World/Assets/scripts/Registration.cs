@@ -1,7 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System;
+using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 public class Registration : MonoBehaviour
 {
@@ -16,11 +19,7 @@ public class Registration : MonoBehaviour
     private string Password;
     private string Confirm_Password;
 
-    public Text message;
-    public GameObject popUp;
-
     string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
-
     // Use this for initialization
     void Start()
     {
@@ -37,12 +36,6 @@ public class Registration : MonoBehaviour
         WWW www = new WWW(URL, form);
         yield return www;
         Debug.Log(www.text);
-
-        if (www.text != "")
-        {
-            popUp.SetActive(true);
-            message.text = www.text;
-        }
     }
 
     // Update is called once per frame
@@ -66,49 +59,31 @@ public class Registration : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)) RegisterButton();
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (username.Equals("") || Username == "")
+            {
+                print("Username field cannot be empty");
+            }
+            else if (!Email.Contains("@"))
+            {
+                print("Email field cannot be empty");
+            }
+            else if (Password != Confirm_Password)
+            {
+                print("Passwords don't match");
+            }
+        }
 
         Username = username.GetComponent<InputField>().text.ToLower();
         Email = email.GetComponent<InputField>().text.ToLower();
         Password = password.GetComponent<InputField>().text;
         Confirm_Password = confirm_password.GetComponent<InputField>().text;
+
     }
 
     public void RegisterButton()
     {
-        if (username.Equals("") || Username == "")
-        {
-            popUp.SetActive(true);
-            message.text = "Username field cannot be empty";
-        }
-        else if (email.Equals("") || Email == "")
-        {
-            popUp.SetActive(true);
-            message.text = "Email field cannot be empty";
-        }
-        else if (Password.Length < 8 || Confirm_Password.Length < 8)
-        {
-            popUp.SetActive(true);
-            message.text = "Password has to be longer than 8 characters";
-        }
-        else if (Password != Confirm_Password)
-        {
-            popUp.SetActive(true);
-            message.text = "Passwords don't match";
-        }
-        else
-        {
-            StartCoroutine(Register());
-        }
-}
-
-    public void messagebutton()
-    {
-        popUp.SetActive(false);
-    }
-
-    public void switchScene(int i)
-    {
-        SceneManager.LoadScene(i);
+        StartCoroutine(Register());
     }
 }

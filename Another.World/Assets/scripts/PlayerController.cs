@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
         
-        _controller = _game.GetComponent<gameController>();
+        
         if (_controller.env == 0)
         {
             _speed = 20000f;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Awake() {
+        _controller = _game.GetComponent<gameController>();
         _rb = GetComponent<Rigidbody>();
 
     }
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     _lastHit.GetComponent<Renderer>().material.color = Color.white;
                     _lastHit.GetComponent<planet>().setRay(false);
+                    
                     _lastHit = null;
                 }
                 else if (_lastHit.tag == "Asset")
@@ -67,12 +69,16 @@ public class PlayerController : MonoBehaviour {
                     _lastHit = hit.collider.gameObject;
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, 105f);
                     hit.collider.gameObject.GetComponent<planet>().setRay(true);
-                }else if (hit.collider.gameObject.tag == "Asset" && hit.collider.gameObject!=inhand)
+                    hit.collider.gameObject.GetComponent<planet>()._game = this._game;
+                }
+                else if (hit.collider.gameObject.tag == "Asset" && hit.collider.gameObject!=inhand)
                 {
                     _lastHit = hit.transform.gameObject;
                     
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.yellow, Color.red, 105f);
                     hit.collider.gameObject.GetComponent<object_property>().setRay(true);
+
+                    hit.collider.gameObject.GetComponent<object_property>()._game = this._game;
                     Debug.Log("hit");
                     
                 }
@@ -100,18 +106,48 @@ public class PlayerController : MonoBehaviour {
     }
     public void reset()
     {
+        Debug.Log(_controller);
+            if (_controller.env == 0)
+            {
+                _speed = 20000f;
+                _detectRange = 500;
+            }
+            else if (_controller.env == 1)
+            {
+                _speed = 500f;
+                _detectRange = 150;
+                _lastHit = null;
+            }
         
-        if (_controller.env == 0)
-        {
-            _speed = 20000f;
-            _detectRange = 500;
-        }
-        else if (_controller.env == 1)
-        {
-            _speed = 500f;
-            _detectRange = 150;
-            _lastHit = null;
-        }
+    }
+    public void SpawnObject()
+    {
+        // You must be in a Room already
+
+        // Manually allocate PhotonViewID
+        int id1 = PhotonNetwork.AllocateViewID();
+
+        PhotonView photonView = this.GetComponent<PhotonView>();
+        int objCode = GetComponent<Player>().getSeleted();
+        _game.GetComponent<gameController>().post();
+        photonView.RPC("SpawnOnNetwork", PhotonTargets.AllBuffered, objCode, inhand.transform.position, inhand.transform.rotation, id1, _controller.ObjectDes.text, _controller.ObjectName.text, _controller.ObjectPrice.text);
+    }
+
+    
+    [PunRPC]
+    void SpawnOnNetwork(int objCode, Vector3 pos, Quaternion rot, int id1, string ObjectDes, string ObjectName,string ObjectPrice)
+    {
+        GameObject Obj = Instantiate(inhand, pos, rot) as GameObject;
+        GameObject actual = Instantiate(_game.GetComponent<gameController>().Player.GetComponent<Player>().loadedAssets[objCode]) as GameObject;
+        actual.transform.SetParent(Obj.transform);
+        // Set player's PhotonView
+        Obj.GetComponent<object_property>().setDescription(ObjectDes);
+        Obj.GetComponent<object_property>().setName(ObjectName);
+        Obj.GetComponent<object_property>().setPrice(ObjectPrice);
+        Obj.AddComponent<BoxCollider>();
+        PhotonView v = Obj.AddComponent<PhotonView>();
+        v.viewID = id1;
+        
     }
     void OnTriggerEnter(Collider c)
     {

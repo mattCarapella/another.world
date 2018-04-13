@@ -19,6 +19,8 @@ public class Login : MonoBehaviour
     public static int send_id = 0;
     public static string send_username = null;
     public static string send_email = null;
+    public static string ftp_user = null;
+    public static string ftp_password = null;
 
     string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Login.php";
     // Use this for initialization
@@ -77,14 +79,17 @@ public class Login : MonoBehaviour
             send_id = int.Parse(infoparts[1]);
             send_username = infoparts[2];
             send_email = infoparts[3];
+            ftp_user = infoparts[4];
+            ftp_password = infoparts[5];
 
-            switchScene(1);
+            switchScene(5);
         }
         else
         {
-            popUp.SetActive(true);
+           // popUp.SetActive(true);
             //message.text = "Incorrect Login Info";
-            message.text = www.text;
+            //message.text = www.text;
+            Debug.Log(www.text);
         }
 
     }
