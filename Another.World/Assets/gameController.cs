@@ -63,6 +63,9 @@ public class gameController:MonoBehaviour{
     public Text objDes;
     public Text objPrice;
 
+
+    public GameObject Inventory;
+    public bool CheckInventory = false;
     /*------------------------------------------------------------------------*/
     void Start()
     {
@@ -110,6 +113,21 @@ public class gameController:MonoBehaviour{
                 inhand.SetActive(true);
             }
 
+        }
+        if (Input.GetKeyDown(KeyCode.I) && !processObj && !interact && !MenuState)
+        {
+            CheckInventory = !CheckInventory;
+            Inventory.SetActive(CheckInventory);
+            CameraDisable = !CameraDisable;
+            MouseVisiable = !MouseVisiable;
+            if (MouseVisiable)
+            {
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.visible = false;
+            }
         }
         if (processObj)
         {
