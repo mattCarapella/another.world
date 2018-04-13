@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1056747103718258}
+  m_RootGameObject: {fileID: 1610276274591950}
   m_IsPrefabParent: 1
---- !u!1 &1056747103718258
+--- !u!1 &1610276274591950
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4531820115046508}
-  - component: {fileID: 114439629312280894}
+  - component: {fileID: 4001574513673228}
+  - component: {fileID: 114222088795634766}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4531820115046508
+--- !u!4 &4001574513673228
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1056747103718258}
+  m_GameObject: {fileID: 1610276274591950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +40,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114439629312280894
+--- !u!114 &114222088795634766
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1056747103718258}
+  m_GameObject: {fileID: 1610276274591950}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c32d44bf6e49a546aae4c615a452f5b, type: 3}
@@ -61,3 +61,18 @@ MonoBehaviour:
   processObj: {fileID: 0}
   worldModelSample: {fileID: 1847809469178724, guid: c8552d3b3ca42d142b9984b6a22827fe,
     type: 2}
+  backUI: {fileID: 0}
+  _description: {fileID: 0}
+  listItem: {fileID: 1441480424416122, guid: 410a351b49c5bba49ace0e4da55bd88a, type: 2}
+  listView: {fileID: 0}
+  inhand: {fileID: 0}
+  Player: {fileID: 0}
+  ObjectName: {fileID: 0}
+  ObjectDes: {fileID: 0}
+  ObjectPrice: {fileID: 0}
+  ui: 0
+  interact: 0
+  owner: {fileID: 0}
+  descriptionText: {fileID: 0}
+  worldName: {fileID: 0}
+  env: 0
