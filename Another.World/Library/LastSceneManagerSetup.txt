@@ -1,4 +1,10 @@
 sceneSetups:
-- path: Assets/scene/Start scene.unity
+- path: Assets/scene/CreateWorld.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/scene/Universe.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/PUNVoice/DemoVoice/DemoVoice-Scene.unity
+  isLoaded: 0
+  isActive: 0

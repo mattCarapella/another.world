@@ -6,6 +6,10 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Team_VR/Lobby#?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+<h1>Beta Release</h1>
+Landing Page: <a href = "http://ec2-18-232-184-23.compute-1.amazonaws.com/landingpage/">Click here</a><br>
+Youtube Video: https://youtu.be/39cX0Y33IsA 
+
 <h1>Alpha Release</h1>
 
 <b>Youtube Video:</b> https://youtu.be/RByZBqYu0YE
