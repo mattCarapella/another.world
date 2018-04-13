@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
         Material material = sphere.GetComponent<MeshRenderer>().sharedMaterial;
         //inhand.GetComponent<MeshFilter>().mesh = mesh;
         //inhand.GetComponent<Renderer>().material = material;
-        //inhand.transform.position = this.transform.forward * 5+this.transform.position;
+        inhand.transform.position = this.transform.forward * 5 +this.transform.position;
         GameObject.Destroy(sphere);
     }
     public void chosenOne()
@@ -91,7 +91,8 @@ public class Player : MonoBehaviour {
     public void loadfromInventory(int assetNum)
     {
         GameObject temp = (GameObject)loadedAssets[assetNum];
-        Instantiate(loadedAssets[assetNum], transform.position + new Vector3(0, 0, 5), transform.rotation, inhand.transform);
+        temp.transform.localScale = new Vector3(1, 1, 1);
+        Instantiate(loadedAssets[assetNum], inhand.transform.position, inhand.transform.rotation, inhand.transform);
         //inhand = (GameObject)loadedAssets[assetNum];
         Debug.Log(inhand);
         /*  Mesh mesh = temp.GetComponent<MeshFilter>().sharedMesh;
@@ -113,8 +114,12 @@ public class Player : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        loadPlayer();
-        StartCoroutine("loadItems");
+        if (GetComponent<PhotonView>().isMine)
+        {
+            loadPlayer();
+            StartCoroutine("loadItems");
+        }
+        
         _controller = game.GetComponent<gameController>();
     }
 	// Update is called once per frame

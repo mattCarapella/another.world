@@ -88,7 +88,7 @@ public class gameController:MonoBehaviour{
             CameraDisable = !CameraDisable;
         }
         
-        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact)
+        if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact &&!CheckInventory)
         {
             MenuState = !MenuState;
             Menu.SetActive(MenuState);
