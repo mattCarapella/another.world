@@ -20,6 +20,13 @@ public class Player : MonoBehaviour
     bool dd = false;
     int chosen = 0;
 
+	//Peter0414
+	public static double x_Pos2Store;
+	public static double y_Pos2Store;
+	public static double z_Pos2Store;
+
+
+
     /*---------------Item list genereate---------------------*/
     public GameObject itemList;
     public GameObject itemListItem;
