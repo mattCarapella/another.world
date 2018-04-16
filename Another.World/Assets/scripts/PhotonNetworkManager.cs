@@ -8,19 +8,20 @@ public class PhotonNetworkManager : MonoBehaviour {
 	[SerializeField] private Text connectionTest;
 	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject lobbyCamera;
-	[SerializeField] private Transform spawnPoint; 
+	[SerializeField] private Transform spawnPoint;
 	private string version = "0.2.1";
 	private string roomName = "current_room";
+  int currentNoOfPeopleInRoom = 0;
 
 	private void Awake ()
 	{
 		DontDestroyOnLoad (this.gameObject);
 	}
 
-	private void Start () 
+	private void Start ()
 	{
 		PhotonNetwork.ConnectUsingSettings (version);
-        UnityVoiceFrontend temp = PhotonVoiceNetwork.Client;	
+        UnityVoiceFrontend temp = PhotonVoiceNetwork.Client;
 	}
 
 	public virtual void OnJoinedLobby()
@@ -33,13 +34,22 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	public virtual void OnJoinedRoom()
 	{
-		PhotonNetwork.Instantiate (player.name, spawnPoint.position, spawnPoint.rotation, 0);
-		lobbyCamera.SetActive (false);
-	}
+        if (currentNoOfPeopleInRoom == 20)
+        {
+            currentNoOfPeopleInRoom = 0;
+            int spawnX = Random.Range(-300, 300);
+            int spawnY = Random.Range(-150, 360);
+            Vector3 newPosition = new Vector3(spawnX, spawnY, 0);
+            spawnPoint.position = newPosition;
+        }
 
-	private void Update () 
+        PhotonNetwork.Instantiate (player.name, spawnPoint.position, spawnPoint.rotation, 0);
+        lobbyCamera.SetActive (false);
+        ++currentNoOfPeopleInRoom;
+    }
+
+	private void Update ()
 	{
 		connectionTest.text = PhotonNetwork.connectionStateDetailed.ToString ();
 	}
 }
- 
