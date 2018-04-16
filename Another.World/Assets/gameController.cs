@@ -175,9 +175,11 @@ public class gameController:MonoBehaviour{
         chosen = 1;
     }
     IEnumerator generateInGame()
-    {
-        string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
-        WWW www = new WWW(URL);
+	{
+		string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
+		//skybox; gound; timespeed "\n"
+		//model_id; x; y; z; rx; ry; rz "\n"
+		WWW www = new WWW (URL);
         yield return www;
 
     }
