@@ -370,4 +370,8 @@ public class gameController:MonoBehaviour{
     {
         interact = false;
     }
+	public void disconnect(){
+		AssetBundle.UnloadAllAssetBundles (true);
+		PhotonNetwork.Disconnect ();
+	}
 }

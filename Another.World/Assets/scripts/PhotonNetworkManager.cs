@@ -14,7 +14,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 
 	private void Awake ()
 	{
-		DontDestroyOnLoad (this.gameObject);
+//		DontDestroyOnLoad (this.gameObject);
 	}
 
 	private void Start () 
@@ -35,8 +35,11 @@ public class PhotonNetworkManager : MonoBehaviour {
 	{
 		PhotonNetwork.Instantiate (player.name, spawnPoint.position, spawnPoint.rotation, 0);
 		lobbyCamera.SetActive (false);
-	}
 
+	}
+	public void disconnect(){
+		PhotonNetwork.Disconnect ();
+	}
 	private void Update () 
 	{
 		connectionTest.text = PhotonNetwork.connectionStateDetailed.ToString ();
