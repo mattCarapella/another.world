@@ -31,8 +31,13 @@ public class getCurrentPos : MonoBehaviour {
 	}
 
 	public void clickToSavePos() {
+		
 		x_pos2Store = x_pos;
 		y_pos2Store = y_pos;
 		z_pos2Store = z_pos;
+		Debug.Log ("Current x_pos2Store : " + x_pos2Store);
+		Debug.Log ("Current x_pos2Store : " + y_pos2Store);
+		Debug.Log ("Current x_pos2Store : " + z_pos2Store);
+
 	}
 }

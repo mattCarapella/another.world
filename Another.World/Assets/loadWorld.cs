@@ -33,8 +33,9 @@ public class loadWorld : MonoBehaviour {
 	void Start () {
 //		WWWForm form = new WWWForm();
 
-		skyNumFromDB = 3;
-		groundNumFromDB = 4;
+		skyNumFromDB = UpdateToDatabase.testSkyNum;
+		groundNumFromDB = UpdateToDatabase.testGoundNum;
+
 
 		Debug.Log ("Gen Wrold with Sky " + skyNumFromDB + " and Gound# " + groundNumFromDB);
 		switch(skyNumFromDB) {

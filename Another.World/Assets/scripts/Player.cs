@@ -165,6 +165,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		x_Pos2Store = inhand.transform.position.x;
+		y_Pos2Store = inhand.transform.position.y;
+		z_Pos2Store = inhand.transform.position.z;
 
         if (_controller.env == 0 && inhand)
         {

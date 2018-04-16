@@ -16,6 +16,9 @@ public class UpdateToDatabase : MonoBehaviour {
 	private double y_pos;
 	private double z_pos;
 
+	public static int testSkyNum;
+	public static int testGoundNum;
+
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +35,9 @@ public class UpdateToDatabase : MonoBehaviour {
 		x_pos = getCurrentPos.x_pos2Store;
 		y_pos = getCurrentPos.y_pos2Store;
 		z_pos = getCurrentPos.z_pos2Store;
+
+		testSkyNum = skyToStore;
+		testGoundNum = groundToStore;
 	}
 
 	public void updateDatabase () {
