@@ -12,9 +12,9 @@ public class UpdateToDatabase : MonoBehaviour {
 	private int groundToStore;
 	private int skyToStore;
 
-	private double x_pos;
-	private double y_pos;
-	private double z_pos;
+	private double x_pos = 0;
+	private double y_pos = 0;
+	private double z_pos = 0;
 
 	public static int testSkyNum;
 	public static int testGoundNum;
@@ -32,16 +32,17 @@ public class UpdateToDatabase : MonoBehaviour {
 		worldInfo = SetWorldInfo.Worldinfo;
 		groundToStore = setGround.groundToStore;
 		skyToStore = setSkybox.skyToStore;
-		x_pos = getCurrentPos.x_pos2Store;
-		y_pos = getCurrentPos.y_pos2Store;
-		z_pos = getCurrentPos.z_pos2Store;
+		
 
 		testSkyNum = skyToStore;
 		testGoundNum = groundToStore;
 	}
 
 	public void updateDatabase () {
-		StartCoroutine(worldUpdate());
+        x_pos = Player.x_Pos2Store;
+        y_pos = Player.y_Pos2Store;
+        z_pos = Player.z_Pos2Store;
+        StartCoroutine(worldUpdate());
 	}
 
 

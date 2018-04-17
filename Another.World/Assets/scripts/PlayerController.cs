@@ -19,14 +19,14 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         
         
-        if (_controller.env == 0)
+        if (PhotonNetworkManager.world<= 0)
         {
             _speed = 20000f;
             _detectRange = 500;
         }
-        else if (_controller.env == 1)
+        else if (PhotonNetworkManager.world > 0)
         {
-            _speed = 5000f;
+            _speed = 200f;
             _detectRange = 50;
         }
     }
@@ -107,15 +107,15 @@ public class PlayerController : MonoBehaviour {
     public void reset()
     {
         Debug.Log(_controller);
-            if (_controller.env == 0)
+            if (PhotonNetworkManager.world<=0)
             {
                 _speed = 20000f;
                 _detectRange = 500;
             }
-            else if (_controller.env == 1)
+            else if (PhotonNetworkManager.world > 0 )
             {
-                _speed = 500f;
-                _detectRange = 150;
+                _speed = 200f;
+                _detectRange = 50;
                 _lastHit = null;
             }
         
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour {
         PhotonView photonView = this.GetComponent<PhotonView>();
         int objCode = GetComponent<Player>().getSeleted();
         _game.GetComponent<gameController>().post();
-        photonView.RPC("SpawnOnNetwork", PhotonTargets.AllBuffered, objCode, inhand.transform.position, inhand.transform.rotation, id1, _controller.ObjectDes.text, _controller.ObjectName.text, _controller.ObjectPrice.text);
+        photonView.RPC("SpawnOnNetwork", PhotonTargets.All, objCode, inhand.transform.position, inhand.transform.rotation, id1, _controller.ObjectDes.text, _controller.ObjectName.text, _controller.ObjectPrice.text);
     }
 
     
@@ -138,14 +138,22 @@ public class PlayerController : MonoBehaviour {
     void SpawnOnNetwork(int objCode, Vector3 pos, Quaternion rot, int id1, string ObjectDes, string ObjectName,string ObjectPrice)
     {
         GameObject Obj = Instantiate(inhand, pos, rot) as GameObject;
-        GameObject actual = Instantiate(_game.GetComponent<gameController>().Player.GetComponent<Player>().loadedAssets[objCode]) as GameObject;
+        Debug.Log(objCode);
+        if (Obj.transform.childCount>0)
+        {
+            Destroy(Obj.transform.GetChild(0).gameObject);
+        }
+        GameObject actual = Instantiate(GetComponent<Player>().loadedAssets[objCode]) as GameObject;
+
         actual.transform.SetParent(Obj.transform);
+        actual.transform.position = Obj.transform.position;
+        actual.transform.rotation = Obj.transform.rotation;
         // Set player's PhotonView
         Obj.GetComponent<object_property>().setDescription(ObjectDes);
         Obj.GetComponent<object_property>().setName(ObjectName);
         Obj.GetComponent<object_property>().setPrice(ObjectPrice);
         Obj.AddComponent<BoxCollider>();
-        PhotonView v = Obj.AddComponent<PhotonView>();
+        PhotonView v = actual.AddComponent<PhotonView>();
         v.viewID = id1;
         
     }

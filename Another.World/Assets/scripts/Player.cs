@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
 
-
+        loadPlayer();
+        StartCoroutine(loadItems());
 
     }
 
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
         //inhand.GetComponent<MeshFilter>().mesh = mesh;
         //inhand.GetComponent<Renderer>().material = material;
         inhand.transform.position = this.transform.forward * 5 + this.transform.position;
+        
         GameObject.Destroy(sphere);
     }
     public void chosenOne()
@@ -67,7 +69,7 @@ public class Player : MonoBehaviour
     IEnumerator loadItems()
     {
         Debug.Log("********* NOW IN LOADITEMS() *********");
-        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_2";
+        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_3";
         WWW www = WWW.LoadFromCacheOrDownload(url, 1);
 
         //int itemct = 0;
@@ -113,8 +115,11 @@ public class Player : MonoBehaviour
                 idx += 1;
                 //Instantiate(asset, transform.position, transform.rotation);
             }
+            
         }
         Debug.Log("loaded assets " + loadedAssets.Length);
+        
+        AssetBundle.UnloadAllAssetBundles(false);
         // GameObject.Find("Test test").GetComponentInChildren<Text>().text = loadedAssets[0].name;
         // GameObject.Find("ExitInventoryMenu").GetComponentInChildren<Text>().text = "*******";
 
@@ -130,7 +135,8 @@ public class Player : MonoBehaviour
 
         GameObject temp = (GameObject)loadedAssets[assetNum];
         selected = assetNum;
-        temp.transform.localScale = new Vector3(1, 1, 1);
+        
+        //temp.transform.localScale = new Vector3(1, 1, 1);
         Instantiate(loadedAssets[assetNum], inhand.transform.position, inhand.transform.rotation, inhand.transform);
         //inhand = (GameObject)loadedAssets[assetNum];
         Debug.Log(inhand);
@@ -154,11 +160,6 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (GetComponent<PhotonView>().isMine)
-        {
-            loadPlayer();
-            StartCoroutine(loadItems());
-        }
 
         _controller = game.GetComponent<gameController>();
     }
@@ -184,6 +185,7 @@ public class Player : MonoBehaviour
             //Debug.Log("read");
         }
     }
+    
     public int getSeleted()
     {
         return selected;
