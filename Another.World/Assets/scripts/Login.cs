@@ -82,7 +82,7 @@ public class Login : MonoBehaviour
             ftp_user = infoparts[4];
             ftp_password = infoparts[5];
 
-            switchScene(5);
+            switchScene(2);
         }
         else
         {

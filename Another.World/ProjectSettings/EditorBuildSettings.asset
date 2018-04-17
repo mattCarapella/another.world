@@ -5,21 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/scene/Start scene.unity
     guid: 4759a04ff22fe3449a7b5e34c448fcfb
   - enabled: 0
-    path: Assets/scene/model select.unity
-    guid: 27dd8c3af3355c8458886fada9997fab
-  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
     path: Assets/scene/CreateWorld.unity
     guid: e3160fa6032ea431bbf5b486f66a86a9
-  - enabled: 0
+  - enabled: 1
     path: Assets/scene/Universe.unity
     guid: 93979477de2c3df4dac8dbae24ca0598
-  - enabled: 0
+  - enabled: 1
     path: Assets/scene/Registration Page.unity
     guid: a89f39f357609bb4aae75d5807a4969f
-  - enabled: 1
+  - enabled: 0
     path: Assets/PUNVoice/DemoVoice/DemoVoice-Scene.unity
     guid: 833e8409304dace449e9c5cf686420d7
+  - enabled: 1
+    path: Assets/scene/GenWorld.unity
+    guid: 40f64c37eabe0482c883e08cea7e7212

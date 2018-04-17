@@ -21,6 +21,16 @@ public class goToScene : MonoBehaviour
     }
     public void switchScene(int i)
     {
-        SceneManager.LoadScene(i);
+        if (i ==2 && PhotonNetworkManager.world ==0) {
+            
+        }else if(i == 4)
+        {
+            SceneManager.LoadScene(i);
+            PhotonNetwork.ReconnectAndRejoin();
+        }
+        else
+        {
+            SceneManager.LoadScene(i);
+        }
     }
 }

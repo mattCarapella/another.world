@@ -4,20 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class gameController:MonoBehaviour{
+public class gameController : MonoBehaviour
+{
 
     public GameObject Menu; // menu
 
-    public bool CameraDisable =false;
-    [SerializeField] private bool MouseVisiable = false;
+    public bool CameraDisable = false;
+    [SerializeField]
+    private bool MouseVisiable;
     public bool MenuState = false;
-    
-    
+
+
     public GameObject worldModelSample;
-    
+
     public GameObject listItem;
     public GameObject listView;
-    
+
     public GameObject inhand;
     public GameObject Player;
 
@@ -49,7 +51,7 @@ public class gameController:MonoBehaviour{
 
     public int env; // 0 if in Universe, 1 in world
 
-    
+
     /*-------------------InWorld Properties Setting---------------------------*/
     private int worldId = 0;  // world which player locate
 
@@ -77,25 +79,24 @@ public class gameController:MonoBehaviour{
             keymap[i] = 0;
         }
         ui = false;
-        Cursor.visible = false;
-        if (Player.GetComponent<PhotonView>().isMine) {
-            reloadWorld(0);
-        }
+        MouseVisiable = false;
+
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            CameraDisable = !CameraDisable;
-        }
-         if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact &&!CheckInventory)
-        {
-            
-            
+        if (Player.GetComponent<PhotonView>().isMine) {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                CameraDisable = !CameraDisable;
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && !processObj && !interact && !CheckInventory)
+            {
+
+
                 MenuState = !MenuState;
-            Menu.SetActive(MenuState);
-            CameraDisable = !CameraDisable;
-            
+                Menu.SetActive(MenuState);
+                CameraDisable = !CameraDisable;
+
                 MouseVisiable = !MouseVisiable;
                 if (MouseVisiable)
                 {
@@ -114,78 +115,98 @@ public class gameController:MonoBehaviour{
                 else
                 {
                     inhand.SetActive(true);
-                
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.I) && !processObj && !interact && !MenuState)
-        {
-            CheckInventory = !CheckInventory;
-            Inventory.SetActive(CheckInventory);
-            CameraDisable = !CameraDisable;
-            MouseVisiable = !MouseVisiable;
-            if (MouseVisiable)
-            {
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.visible = false;
-            }
-            if (CheckInventory)
-            {
-                CameraDisable = true;
-            }
-            else
-            {
-                CameraDisable = false;
-            }
-        }
-        if (processObj)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                keymap[(int)KeyCode.Q] = 1;
-            }
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                keymap[(int)KeyCode.Q] = 0;
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                keymap[(int)KeyCode.E] = 1;
-            }
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                keymap[(int)KeyCode.E] = 0;
-            }
-            if (keymap[(int)KeyCode.Q]==1)
-            {
-                processObj.transform.Rotate(Vector3.up, Time.deltaTime*50f);
-                Debug.Log(processObj.transform.rotation);
-            }
-            else if (keymap[(int)KeyCode.E] == 1)
-            {
-                processObj.transform.Rotate(Vector3.down, Time.deltaTime*50f);
-            }
-        }
 
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.I) && !processObj && !interact && !MenuState)
+            {
+                CheckInventory = !CheckInventory;
+                Inventory.SetActive(CheckInventory);
+                CameraDisable = !CameraDisable;
+                MouseVisiable = !MouseVisiable;
+                if (MouseVisiable)
+                {
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    Cursor.visible = false;
+                }
+                if (CheckInventory)
+                {
+                    CameraDisable = true;
+                }
+                else
+                {
+                    CameraDisable = false;
+                }
+            }
+            if (processObj)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    keymap[(int)KeyCode.Q] = 1;
+                }
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    keymap[(int)KeyCode.Q] = 0;
+                }
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    keymap[(int)KeyCode.E] = 1;
+                }
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    keymap[(int)KeyCode.E] = 0;
+                }
+                if (keymap[(int)KeyCode.Q] == 1)
+                {
+                    processObj.transform.Rotate(Vector3.up, Time.deltaTime * 50f);
+                    Debug.Log(processObj.transform.rotation);
+                }
+                else if (keymap[(int)KeyCode.E] == 1)
+                {
+                    processObj.transform.Rotate(Vector3.down, Time.deltaTime * 50f);
+                }
+            }
+        }
     }
     public void chosenOne()
     {
         chosen = 1;
     }
-    IEnumerator generateInGame()
+    IEnumerator generateInGame(int world)
     {
         string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetWorldInfo.php";
+        //skybox; gound; timespeed "\n"
+        //model_id; x; y; z; rx; ry; rz "\n"
+        WWWForm form = new WWWForm();
+        form.AddField("worldidPost", world);
         WWW www = new WWW(URL);
         yield return www;
-
+        Debug.Log(www.text);
+        string response = www.text;
+        string[] rows = response.Split('\n');
+        string[] fcol = rows[0].Split(';');
+        GameObject.Find("GenTheWorld").GetComponent<loadWorld>().attachSkyandGround(int.Parse(fcol[0]), int.Parse(fcol[1]));
+        for (int i = 1;i < rows.Length;i++)
+        {
+            if (rows[i] != "")
+            {
+                string[] cols = rows[i].Split(';');
+                GameObject temp = (GameObject) this.Player.GetComponent<Player>().loadedAssets[int.Parse(cols[0])];
+                temp.transform.position =  new Vector3(float.Parse(cols[1]), float.Parse(cols[2]), float.Parse(cols[3]));
+                temp.transform.rotation = new Quaternion(float.Parse(cols[4]), float.Parse(cols[5]), float.Parse(cols[6]),0);
+                Instantiate(temp);
+            }
+        }
     }
-    IEnumerator generateWorld() {
+    IEnumerator generateWorld()
+    {
         string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/GetUniverseInfo.php";
         WWWForm form = new WWWForm();
-        form.AddField("idPost",Login.send_id);
-        WWW www = new WWW(URL,form);
+        form.AddField("idPost", Login.send_id);
+        WWW www = new WWW(URL, form);
         Debug.Log(URL);
         yield return www;
         string response = www.text;
@@ -213,7 +234,7 @@ public class gameController:MonoBehaviour{
                 temp.GetComponent<planet>()._game = this.gameObject;
                 temp.transform.position = new Vector3(x, y, z);
                 planet sample = temp.GetComponent<planet>();
-              
+
                 sample.setDes(description);
                 sample.setId(worldId);
                 sample.setOwner(userId.ToString());
@@ -230,7 +251,7 @@ public class gameController:MonoBehaviour{
         CameraDisable = true;
         MouseVisiable = true;
         Cursor.visible = true;
-        
+
     }
 
     public void ui_down()
@@ -245,7 +266,8 @@ public class gameController:MonoBehaviour{
 
         Debug.Log(place_status);
         confirm.interactable = true;
-        if (place_status==false) {
+        if (place_status == false)
+        {
             placement.SetActive(true);
             this.ui_up();
             place_status = true;
@@ -255,9 +277,9 @@ public class gameController:MonoBehaviour{
     public void place_request()
     {
         Debug.Log(place_status);
-        if (place_status==true)
+        if (place_status == true)
         {
-            
+
             placement.SetActive(false);
 
             this.ui_down();
@@ -271,7 +293,7 @@ public class gameController:MonoBehaviour{
             temp.transform.position = inhand.transform.position;
             temp.transform.rotation = inhand.transform.rotation;
             */
-            
+
         }
     }
     public void attachObjAttr(GameObject obj)
@@ -290,7 +312,7 @@ public class gameController:MonoBehaviour{
     IEnumerator addObjToDB(GameObject inhand)
     {
         WWWForm form = new WWWForm();
-        form.AddField("worldidPost",worldId);
+        form.AddField("worldidPost", PhotonNetworkManager.world);
         form.AddField("modelidPost", Player.GetComponent<Player>().getSeleted());
         form.AddField("modelxPost", inhand.transform.position.x.ToString());
         form.AddField("modelyPost", inhand.transform.position.y.ToString());
@@ -312,7 +334,7 @@ public class gameController:MonoBehaviour{
         temp.transform.GetChild(2).GetComponent<Text>().text = "y: " + y;
         temp.transform.GetChild(3).GetComponent<Text>().text = "z: " + z;
         temp.transform.localScale = new Vector3(1, 1, 1);
-        temp.transform.rotation.Set(0,0,0,0);
+        temp.transform.rotation.Set(0, 0, 0, 0);
 
 
     }
@@ -340,13 +362,9 @@ public class gameController:MonoBehaviour{
     {
         CheckInventory = false;
     }
-    public void loadScene(int idx)
+    public static void loadScene(int idx)
     {
         SceneManager.LoadScene(idx);
-        ui_down();
-        _description.SetActive(false);
-        this.env = 1;
-        Player.GetComponent<PlayerController>().reset();
     }
     public void exit()
     {
@@ -358,16 +376,24 @@ public class gameController:MonoBehaviour{
         if (env == 0)
         {
             StartCoroutine(generateWorld());
-            
         }
-        /*else
+        else
         {
-            StartCoroutine(generateInGame());
-        }*/
+            StartCoroutine(generateInGame(PhotonNetworkManager.world));
+        }
         Player.GetComponent<PlayerController>().reset();
     }
     public void interact_off()
     {
         interact = false;
+    }
+    public void disconnect()
+    {
+        AssetBundle.UnloadAllAssetBundles(true);
+        PhotonNetwork.Disconnect();
+    }
+    public void changeWorld(int idx)
+    {
+        PhotonNetworkManager.world = idx;
     }
 }
