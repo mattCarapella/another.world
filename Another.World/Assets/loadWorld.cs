@@ -31,12 +31,12 @@ public class loadWorld : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //		WWWForm form = new WWWForm();
+
         skyNumFromDB = UpdateToDatabase.testSkyNum;
         groundNumFromDB = UpdateToDatabase.testGoundNum;
 
 
-        Debug.Log("Gen Wrold with Sky " + skyNumFromDB + " and Gound# " + groundNumFromDB);
+        //Debug.Log("Gen World with Sky " + skyNumFromDB + " and Ground# " + groundNumFromDB);
         switch (skyNumFromDB)
         {
             case 1:
@@ -111,7 +111,7 @@ public class loadWorld : MonoBehaviour {
     public void attachSkyandGround(int skyNumFromDB, int groundNumFromDB)
     {
        
-        Debug.Log("Gen Wrold with Sky " + skyNumFromDB + " and Gound# " + groundNumFromDB);
+        //Debug.Log("Gen World with Sky " + skyNumFromDB + " and Ground# " + groundNumFromDB);
         switch (skyNumFromDB)
         {
             case 1:

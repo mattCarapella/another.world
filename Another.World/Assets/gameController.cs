@@ -182,9 +182,9 @@ public class gameController : MonoBehaviour
         //model_id; x; y; z; rx; ry; rz "\n"
         WWWForm form = new WWWForm();
         form.AddField("worldidPost", world);
-        WWW www = new WWW(URL);
+        WWW www = new WWW(URL, form);
         yield return www;
-        Debug.Log(www.text);
+        //Debug.Log(www.text);
         string response = www.text;
         string[] rows = response.Split('\n');
         string[] fcol = rows[0].Split(';');
@@ -207,29 +207,30 @@ public class gameController : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("idPost", Login.send_id);
         WWW www = new WWW(URL, form);
-        Debug.Log(URL);
+        //Debug.Log(URL);
         yield return www;
         string response = www.text;
-        Debug.Log(response);
+        //Debug.Log(response);
         string[] rows = response.Split('\n');
 
         foreach (string row in rows)
         {
             if (row != "")
             {
-                Debug.Log(row);
+                //Debug.Log(row);
                 string[] cols = row.Split(';');
-                Debug.Log(cols[0]);
+                //Debug.Log(cols[0]);
                 int worldId = int.Parse(cols[0]);
-                Debug.Log(worldId);
+                //Debug.Log(worldId);
                 int userId = int.Parse(cols[1]);
-                string title = cols[2];
-                string description = cols[3];
-                float x = float.Parse(cols[4]);
-                float y = float.Parse(cols[5]);
-                float z = float.Parse(cols[6]);
+                string username = cols[2];
+                string title = cols[3];
+                string description = cols[4];
+                float x = float.Parse(cols[5]);
+                float y = float.Parse(cols[6]);
+                float z = float.Parse(cols[7]);
 
-                Debug.Log(x);
+                //Debug.Log(x);
                 GameObject temp = Instantiate(worldModelSample);
                 temp.GetComponent<planet>()._game = this.gameObject;
                 temp.transform.position = new Vector3(x, y, z);
@@ -237,7 +238,7 @@ public class gameController : MonoBehaviour
 
                 sample.setDes(description);
                 sample.setId(worldId);
-                sample.setOwner(userId.ToString());
+                sample.setOwner(username);
                 sample.setName(title);
                 addEntryToList(title, x, y, z);
 
@@ -251,7 +252,6 @@ public class gameController : MonoBehaviour
         CameraDisable = true;
         MouseVisiable = true;
         Cursor.visible = true;
-
     }
 
     public void ui_down()
@@ -264,7 +264,7 @@ public class gameController : MonoBehaviour
     public void place()
     {
 
-        Debug.Log(place_status);
+        //Debug.Log(place_status);
         confirm.interactable = true;
         if (place_status == false)
         {
@@ -276,7 +276,7 @@ public class gameController : MonoBehaviour
     }
     public void place_request()
     {
-        Debug.Log(place_status);
+        //Debug.Log(place_status);
         if (place_status == true)
         {
 
@@ -320,10 +320,10 @@ public class gameController : MonoBehaviour
         form.AddField("rotationxPost", inhand.transform.rotation.x.ToString());
         form.AddField("rotationyPost", inhand.transform.rotation.y.ToString());
         form.AddField("rotationzPost", inhand.transform.rotation.z.ToString());
-        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/test.php";
+        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/AddObjects.php";
         WWW www = new WWW(url, form);
         yield return www;
-        Debug.Log(www.text);
+        //Debug.Log(www.text);
     }
     public void addEntryToList(string name, float x, float y, float z)
     {

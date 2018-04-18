@@ -7,6 +7,7 @@ public class UpdateToDatabase : MonoBehaviour {
 	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/CreateWorld.php";
 
 	private int userID;
+    private string username;
 	private string worldName;
 	private string worldInfo;
 	private int groundToStore;
@@ -28,6 +29,7 @@ public class UpdateToDatabase : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		userID = Login.send_id;
+        username = Login.send_username;
 		worldName = SetWorldInfo.Worldname;
 		worldInfo = SetWorldInfo.Worldinfo;
 		groundToStore = setGround.groundToStore;
@@ -48,6 +50,7 @@ public class UpdateToDatabase : MonoBehaviour {
 
 	IEnumerator worldUpdate() {
 		WWWForm form = new WWWForm();
+        /*
 		Debug.Log ("================Version 0.0.2===================");
 		Debug.Log ("idPost:" + userID);
 		Debug.Log ("worldNamePost:" + worldName); //String
@@ -57,9 +60,10 @@ public class UpdateToDatabase : MonoBehaviour {
 		Debug.Log ("xPost:" + x_pos);//Int
 		Debug.Log ("yPost:" + y_pos);//Int
 		Debug.Log ("zPost:" + z_pos);//Int
-
+        */
 
 		form.AddField ("idPost", userID);
+        form.AddField ("usernamePost", username);
 		form.AddField ("worldNamePost", worldName);
 		form.AddField ("worldInfoPost", worldInfo);
 		form.AddField ("worldSkyPost", skyToStore);
@@ -73,6 +77,6 @@ public class UpdateToDatabase : MonoBehaviour {
 		WWW www = new WWW(URL, form);
 
 		yield return www;
-		Debug.Log (www.text);
+		//Debug.Log (www.text);
 	}
 }

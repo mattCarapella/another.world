@@ -7,18 +7,18 @@ $user_password = hash('sha256', $_POST[htmlentities("passwordPost")]);
 
 if ($user_email != "" && $user_password != "") {
     
-    $sql = "SELECT id, username, password FROM users WHERE email = ?";
+    $sql = "SELECT id, username, password, fuser, fpass FROM users WHERE email = ?";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $user_email); // bind parameters for markers
     $stmt->execute(); // execute query
-    $stmt->bind_result($id, $username, $db_password); // bind result variable
+    $stmt->bind_result($id, $username, $db_password, $fuser, $fpass); // bind result variable
     $stmt->store_result(); // fetch value
     
     if ($stmt->num_rows == 1) {
         if ($stmt->fetch()) {
             if (decrypt($db_password) == $user_password) {
-                echo "IN;".$id.";".$username.";".$user_email;
+                echo "IN;".$id.";".$username.";".$user_email.";".$fuser.";".$fpass;
             } else {
                 echo "Wrong Password";
             }

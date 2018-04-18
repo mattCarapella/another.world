@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveAndExit : MonoBehaviour {
-	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
+
 	void Start () {
 		Vector3 pos = transform.position;
 	}
