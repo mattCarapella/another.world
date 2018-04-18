@@ -86,10 +86,8 @@ public class Login : MonoBehaviour
         }
         else
         {
-           // popUp.SetActive(true);
-            //message.text = "Incorrect Login Info";
-            //message.text = www.text;
-            Debug.Log(www.text);
+            popUp.SetActive(true);
+            message.text = www.text;
         }
 
     }

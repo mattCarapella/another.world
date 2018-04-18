@@ -11,7 +11,7 @@ public class PhotonNetworkManager : MonoBehaviour {
 	[SerializeField] private Transform spawnPoint;
     
     public static int world = 0;
-    private string version = "0.3.1";
+    private string version = "0.3.2";
 	private string roomName = "current_room";
     private static bool create = false;
     private void Awake()

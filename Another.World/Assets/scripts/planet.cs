@@ -27,7 +27,7 @@ public class planet : MonoBehaviour {
             _game.GetComponent<gameController>().ui_up();
             _game.GetComponent<gameController>().interact = true;
             PhotonNetworkManager.world = _id;
-            Debug.Log(PhotonNetworkManager.world);
+            //Debug.Log(PhotonNetworkManager.world);
 
         }
         

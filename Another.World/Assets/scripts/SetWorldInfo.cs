@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SetWorldInfo : MonoBehaviour {
-	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/CreateWorld.php";
 
 	public Text worldname;
 	public Text worldinfo;

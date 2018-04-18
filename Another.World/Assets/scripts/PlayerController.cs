@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
             Debug.DrawRay(this.transform.position, this.transform.forward * 50);
             if (_lastHit)
             {
-                Debug.Log(_lastHit.tag);
+                //Debug.Log(_lastHit.tag);
                 if (_lastHit.tag == "World")
                 {
                     _lastHit.GetComponent<Renderer>().material.color = Color.white;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour {
     void SpawnOnNetwork(int objCode, Vector3 pos, Quaternion rot, int id1, string ObjectDes, string ObjectName,string ObjectPrice)
     {
         GameObject Obj = Instantiate(inhand, pos, rot) as GameObject;
-        Debug.Log(objCode);
+        //Debug.Log(objCode);
         if (Obj.transform.childCount>0)
         {
             Destroy(Obj.transform.GetChild(0).gameObject);
