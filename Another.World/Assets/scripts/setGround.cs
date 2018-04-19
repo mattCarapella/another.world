@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class setGround : MonoBehaviour {
-	string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Register.php";
 
 	public Image ground1;
 	public Image ground2;

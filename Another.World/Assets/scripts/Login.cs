@@ -82,14 +82,12 @@ public class Login : MonoBehaviour
             ftp_user = infoparts[4];
             ftp_password = infoparts[5];
 
-            switchScene(5);
+            switchScene(2);
         }
         else
         {
-           // popUp.SetActive(true);
-            //message.text = "Incorrect Login Info";
-            //message.text = www.text;
-            Debug.Log(www.text);
+            popUp.SetActive(true);
+            message.text = www.text;
         }
 
     }

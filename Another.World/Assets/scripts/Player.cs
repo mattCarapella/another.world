@@ -20,6 +20,13 @@ public class Player : MonoBehaviour
     bool dd = false;
     int chosen = 0;
 
+	//Peter0414
+	public static double x_Pos2Store;
+	public static double y_Pos2Store;
+	public static double z_Pos2Store;
+
+
+
     /*---------------Item list genereate---------------------*/
     public GameObject itemList;
     public GameObject itemListItem;
@@ -29,7 +36,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
 
-
+        loadPlayer();
+        StartCoroutine(loadItems());
 
     }
 
@@ -51,6 +59,7 @@ public class Player : MonoBehaviour
         //inhand.GetComponent<MeshFilter>().mesh = mesh;
         //inhand.GetComponent<Renderer>().material = material;
         inhand.transform.position = this.transform.forward * 5 + this.transform.position;
+        
         GameObject.Destroy(sphere);
     }
     public void chosenOne()
@@ -59,8 +68,8 @@ public class Player : MonoBehaviour
     }
     IEnumerator loadItems()
     {
-        Debug.Log("********* NOW IN LOADITEMS() *********");
-        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_2";
+        //Debug.Log("********* NOW IN LOADITEMS() *********");
+        string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_3";
         WWW www = WWW.LoadFromCacheOrDownload(url, 1);
 
         //int itemct = 0;
@@ -88,7 +97,7 @@ public class Player : MonoBehaviour
         //}
         //}
         yield return www;
-        Debug.Log("current asset bundle " + www.assetBundle);
+        //Debug.Log("current asset bundle " + www.assetBundle);
 
         if (www.assetBundle != null)
         {
@@ -98,7 +107,7 @@ public class Player : MonoBehaviour
             int idx = 0;
             foreach (Object asset in assets)
             {
-                Debug.Log("******** " + asset.name);
+                //Debug.Log("******** " + asset.name);
                 GameObject temp = Instantiate(itemListItem, itemList.transform);
                 temp.GetComponentInChildren<Text>().text = asset.name;
                 int ridx = idx;
@@ -106,8 +115,11 @@ public class Player : MonoBehaviour
                 idx += 1;
                 //Instantiate(asset, transform.position, transform.rotation);
             }
+            
         }
-        Debug.Log("loaded assets " + loadedAssets.Length);
+        //Debug.Log("loaded assets " + loadedAssets.Length);
+        
+        AssetBundle.UnloadAllAssetBundles(false);
         // GameObject.Find("Test test").GetComponentInChildren<Text>().text = loadedAssets[0].name;
         // GameObject.Find("ExitInventoryMenu").GetComponentInChildren<Text>().text = "*******";
 
@@ -123,7 +135,8 @@ public class Player : MonoBehaviour
 
         GameObject temp = (GameObject)loadedAssets[assetNum];
         selected = assetNum;
-        temp.transform.localScale = new Vector3(1, 1, 1);
+        
+        //temp.transform.localScale = new Vector3(1, 1, 1);
         Instantiate(loadedAssets[assetNum], inhand.transform.position, inhand.transform.rotation, inhand.transform);
         //inhand = (GameObject)loadedAssets[assetNum];
         Debug.Log(inhand);
@@ -147,17 +160,15 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (GetComponent<PhotonView>().isMine)
-        {
-            loadPlayer();
-            StartCoroutine(loadItems());
-        }
 
         _controller = game.GetComponent<gameController>();
     }
     // Update is called once per frame
     void Update()
     {
+		x_Pos2Store = inhand.transform.position.x;
+		y_Pos2Store = inhand.transform.position.y;
+		z_Pos2Store = inhand.transform.position.z;
 
         if (_controller.env == 0 && inhand)
         {
@@ -174,6 +185,7 @@ public class Player : MonoBehaviour
             //Debug.Log("read");
         }
     }
+    
     public int getSeleted()
     {
         return selected;

@@ -3212,6 +3212,7 @@ GameObject:
   - component: {fileID: 840719716}
   - component: {fileID: 840719715}
   - component: {fileID: 840719719}
+  - component: {fileID: 840719718}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3288,13 +3289,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 840719719}
-        m_MethodName: find
-        m_Mode: 1
+      - m_Target: {fileID: 840719718}
+        m_MethodName: switchScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -3334,6 +3335,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840719713}
+--- !u!114 &840719718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840719713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76bddd51d6b34bfdbd64229c9d8ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!114 &840719719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4656,7 +4669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.061727136, y: -159.94879}
+  m_AnchoredPosition: {x: 0.061727136, y: -135}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1106112465
