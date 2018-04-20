@@ -23,7 +23,7 @@ What each team member accomplished since last meeting:
 Shawn: 
 Ira: worked on model select, implemented help scene, scene switch bug fixes, item bar naming
 Matt: added asset bundles for players and added many more assets for users
-Amiya: 
+Amiya: Finished writing the script for adding objects in the world and setting up the database for it
 Peter: organize Ground setting
 
 What each team member will accomplish before next meeting: 
@@ -31,5 +31,5 @@ What each team member will accomplish before next meeting:
 Shawn: 
 Ira: model select attaching model choice to player #11
 Matt: VR implementation
-Amiya: 
+Amiya: Fix some the bugs and version 0.3.1 has and add the FTP client in the project
 Peter: puting new ground option and fix sun setting
