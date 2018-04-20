@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+
 public class Player : MonoBehaviour
 {
 
     protected string _name;
     public GameObject inhand;
-    public Text x_pos;
-    public Text y_pos;
-    public Text z_pos;
+
     public GameObject game;
     private gameController _controller;
     private static bool created = false;
@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
     int chosen = 0;
 
 	//Peter0414
+	[SyncVar]
+	public Text x_pos;
+	public Text y_pos;
+	public Text z_pos;
 	public static double x_Pos2Store;
 	public static double y_Pos2Store;
 	public static double z_Pos2Store;
