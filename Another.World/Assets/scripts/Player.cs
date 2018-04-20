@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator loadItems()
     {
-        Debug.Log("********* NOW IN LOADITEMS() *********");
+        //Debug.Log("********* NOW IN LOADITEMS() *********");
         string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/assetbundles/asset_bundle_3";
         WWW www = WWW.LoadFromCacheOrDownload(url, 1);
 
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         //}
         //}
         yield return www;
-        Debug.Log("current asset bundle " + www.assetBundle);
+        //Debug.Log("current asset bundle " + www.assetBundle);
 
         if (www.assetBundle != null)
         {
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
             int idx = 0;
             foreach (Object asset in assets)
             {
-                Debug.Log("******** " + asset.name);
+                //Debug.Log("******** " + asset.name);
                 GameObject temp = Instantiate(itemListItem, itemList.transform);
                 temp.GetComponentInChildren<Text>().text = asset.name;
                 int ridx = idx;
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             }
             
         }
-        Debug.Log("loaded assets " + loadedAssets.Length);
+        //Debug.Log("loaded assets " + loadedAssets.Length);
         
         AssetBundle.UnloadAllAssetBundles(false);
         // GameObject.Find("Test test").GetComponentInChildren<Text>().text = loadedAssets[0].name;
