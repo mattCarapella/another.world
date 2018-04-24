@@ -3598,7 +3598,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1949377618}
-  - component: {fileID: 1949377619}
   - component: {fileID: 1949377617}
   m_Layer: 0
   m_Name: nextScene
@@ -3632,21 +3631,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1949377619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1949377616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf534297b818c0c44a65f6e3f95c9468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  email: {fileID: 389155462}
-  password: {fileID: 157136449}
-  message: {fileID: 989077560}
-  popUp: {fileID: 452045746}
 --- !u!1 &1949915022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,7 +3782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949377619}
+      - m_Target: {fileID: 0}
         m_MethodName: LoginButton
         m_Mode: 1
         m_Arguments:
@@ -4346,7 +4330,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949377619}
+      - m_Target: {fileID: 0}
         m_MethodName: messagebutton
         m_Mode: 1
         m_Arguments:

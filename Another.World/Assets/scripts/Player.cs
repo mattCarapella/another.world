@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     int chosen = 0;
 
 	//Peter0414
-	[SyncVar]
 	public Text x_pos;
 	public Text y_pos;
 	public Text z_pos;
