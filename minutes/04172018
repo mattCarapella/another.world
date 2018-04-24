@@ -1,6 +1,6 @@
 Date: 04/17/2018
 Time: 1:00pm. to 2:00pm
-Github issue: #11
+Github issue: #11 #72
 
 present:
 
@@ -20,7 +20,7 @@ Discuss 100 level lab presentation, bug fixes, voice chat
   
 What each team member accomplished since last meeting:
 
-Shawn: 
+Shawn: Fixed all bug and get ready for 100 level presentation, all model load properly, player can see each other in the world. 
 Ira: worked on model select, implemented help scene, scene switch bug fixes, item bar naming
 Matt: added asset bundles for players and added many more assets for users
 Amiya: Finished writing the script for adding objects in the world and setting up the database for it
@@ -28,7 +28,7 @@ Peter: organize Ground setting
 
 What each team member will accomplish before next meeting: 
 
-Shawn: 
+Shawn: optimize player controler to make. gravity setting.#72
 Ira: model select attaching model choice to player #11
 Matt: VR implementation
 Amiya: Fix some the bugs on version 0.3.1 has and add the FTP client in the project
