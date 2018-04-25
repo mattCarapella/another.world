@@ -396,4 +396,10 @@ public class gameController : MonoBehaviour
     {
         PhotonNetworkManager.world = idx;
     }
+    public void updatePos()
+    {
+        PhotonNetworkManager.x_pos = Player.transform.position.x;
+        PhotonNetworkManager.y_pos = Player.transform.position.y;
+        PhotonNetworkManager.z_pos = Player.transform.position.z;
+    }
 }

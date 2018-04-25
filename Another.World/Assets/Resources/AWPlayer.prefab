@@ -7381,9 +7381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inhand: {fileID: 1531175029220904}
-  x_pos: {fileID: 114209948865250398}
-  y_pos: {fileID: 114256573407504054}
-  z_pos: {fileID: 114351193879566160}
   game: {fileID: 1470940609754240}
   selected: 0
   loadedAssets:
@@ -7391,6 +7388,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  x_pos: {fileID: 114209948865250398}
+  y_pos: {fileID: 114256573407504054}
+  z_pos: {fileID: 114351193879566160}
   itemList: {fileID: 1985759341474960}
   itemListItem: {fileID: 1638759345703606, guid: 203866ecb085c454796f0109974a4bc8,
     type: 2}
@@ -11197,6 +11197,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 114241748238015106}
         m_MethodName: disconnect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114241748238015106}
+        m_MethodName: updatePos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

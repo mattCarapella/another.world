@@ -9,6 +9,9 @@ public class PhotonNetworkManager : MonoBehaviour {
 	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject lobbyCamera;
 	[SerializeField] private Transform spawnPoint;
+    public static double x_pos;
+    public static double y_pos;
+    public static double z_pos;
 
     public static int world = 0;
     private string version = "0.3.2";
