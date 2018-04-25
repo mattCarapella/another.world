@@ -518,7 +518,7 @@ MonoBehaviour:
   VoiceDetection: 1
   VoiceDetectionThreshold: 0.01
   PlayDelayMs: 200
-  MicrophoneType: 0
+  MicrophoneType: 1
   DebugLostPercent: 0
   DebugInfo: 0
 --- !u!4 &1602487036
