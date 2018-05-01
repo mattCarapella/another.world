@@ -845,7 +845,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: E-mail
+  m_Text: Username/E-mail
 --- !u!222 &212960847
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 389155465}
   - component: {fileID: 389155464}
   m_Layer: 5
-  m_Name: Email
+  m_Name: Username/Email
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2324,7 +2324,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989077560
 MonoBehaviour:
@@ -2356,7 +2356,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &989077561
@@ -4264,7 +4264,6 @@ GameObject:
   - component: {fileID: 2091754232}
   - component: {fileID: 2091754231}
   - component: {fileID: 2091754230}
-  - component: {fileID: 2091754233}
   m_Layer: 5
   m_Name: Ok
   m_TagString: Untagged
@@ -4376,18 +4375,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091754228}
---- !u!114 &2091754233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091754228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf534297b818c0c44a65f6e3f95c9468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  email: {fileID: 389155462}
-  password: {fileID: 157136449}
-  message: {fileID: 989077560}
-  popUp: {fileID: 452045746}
