@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
 		y_Pos2Store = inhand.transform.position.y;
 		z_Pos2Store = inhand.transform.position.z;
 
-        if (_controller.env == 0 && inhand)
+        if (inhand)
         {
             x_pos.text = "X: " + inhand.transform.position.x;
             y_pos.text = "Y: " + inhand.transform.position.y;

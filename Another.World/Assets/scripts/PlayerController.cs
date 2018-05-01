@@ -101,6 +101,10 @@ public class PlayerController : MonoBehaviour {
                 _controller.processObj = inhand;
             }
         }
+        else
+        {
+            _rb.velocity = new Vector3(0,0,0);
+        }
         
         
     }

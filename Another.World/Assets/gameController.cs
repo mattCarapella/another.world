@@ -79,7 +79,11 @@ public class gameController : MonoBehaviour
             keymap[i] = 0;
         }
         ui = false;
+
         MouseVisiable = false;
+        if (Player.GetComponent<PhotonView>().isMine) {
+            Cursor.visible = false;
+        }
 
     }
     void Update()
@@ -95,6 +99,12 @@ public class gameController : MonoBehaviour
 
                 MenuState = !MenuState;
                 Menu.SetActive(MenuState);
+                if (MenuState ==false) {
+                    GameObject setting = GameObject.Find("SettingMenu");
+                    if (setting) {
+                        setting.SetActive(false);
+                    }
+                }
                 CameraDisable = !CameraDisable;
 
                 MouseVisiable = !MouseVisiable;
@@ -195,9 +205,12 @@ public class gameController : MonoBehaviour
             {
                 string[] cols = rows[i].Split(';');
                 GameObject temp = (GameObject) this.Player.GetComponent<Player>().loadedAssets[int.Parse(cols[0])];
-                temp.transform.position =  new Vector3(float.Parse(cols[1]), float.Parse(cols[2]), float.Parse(cols[3]));
-                temp.transform.rotation = new Quaternion(float.Parse(cols[4]), float.Parse(cols[5]), float.Parse(cols[6]),0);
-                Instantiate(temp);
+                Vector3 pos =  new Vector3(float.Parse(cols[1]), float.Parse(cols[2]), float.Parse(cols[3]));
+                Vector3 rot = new Vector3(float.Parse(cols[4]), float.Parse(cols[5]), float.Parse(cols[6]));
+                //Debug.Log(rot);
+                GameObject temp1 = Instantiate(temp);
+                temp1.transform.position = pos;
+                temp1.transform.rotation = Quaternion.Euler(rot);
             }
         }
     }
@@ -296,30 +309,24 @@ public class gameController : MonoBehaviour
 
         }
     }
-    public void attachObjAttr(GameObject obj)
-    {
-        obj.GetComponent<object_property>().setDescription(ObjectDes.text);
-        obj.GetComponent<object_property>().setName(ObjectName.text);
-        obj.GetComponent<object_property>().setPrice(ObjectPrice.text);
-        StartCoroutine(addObjToDB(inhand));
-        obj.AddComponent<BoxCollider>();
-    }
+    
     public void post()
     {
-        StartCoroutine(addObjToDB(inhand));
+        StartCoroutine(addObjToDB(inhand.transform));
     }
 
-    IEnumerator addObjToDB(GameObject inhand)
+    IEnumerator addObjToDB(Transform inhand)
     {
         WWWForm form = new WWWForm();
         form.AddField("worldidPost", PhotonNetworkManager.world);
         form.AddField("modelidPost", Player.GetComponent<Player>().getSeleted());
-        form.AddField("modelxPost", inhand.transform.position.x.ToString());
-        form.AddField("modelyPost", inhand.transform.position.y.ToString());
-        form.AddField("modelzPost", inhand.transform.position.z.ToString());
-        form.AddField("rotationxPost", inhand.transform.rotation.x.ToString());
-        form.AddField("rotationyPost", inhand.transform.rotation.y.ToString());
-        form.AddField("rotationzPost", inhand.transform.rotation.z.ToString());
+        form.AddField("modelxPost", inhand.position.x.ToString());
+        form.AddField("modelyPost", inhand.position.y.ToString());
+        form.AddField("modelzPost", inhand.position.z.ToString());
+        
+        form.AddField("rotationxPost", inhand.eulerAngles.x.ToString());
+        form.AddField("rotationyPost", inhand.eulerAngles.y.ToString());
+        form.AddField("rotationzPost", inhand.eulerAngles.z.ToString());
         string url = "http://ec2-18-232-184-23.compute-1.amazonaws.com/AddObjects.php";
         WWW www = new WWW(url, form);
         yield return www;

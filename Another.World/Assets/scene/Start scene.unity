@@ -3782,7 +3782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1955786574}
         m_MethodName: LoginButton
         m_Mode: 1
         m_Arguments:
@@ -3841,8 +3841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   email: {fileID: 389155462}
   password: {fileID: 157136449}
-  message: {fileID: 0}
-  popUp: {fileID: 0}
+  message: {fileID: 989077560}
+  popUp: {fileID: 452045746}
 --- !u!1 &1971681857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4330,9 +4330,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: messagebutton
-        m_Mode: 1
+      - m_Target: {fileID: 452045746}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
