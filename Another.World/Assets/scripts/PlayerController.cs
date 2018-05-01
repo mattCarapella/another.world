@@ -1,10 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// Controls the player's movement in virtual reality.
+// [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
+	
+	/// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
+	public bool HmdResetsY = true;
 
+	/// If true, tracking data from a child OVRCameraRig will update the direction of movement.
+	public bool HmdRotatesY = true;
 
+	/// The CameraHeight is the actual height of the HMD and can be used to adjust the height of the character controller, which will affect the
+	/// ability of the character to move into areas with a low ceiling.
+	[NonSerialized]
+	public float CameraHeight;
 
     public float _speed;
     protected Rigidbody _rb;
@@ -13,12 +25,75 @@ public class PlayerController : MonoBehaviour {
     public GameObject _lastHit;
     public GameObject inhand;
    
+	/// <summary>
+	/// This event is raised after the character controller is moved. This is used by the OVRAvatarLocomotion script to keep the avatar transform synchronized
+	/// with the OVRPlayerController.
+	/// </summary>
+	public event Action<Transform> TransformUpdated;
+
+	/// <summary>
+	/// This bool is set to true whenever the player controller has been teleported. It is reset after every frame. Some systems, such as 
+	/// CharacterCameraConstraint, test this boolean in order to disable logic that moves the character controller immediately 
+	/// following the teleport.
+	/// </summary>
+	[NonSerialized] // This doesn't need to be visible in the inspector.
+	public bool Teleported;
+
+	/// <summary>
+	/// This event is raised immediately after the camera transform has been updated, but before movement is updated.
+	/// </summary>
+	public event Action CameraUpdated;
+
+	/// <summary>
+	/// This event is raised right before the character controller is actually moved in order to provide other systems the opportunity to 
+	/// move the character controller in response to things other than user input, such as movement of the HMD. See CharacterCameraConstraint.cs
+	/// for an example of this.
+	/// </summary>
+	public event Action PreCharacterMove;
+
+	/// <summary>
+	/// When true, user input will be applied to linear movement. Set this to false whenever the player controller needs to ignore input for
+	/// linear movement.
+	/// </summary>
+	public bool EnableLinearMovement = true;
+
+	/// <summary>
+	/// When true, user input will be applied to rotation. Set this to false whenever the player controller needs to ignore input for rotation.
+	/// </summary>
+	public bool EnableRotation = true;
+
+	protected CharacterController Controller = null;
+	protected OVRCameraRig CameraRig = null;
+
+	private float MoveScale = 1.0f;
+	private Vector3 MoveThrottle = Vector3.zero;
+	private float FallSpeed = 0.0f;
+	private OVRPose? InitialPose;
+	public float InitialYRotation { get; private set; }
+	private float MoveScaleMultiplier = 1.0f;
+	private float RotationScaleMultiplier = 1.0f;
+	private bool  SkipMouseRotation = true; // It is rare to want to use mouse movement in VR, so ignore the mouse by default.
+	private bool  HaltUpdateMovement = false;
+	private bool prevHatLeft = false;
+	private bool prevHatRight = false;
+	private float SimulationRate = 60f;
+	private float buttonRotation = 0f;
+	private bool ReadyToSnapTurn; // Set to true when a snap turn has occurred, code requires one frame of centered thumbstick to enable another snap turn.
+
+
+	//===========================================================================================
+
+
     private int _detectRange;
     // Use this for initialization
 
     void Start () {
         
-        
+		// Add eye-depth as a camera offset from the player controller
+		var p = CameraRig.transform.localPosition;
+		p.z = OVRManager.profile.eyeDepth;
+		CameraRig.transform.localPosition = p;
+
         if (PhotonNetworkManager.world<= 0)
         {
             _speed = 20000f;
