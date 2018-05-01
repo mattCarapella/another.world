@@ -2,64 +2,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VR;
 
 /// Controls the player's movement in virtual reality.
 // [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
-	
-	/// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
-	public bool HmdResetsY = true;
 
-	/// If true, tracking data from a child OVRCameraRig will update the direction of movement.
-	public bool HmdRotatesY = true;
 
-	/// The CameraHeight is the actual height of the HMD and can be used to adjust the height of the character controller, which will affect the
-	/// ability of the character to move into areas with a low ceiling.
+	public float _speed;
+	protected Rigidbody _rb;
+	public GameObject _game;
+	private gameController _controller;
+	public GameObject _lastHit;
+	public GameObject inhand;
+	private int _detectRange;  // Use this for initialization
+
+
+
+	public bool HmdResetsY = true;	/// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
+	public bool HmdRotatesY = true;	/// If true, tracking data from a child OVRCameraRig will update the direction of movement.
+
 	[NonSerialized]
-	public float CameraHeight;
+	public float CameraHeight;	// The CameraHeight is the actual height of the HMD and can be used to adjust the height of the character controller
 
-    public float _speed;
-    protected Rigidbody _rb;
-    public GameObject _game;
-    private gameController _controller;
-    public GameObject _lastHit;
-    public GameObject inhand;
-   
-	/// <summary>
-	/// This event is raised after the character controller is moved. This is used by the OVRAvatarLocomotion script to keep the avatar transform synchronized
-	/// with the OVRPlayerController.
-	/// </summary>
+
+	public bool useProfileData = true;	// If true, each OVRPlayerController will use the player's physical height.
+
+	// This event is raised after the character controller is moved. This is used by the OVRAvatarLocomotion script to keep the avatar transform synchronized
+	// with the OVRPlayerController.
 	public event Action<Transform> TransformUpdated;
 
-	/// <summary>
-	/// This bool is set to true whenever the player controller has been teleported. It is reset after every frame. Some systems, such as 
-	/// CharacterCameraConstraint, test this boolean in order to disable logic that moves the character controller immediately 
-	/// following the teleport.
-	/// </summary>
-	[NonSerialized] // This doesn't need to be visible in the inspector.
+	// This bool is set to true whenever the player controller has been teleported. It is reset after every frame. Some systems, such as 
+	// CharacterCameraConstraint, test this boolean in order to disable logic that moves the character controller immediately 
+	// following the teleport.
+	[NonSerialized] 
 	public bool Teleported;
 
-	/// <summary>
 	/// This event is raised immediately after the camera transform has been updated, but before movement is updated.
-	/// </summary>
 	public event Action CameraUpdated;
 
-	/// <summary>
 	/// This event is raised right before the character controller is actually moved in order to provide other systems the opportunity to 
 	/// move the character controller in response to things other than user input, such as movement of the HMD. See CharacterCameraConstraint.cs
 	/// for an example of this.
-	/// </summary>
 	public event Action PreCharacterMove;
 
-	/// <summary>
 	/// When true, user input will be applied to linear movement. Set this to false whenever the player controller needs to ignore input for
 	/// linear movement.
-	/// </summary>
 	public bool EnableLinearMovement = true;
 
-	/// <summary>
+	public float RotationAmount = 1.5f;				/// The rate of rotation when using a gamepad.
+
 	/// When true, user input will be applied to rotation. Set this to false whenever the player controller needs to ignore input for rotation.
-	/// </summary>
 	public bool EnableRotation = true;
 
 	protected CharacterController Controller = null;
@@ -72,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 	public float InitialYRotation { get; private set; }
 	private float MoveScaleMultiplier = 1.0f;
 	private float RotationScaleMultiplier = 1.0f;
-	private bool  SkipMouseRotation = true; // It is rare to want to use mouse movement in VR, so ignore the mouse by default.
+	private bool  SkipMouseRotation = true; // Set to false to enable mouse
 	private bool  HaltUpdateMovement = false;
 	private bool prevHatLeft = false;
 	private bool prevHatRight = false;
@@ -81,18 +74,19 @@ public class PlayerController : MonoBehaviour {
 	private bool ReadyToSnapTurn; // Set to true when a snap turn has occurred, code requires one frame of centered thumbstick to enable another snap turn.
 
 
-	//===========================================================================================
-
-
-    private int _detectRange;
-    // Use this for initialization
-
     void Start () {
-        
-		// Add eye-depth as a camera offset from the player controller
-		var p = CameraRig.transform.localPosition;
-		p.z = OVRManager.profile.eyeDepth;
-		CameraRig.transform.localPosition = p;
+
+		//================================================================================
+		// Oculus controls
+		//================================================================================
+		if (UnityEngine.XR.XRDevice.isPresent) {
+			// Add eye-depth as a camera offset from the player controller
+			var p = CameraRig.transform.localPosition;
+			p.z = OVRManager.profile.eyeDepth;
+			CameraRig.transform.localPosition = p;
+		}
+		//================================================================================
+		//================================================================================
 
         if (PhotonNetworkManager.world<= 0)
         {
@@ -107,12 +101,63 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Awake() {
-        _controller = _game.GetComponent<gameController>();
-        _rb = GetComponent<Rigidbody>();
+
+		_controller = _game.GetComponent<gameController> ();
+
+		//================================================================================
+		// Oculus controls
+		//================================================================================
+		if (UnityEngine.XR.XRDevice.isPresent) {
+			// ************* Controller = gameObject.GetComponent<CharacterController>();
+
+			if (_controller == null)
+				Debug.LogWarning ("OVRPlayerController: No CharacterController attached.");
+
+			// We use OVRCameraRig to set rotations to cameras,
+			// and to be influenced by rotation
+			OVRCameraRig[] CameraRigs = gameObject.GetComponentsInChildren<OVRCameraRig> ();
+
+			if (CameraRigs.Length == 0)
+				Debug.LogWarning ("OVRPlayerController: No OVRCameraRig attached.");
+			else if (CameraRigs.Length > 1)
+				Debug.LogWarning ("OVRPlayerController: More then 1 OVRCameraRig attached.");
+			else
+				CameraRig = CameraRigs [0];
+
+			InitialYRotation = transform.rotation.eulerAngles.y;
+		}
+		//================================================================================
+		//================================================================================
+
+
+		_rb = GetComponent<Rigidbody>();
 
     }
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		if (UnityEngine.XR.XRDevice.isPresent) {
+			if (useProfileData) {
+				if (InitialPose == null) {
+					// Save the initial pose so it can be recovered if useProfileData
+					// is turned off later.
+					InitialPose = new OVRPose () {
+						position = CameraRig.transform.localPosition,
+						orientation = CameraRig.transform.localRotation
+					};
+				}
+
+				var p = CameraRig.transform.localPosition;
+				if (OVRManager.instance.trackingOriginType == OVRManager.TrackingOrigin.EyeLevel) {
+					p.y = OVRManager.profile.eyeHeight - (0.5f * Controller.height) + Controller.center.y;
+				} else if (OVRManager.instance.trackingOriginType == OVRManager.TrackingOrigin.FloorLevel) {
+					p.y = -(0.5f * Controller.height) + Controller.center.y;
+				}
+				CameraRig.transform.localPosition = p;
+			}
+		}
+	
+
 
         if (!_controller.CameraDisable)
         {
@@ -247,6 +292,35 @@ public class PlayerController : MonoBehaviour {
             
         }
     }
-    
+
+
+
+
+//================================================================================
+// Oculus controls
+//================================================================================
+
+	void OnEnable()
+	{
+		OVRManager.display.RecenteredPose += ResetOrientation;
+
+		if (CameraRig != null)
+		{
+			CameraRig.UpdatedAnchors += UpdateTransform;
+		}
+	}
+
+	void OnDisable()
+	{
+		OVRManager.display.RecenteredPose -= ResetOrientation;
+
+		if (CameraRig != null)
+		{
+			CameraRig.UpdatedAnchors -= UpdateTransform;
+		}
+	}
+
+//================================================================================
+
 
 }
