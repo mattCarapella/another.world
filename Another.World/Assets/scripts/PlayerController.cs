@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (PhotonNetworkManager.world > 0)
         {
-            _speed = 200f;
+            _speed = 500f;
             _detectRange = 50;
         }
     }
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour {
             }
             else if (PhotonNetworkManager.world > 0 )
             {
-                _speed = 200f;
+                _speed = 500f;
                 _detectRange = 50;
                 _lastHit = null;
             }

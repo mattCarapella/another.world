@@ -77,6 +77,7 @@ public class UpdateToDatabase : MonoBehaviour {
 		WWW www = new WWW(URL, form);
 
 		yield return www;
+        PhotonNetworkManager.world = int.Parse(www.text);
 		//Debug.Log (www.text);
 	}
 }

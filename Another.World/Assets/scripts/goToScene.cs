@@ -33,4 +33,8 @@ public class goToScene : MonoBehaviour
             SceneManager.LoadScene(i);
         }
     }
+    public void exit() {
+        Application.Quit();
+    }
+
 }
