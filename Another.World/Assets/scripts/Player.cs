@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private static bool created = false;
     private GameObject _player;
     [SerializeField]
-    private int selected = 0;
+    private int selected;
     public Object[] loadedAssets;
     bool dd = false;
     int chosen = 0;
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
         loadPlayer();
         StartCoroutine(loadItems());
+        selected = -1;
 
     }
 
@@ -192,5 +193,13 @@ public class Player : MonoBehaviour
     public int getSeleted()
     {
         return selected;
+    }
+    public void putAway()
+    {
+        if (inhand.transform.childCount > 0)
+        {
+            Destroy(inhand.transform.GetChild(0).gameObject);
+        }
+        selected = -1;
     }
 }

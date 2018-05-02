@@ -95,10 +95,15 @@ public class PlayerController : MonoBehaviour {
             movement = transform.TransformDirection(movement);
             _rb.velocity = (movement);
             
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && this.GetComponent<Player>().getSeleted()!=-1)
             {
                 _controller.place();
                 _controller.processObj = inhand;
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                this.GetComponent<Player>().putAway();
+
             }
         }
         else
@@ -124,6 +129,7 @@ public class PlayerController : MonoBehaviour {
             }
         
     }
+    
     public void SpawnObject()
     {
         // You must be in a Room already
