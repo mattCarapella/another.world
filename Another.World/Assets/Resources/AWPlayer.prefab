@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 82684417830166870}
   - component: {fileID: 114187472637064318}
   - component: {fileID: 114081300842937912}
+  - component: {fileID: 136055811197911818}
   m_Layer: 0
   m_Name: AWPlayer
   m_TagString: Untagged
@@ -13564,6 +13565,19 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904996999044814}
   m_Enabled: 1
+--- !u!136 &136055811197911818
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087642477609362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222004235951051320
 CanvasRenderer:
   m_ObjectHideFlags: 1
