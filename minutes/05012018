@@ -1,6 +1,6 @@
 Date: 5/1/2018
 Time: 1:00pm. to 2:00pm
-Github issue: #11
+Github issue: #11 #72
 
 present:
 
@@ -19,7 +19,7 @@ Summary:
 	
 What each team member accomplished since last meeting:
 
-Shawn: 
+Shawn: Exit button on start scene, fix bug for official release.
 Ira: Model select working locally, updated instruction scene
 Matt: Enabled Oculus headset support and movement
 Amiya: 
@@ -27,7 +27,7 @@ Peter:
 
 What each team member will accomplish before next meeting: 
 
-Shawn: 
+Shawn: optimize character controler. #72
 Ira: incorporate model select scene, insure model select works for multiplayer #11
 Matt: Get Oculus Touch controls working
 Amiya: 
