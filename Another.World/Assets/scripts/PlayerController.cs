@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VR;
+//using UnityEngine.VR;
 
 /// Controls the player's movement in virtual reality.
 // [RequireComponent(typeof(CharacterController))]
@@ -302,11 +302,13 @@ public class PlayerController : MonoBehaviour {
 
 	void OnEnable()
 	{
-		OVRManager.display.RecenteredPose += ResetOrientation;
+		if (UnityEngine.XR.XRDevice.isPresent) {
+			OVRManager.display.RecenteredPose += ResetOrientation;
 
-		if (CameraRig != null)
-		{
-			CameraRig.UpdatedAnchors += UpdateTransform;
+			if (CameraRig != null) {
+				CameraRig.UpdatedAnchors += UpdateTransform;
+			}
+
 		}
 	}
 
@@ -317,6 +319,57 @@ public class PlayerController : MonoBehaviour {
 		if (CameraRig != null)
 		{
 			CameraRig.UpdatedAnchors -= UpdateTransform;
+		}
+	}
+
+	/// Gets the halt update movement.
+	/// <param name="haltUpdateMovement">Halt update movement.</param>
+	public void GetHaltUpdateMovement(ref bool haltUpdateMovement)
+	{
+		haltUpdateMovement = HaltUpdateMovement;
+	}
+
+	/// Sets the halt update movement.
+	/// <param name="haltUpdateMovement">If set to true, halt update movement.</param>
+	public void SetHaltUpdateMovement(bool haltUpdateMovement)
+	{
+		HaltUpdateMovement = haltUpdateMovement;
+	}
+
+	/// <summary>
+	/// Resets the player look rotation when the device orientation is reset.
+	/// </summary>
+	public void ResetOrientation()
+	{
+		if (HmdResetsY && !HmdRotatesY)
+		{
+			Vector3 euler = transform.rotation.eulerAngles;
+			euler.y = InitialYRotation;
+			transform.rotation = Quaternion.Euler(euler);
+		}
+	}
+
+	/// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
+	public void UpdateTransform(OVRCameraRig rig)
+	{
+		Transform root = CameraRig.trackingSpace;
+		Transform centerEye = CameraRig.centerEyeAnchor;
+
+		if (HmdRotatesY && !Teleported)
+		{
+			Vector3 prevPos = root.position;
+			Quaternion prevRot = root.rotation;
+
+			transform.rotation = Quaternion.Euler(0.0f, centerEye.rotation.eulerAngles.y, 0.0f);
+
+			root.position = prevPos;
+			root.rotation = prevRot;
+		}
+
+		FixedUpdate();
+		if (TransformUpdated != null)
+		{
+			TransformUpdated(root);
 		}
 	}
 
