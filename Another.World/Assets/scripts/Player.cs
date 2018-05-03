@@ -51,11 +51,13 @@ public class Player : MonoBehaviour
         {
             // GameObject.Destroy(GameObject.Find("AWPlayer"));
             // GameObject.Instantiate("MPlayer");
-
+            GameObject ss = this.transform.Find("Basic_BanditPrefab").gameObject;
+            Destroy(ss);
         }
         else if (chosen == 1)
         {
-
+            GameObject ss = this.transform.Find("unitychan").gameObject;
+            Destroy(ss);
         }
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Mesh mesh = sphere.GetComponent<MeshFilter>().sharedMesh;
@@ -65,10 +67,6 @@ public class Player : MonoBehaviour
         inhand.transform.position = this.transform.forward * 5 + this.transform.position;
         
         GameObject.Destroy(sphere);
-    }
-    public void chosenOne()
-    {
-        chosen = 1;
     }
     IEnumerator loadItems()
     {
