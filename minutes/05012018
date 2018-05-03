@@ -22,7 +22,7 @@ What each team member accomplished since last meeting:
 Shawn: Exit button on start scene, fix bug for official release.
 Ira: Model select working locally, updated instruction scene
 Matt: Enabled Oculus headset support and movement
-Amiya: 
+Amiya: Finishing up upload #12
 Peter: 
 
 What each team member will accomplish before next meeting: 
@@ -30,5 +30,5 @@ What each team member will accomplish before next meeting:
 Shawn: optimize character controler. #72
 Ira: incorporate model select scene, insure model select works for multiplayer #11
 Matt: Get Oculus Touch controls working
-Amiya: 
+Amiya: Adding couple of features inlcuding the 100 level feature request #74
 Peter: 
