@@ -645,6 +645,7 @@ GameObject:
   - component: {fileID: 222997748638828128}
   - component: {fileID: 114260076384444974}
   - component: {fileID: 114880921268353948}
+  - component: {fileID: 114306394609544574}
   m_Layer: 5
   m_Name: Button8
   m_TagString: Untagged
@@ -2115,6 +2116,7 @@ GameObject:
   - component: {fileID: 222321902746354938}
   - component: {fileID: 114405491362377372}
   - component: {fileID: 114984490656606676}
+  - component: {fileID: 114803639813748794}
   m_Layer: 5
   m_Name: Button6
   m_TagString: Untagged
@@ -2664,6 +2666,7 @@ GameObject:
   - component: {fileID: 222306599855762460}
   - component: {fileID: 114521918430832160}
   - component: {fileID: 114070544290368638}
+  - component: {fileID: 114817042703203812}
   m_Layer: 5
   m_Name: Button3
   m_TagString: Untagged
@@ -4892,7 +4895,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114521918430832160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114817042703203812}
+        m_MethodName: downloadbutton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114071618981510016
@@ -5655,7 +5669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Logout
 --- !u!114 &114176024415518648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7115,6 +7129,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114306394609544574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176651003855948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc78c54aba7b174b9024b7fafe22cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114306985596027662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11921,6 +11946,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114803639813748794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497594265243980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f898ec7c34064e546aa9c558cdc11926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114804155291338086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12020,6 +12056,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'z: 200'
+--- !u!114 &114817042703203812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607262471270204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d397d3bf448e34ba45cfe4ae7900a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114817929149652814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12554,7 +12601,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -12573,7 +12620,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114260076384444974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114306394609544574}
+        m_MethodName: LogoutButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114888935425274708
@@ -13444,7 +13502,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114405491362377372}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114803639813748794}
+        m_MethodName: uploadbutton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114988604044361650
@@ -16823,7 +16892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -25, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104.4, y: -45.4}
+  m_AnchoredPosition: {x: -104.4, y: 43.96899}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224409995247518172
@@ -19253,7 +19322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -25, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106, y: 43}
+  m_AnchoredPosition: {x: -103.9, y: -45.26233}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224951858516863446
