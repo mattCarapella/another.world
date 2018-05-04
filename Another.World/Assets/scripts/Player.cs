@@ -38,13 +38,16 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-
+        checkChosen();
         loadPlayer();
         StartCoroutine(loadItems());
         selected = -1;
         
     }
-
+    public void checkChosen()
+    {
+        chosen = characterSelection.chosen;
+    }
     void loadPlayer()
     {
         if (chosen == 0)
