@@ -6,7 +6,7 @@ using UnityEngine;
 
 /// Controls the player's movement in virtual reality.
 // [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour {
+public class PlayerControllerTouch : MonoBehaviour {
 
 
 	public float _speed;
