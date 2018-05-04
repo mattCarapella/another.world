@@ -23,8 +23,10 @@ public class Logout : MonoBehaviour
         Login.send_email = null;
         Login.ftp_user = null;
         Login.ftp_password = null;
-
-        switchScene(0);
+        PhotonNetworkManager.world = -2;
+        AssetBundle.UnloadAllAssetBundles(true);
+        PhotonNetwork.Disconnect();
+       
     }
 
     public void switchScene(int i)

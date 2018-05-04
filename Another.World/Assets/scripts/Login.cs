@@ -84,6 +84,7 @@ public class Login : MonoBehaviour
             ftp_password = infoparts[5];
 
             switchScene(2);
+            PhotonNetworkManager.connect();
         }
         else
         {

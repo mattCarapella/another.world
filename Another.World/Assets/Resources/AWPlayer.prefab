@@ -1217,7 +1217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1106382792099510
 GameObject:
   m_ObjectHideFlags: 1
@@ -18612,9 +18612,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 1105695149271018}
-  CameraDisable: 1
+  CameraDisable: 0
   MouseVisiable: 0
-  MenuState: 1
+  MenuState: 0
   worldModelSample: {fileID: 1847809469178724, guid: c8552d3b3ca42d142b9984b6a22827fe,
     type: 2}
   listItem: {fileID: 1441480424416122, guid: 410a351b49c5bba49ace0e4da55bd88a, type: 2}
@@ -21482,7 +21482,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'version: 0.3.2'
+  m_Text: 'version: 1.0.0'
 --- !u!114 &114405491362377372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41938,9 +41938,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809856149275062}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0015663486, y: 0.38912284, z: -0.00066163065, w: 0.92118436}
+  m_LocalPosition: {x: 0, y: 0, z: 99.03441}
+  m_LocalScale: {x: 0.72833335, y: 0.7283333, z: 0.72833335}
   m_Children:
   - {fileID: 224289270987058246}
   - {fileID: 224868501389673672}
@@ -41952,9 +41952,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 101, y: 218.5}
+  m_SizeDelta: {x: 277.34552, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224572765821452888
 RectTransform:
   m_ObjectHideFlags: 1
