@@ -110,3 +110,5 @@
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Newtonsoft.Json.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
 /Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/System.Windows.Forms.dll
+/Users/mengchunhsieh/Desktop/Github/AnotherWorld/Another.World/Temp/bin/Debug/Ookii.Dialogs.dll

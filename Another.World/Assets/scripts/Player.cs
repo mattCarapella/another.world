@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         loadPlayer();
         StartCoroutine(loadItems());
         selected = -1;
-
+        
     }
 
     void loadPlayer()

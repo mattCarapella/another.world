@@ -21,7 +21,7 @@ public class Upload : MonoBehaviour {
 		
 	}
 
-    public void uploadbutton()
+    public void uploadbutton(GameObject popUp)
     {
         var extensions = new[] { new ExtensionFilter("3D Object Files ", "fbx", "obj")};
         openpath = StandaloneFileBrowser.OpenFilePanel("Select your File", "", extensions, false);

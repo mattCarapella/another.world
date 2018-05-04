@@ -13,7 +13,7 @@ public class cameraLerp : MonoBehaviour {
         StartCoroutine(loadItems());
     }
 	void Start () {
-        StartCoroutine(generateInGame(Random.Range(1, 10)));
+        StartCoroutine(generateInGame(Random.Range(0, 18)));
         InvokeRepeating("randomizePos",0,30);
 	}
 	
