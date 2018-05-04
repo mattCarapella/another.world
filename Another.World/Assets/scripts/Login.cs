@@ -23,6 +23,7 @@ public class Login : MonoBehaviour
     public static string ftp_password = null;
 
     string URL = "http://ec2-18-232-184-23.compute-1.amazonaws.com/Login.php";
+
     // Use this for initialization
     void Start()
     {
@@ -62,7 +63,7 @@ public class Login : MonoBehaviour
     IEnumerator LoginToDB()
     {
         WWWForm form = new WWWForm();
-        form.AddField("emailPost", Email);
+        form.AddField("usernameemailPost", Email);
         form.AddField("passwordPost", Password);
 
         WWW www = new WWW(URL, form);
@@ -83,6 +84,7 @@ public class Login : MonoBehaviour
             ftp_password = infoparts[5];
 
             switchScene(2);
+            PhotonNetworkManager.connect();
         }
         else
         {

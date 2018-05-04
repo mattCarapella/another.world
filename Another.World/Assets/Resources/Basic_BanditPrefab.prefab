@@ -1133,7 +1133,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000012322933416}
-  - component: {fileID: 95000011610634314}
   m_Layer: 0
   m_Name: Basic_BanditPrefab
   m_TagString: Untagged
@@ -2191,23 +2190,6 @@ Transform:
   m_Father: {fileID: 4000010504151644}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95000011610634314
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014232435074}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fe55e5a0c1bcd72488aa4508bea6f93b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!137 &137000010454974400
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

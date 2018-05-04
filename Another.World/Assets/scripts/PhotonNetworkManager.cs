@@ -9,9 +9,12 @@ public class PhotonNetworkManager : MonoBehaviour {
 	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject lobbyCamera;
 	[SerializeField] private Transform spawnPoint;
+    public static double x_pos;
+    public static double y_pos;
+    public static double z_pos;
 
     public static int world = 0;
-    private string version = "0.3.2";
+    public static string version = "0.3.2";
 	private string roomName = "current_room";
     private static bool create = false;
     private void Awake()
@@ -65,12 +68,18 @@ public class PhotonNetworkManager : MonoBehaviour {
     void OnDisconnectedFromPhoton()
     {
         lobbyCamera.SetActive(true);
-        if (world ==-1)
+        if (world == -1)
         {
             gameController.loadScene(1);
             lobbyCamera.SetActive(false);
         }
-        else if (world!=0)
+        else if (world == -2)
+        {
+            gameController.loadScene(0);
+            lobbyCamera.SetActive(false);
+            world = 0;
+        }
+        else if (world != 0)
         {
             gameController.loadScene(4);
             connect();
@@ -80,7 +89,7 @@ public class PhotonNetworkManager : MonoBehaviour {
             connect();
         }
     }
-    public void connect()
+    public static void connect()
     {
         PhotonNetwork.ConnectUsingSettings(version);
 
