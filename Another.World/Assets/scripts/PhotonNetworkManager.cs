@@ -76,6 +76,7 @@ public class PhotonNetworkManager : MonoBehaviour {
         else if (world == -2)
         {
             gameController.loadScene(0);
+            lobbyCamera.SetActive(false);
             world = 0;
         }
         else if (world != 0)
