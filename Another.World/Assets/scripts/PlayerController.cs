@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour {
 
     public float _speed;
     protected Rigidbody _rb;
+    private CapsuleCollider _cc;
     public GameObject _game;
     private gameController _controller;
     public GameObject _lastHit;
     public GameObject inhand;
+    private bool gravi;
    
     private int _detectRange;
     // Use this for initialization
@@ -26,13 +28,15 @@ public class PlayerController : MonoBehaviour {
         }
         else if (PhotonNetworkManager.world > 0)
         {
-            _speed = 200f;
+            _speed = 500f;
             _detectRange = 50;
         }
     }
 
     void Awake() {
         _controller = _game.GetComponent<gameController>();
+        gravi = false;
+        _cc = GetComponent<CapsuleCollider>();
         _rb = GetComponent<Rigidbody>();
 
     }
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour {
 
         if (!_controller.CameraDisable)
         {
+            _rb.useGravity = gravi;
             RaycastHit hit;
             Ray dectRay = new Ray(this.transform.position, this.transform.forward);
             Debug.DrawRay(this.transform.position, this.transform.forward * 50);
@@ -95,11 +100,25 @@ public class PlayerController : MonoBehaviour {
             movement = transform.TransformDirection(movement);
             _rb.velocity = (movement);
             
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && this.GetComponent<Player>().getSeleted()!=-1)
             {
                 _controller.place();
                 _controller.processObj = inhand;
             }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                this.GetComponent<Player>().putAway();
+
+            }else if (Input.GetKeyDown(KeyCode.G))
+            {
+                gravi = !gravi;
+                _rb.useGravity = gravi;
+            }
+        }
+        else
+        {
+            _rb.useGravity = false;
+            _rb.velocity = new Vector3(0,0,0);
         }
         
         
@@ -111,15 +130,23 @@ public class PlayerController : MonoBehaviour {
             {
                 _speed = 20000f;
                 _detectRange = 500;
+                _cc.isTrigger = true;
+                _rb.useGravity = false;
+            gravi = false;
             }
             else if (PhotonNetworkManager.world > 0 )
             {
-                _speed = 200f;
+                _speed = 500f;
                 _detectRange = 50;
                 _lastHit = null;
-            }
+                Physics.gravity = new Vector3(0,-500f,0);
+                _cc.isTrigger = false;
+                _rb.useGravity = true;
+            gravi = true;
+        } 
         
     }
+    
     public void SpawnObject()
     {
         // You must be in a Room already
@@ -157,17 +184,8 @@ public class PlayerController : MonoBehaviour {
         v.viewID = id1;
         
     }
-    void OnTriggerEnter(Collider c)
-    {
-        if (c.tag =="World")
-        {
-            Destroy(c.gameObject);
-        }
-        else if(c.tag =="Asset")
-        {
-            
-        }
-    }
+
+    
     
 
 }

@@ -41,9 +41,9 @@ public class UpdateToDatabase : MonoBehaviour {
 	}
 
 	public void updateDatabase () {
-        x_pos = Player.x_Pos2Store;
-        y_pos = Player.y_Pos2Store;
-        z_pos = Player.z_Pos2Store;
+        x_pos = PhotonNetworkManager.x_pos;
+        y_pos = PhotonNetworkManager.y_pos;
+        z_pos = PhotonNetworkManager.z_pos;
         StartCoroutine(worldUpdate());
 	}
 
@@ -77,6 +77,7 @@ public class UpdateToDatabase : MonoBehaviour {
 		WWW www = new WWW(URL, form);
 
 		yield return www;
+        PhotonNetworkManager.world = int.Parse(www.text);
 		//Debug.Log (www.text);
 	}
 }
